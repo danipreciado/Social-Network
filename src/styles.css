@@ -1,22 +1,74 @@
+html{
+    font-size: 62.5%;
+}
+
 body{
     position: relative;
     background-color: #F8FFE5;
+    font-family: 'Varela Round', sans-serif;
 }
 
 .home-section{
     background-color: #F8FFE5;
     position: relative;
+    display: none;
 }
 
+.logo img{
+    position:absolute;
+    width: 16vh;
+    margin-top: 10rem;
+    background-color: #F8FFE5;
+    border-radius: 50rem;
+    z-index: 1;
+    
+}
+.logo{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   
+}
+
+
 .home-description{
-position: absolute;
-background: rgba(6, 214, 160, 0.14);
-border-radius: 50px; 
-font-family: 'Jua', sans-serif;
+    position: absolute;
+    background: rgba(6, 214, 160, 0.14);
+    border-radius: 50px; 
+    height: 55vh;
+   
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    
+    margin-top: 4rem;
+}
+
+
+h1{
+    font-family: 'Jua', sans-serif;
+    font-size: 3rem;
+}
+
+h2{
+    font-family: 'Varela Round', sans-serif;
+    font-weight: 300;
+
+}
+
+.home-image{
+    position: relative;
+    display: flex;
+    justify-content: center;
 }
 
 .home-image img{
-    width: 10rem;
+
+    width: 77vw;
+    height: 40vh;
     
 }
 .peta{
@@ -26,13 +78,44 @@ font-family: 'Jua', sans-serif;
 .gram{
    color: #1B9AAA; 
 }
+.home-buttons{
+    margin-top: 3rem;
+    display: flex;
+    gap: 2.5rem;
+    
 
+}
+.btnSignUp{
+   
+    text-decoration: none;
+    border: none;
+    background-color: #6A4C93;
+    color: #F8FFE5;
+    padding: 0.7rem;
+    border-radius: 1rem;
+    width: 12rem;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    
+}
+.btnSignIn{
+    
+   
+    text-decoration: none;
+    border: none;
+    background-color: #1B9AAA;
+    color: #F8FFE5;
+    padding: 0.7rem;
+    border-radius: 1rem;
+    width: 12rem;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    
+}
 
 .pets-images{
    background-color: #06D6A0;
 }
 
 .verification-section{
-    display:flex;
+    display: none;
     flex-direction: row;
 }
