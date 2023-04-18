@@ -4,7 +4,7 @@ import { auth } from './lib/config/firebaseconfig';
 
 /* myFunction(); */
 
-const body = document.querySelector('body');
+const signUpSection = document.getElementById('signUp-section');
 const form = document.createElement('form');
 const labelUser = document.createElement('label');
 const labelPassword = document.createElement('label');
@@ -21,8 +21,8 @@ submitBtn.setAttribute('type', 'submit');
 form.appendChild(labelUser);
 form.appendChild(labelPassword);
 form.appendChild(submitBtn);
-body.appendChild(form);
-body.style.display = 'flex';
+signUpSection.appendChild(form);
+signUpSection.style.display = 'flex';
 
 form.addEventListener('submit', (e) => {
   e.preventDefault();
@@ -40,7 +40,6 @@ form.addEventListener('submit', (e) => {
       const errorCode = error.code;
       const errorMessage = error.message;
 
-      /* console.log(errorCode, errorMessage); */
-    // ..
+      console.log(errorCode, errorMessage);
     });
 });

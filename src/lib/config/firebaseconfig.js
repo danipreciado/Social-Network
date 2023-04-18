@@ -1,5 +1,5 @@
 import { initializeApp } from 'firebase/app';
-import { getAuth /* onAuthStateChanged, */ } from 'firebase/auth';
+import { getAuth, onAuthStateChanged } from 'firebase/auth';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyD8_N9eOlWmhT4UCsQi8wWYF5YL4xemIkU',
@@ -14,10 +14,10 @@ const firebaseConfig = {
 export const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 /* console.log(auth); */
-/* onAuthStateChanged(auth, (user) => {
+onAuthStateChanged(auth, (user) => {
   if (user !== null) {
     console.log('logged in!');
   } else {
     console.log('no user');
   }
-}); */
+});
