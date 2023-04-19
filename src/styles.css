@@ -11,10 +11,10 @@ body{
 .home-section{
     background-color: #F8FFE5;
     position: relative;
-    display: none;
+    
 }
 
-.logo img{
+.logo img, .verification-logo img{
     position:absolute;
     width: 16vh;
     margin-top: 10rem;
@@ -23,7 +23,7 @@ body{
     z-index: 1;
     
 }
-.logo{
+.logo, .verification-logo   {
     width: 100%;
     display: flex;
     justify-content: center;
@@ -72,10 +72,12 @@ h2{
     
 }
 .peta{
+    font-family: 'Jua', sans-serif;
     color: #6A4C93;
 }
 
 .gram{
+   font-family: 'Jua', sans-serif;
    color: #1B9AAA; 
 }
 .home-buttons{
@@ -110,12 +112,143 @@ h2{
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     
 }
-
 .pets-images{
-   background-color: #06D6A0;
+    background: rgba(6, 214, 160, 0.14);
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    justify-items: center;
+  
+    
 }
+
+.pets-images img{
+   width: 25vw;  
+}
+.item-e{
+    margin-top:-20px;
+}
+.item-d{
+    margin-top:15px
+}
+.item-j{
+    margin-top: -15px
+}
+.item-f{
+    margin-top: -25px;
+}
+.verification-desktop{
+    display: none;
+}
+
+
 
 .verification-section{
     display: none;
-    flex-direction: row;
+    flex-direction: column;
 }
+.verification-logo img{
+    margin-bottom: 20rem;
+    
+}
+
+.verification-container{
+ background: linear-gradient(180deg, rgba(248, 255, 229, 0) 0%, #F8FFE5 26.89%);
+ margin-top: -13rem;
+}
+
+.verification-message{
+    position: relative;
+    font-size: 1.8rem;
+    border-radius: 50px;
+    height: 20rem;
+    margin: 15rem 3rem;
+    text-align: center;
+}
+.thanks-message{
+    font-weight:bold ;
+}
+.verify-message{
+    
+    font-size: 1.5rem;
+}
+.signIn-link{
+    margin-top:15px;
+    font-size:1.3rem;
+}
+.signIn{
+    color:#FFCA3A;
+}
+.signUp-section{
+    display: none;
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    color: white;
+}
+
+.signUp-form {
+  
+  background-color: #1B9AAA;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%; /* Could be more or less, depending on screen size */
+  height: 50%;
+  border-radius: 3rem;
+  margin-top: 15rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly; 
+  align-items: center;
+  font-size: 1.5rem;
+  
+}
+
+.signUp-form label {
+  display: flex;
+  align-items: flex-start;
+}
+
+.signUp-form input{
+    width: 20rem;
+    display: flex;
+    border-radius: 10px;
+    border: none;
+}
+
+
+.signUp-form button{
+    
+    text-decoration: none;
+    border: none;
+    background-color: #6A4C93;
+    color: #F8FFE5;
+    padding: 0.7rem;
+    border-radius: 1rem;
+    width: 12rem;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+/* The Close Button */
+.close {
+    color: #F8FFE5;
+    position: relative;
+    left: 40%;
+    font-size: 28px;
+    font-weight: bold;
+    
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: #6A4C93;
+    text-decoration: none;
+    cursor: pointer;
+  }
