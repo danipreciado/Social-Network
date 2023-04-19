@@ -7,26 +7,26 @@ const userPassword = document.querySelector('#userPassword');
 const form = document.querySelector('.signUp-form');
 const signupSection= document.querySelector('.signUp-section');
 const btnSignUp = document.querySelector('.btnSignUp');
-const span = document.getElementsByClassName("close")[0];
+const span = document.getElementsByClassName('close')[0];
 const verificationSection = document.querySelector('.verification-section');
 const homeSection = document.querySelector('.home-section');
 
 
 
-btnSignUp.addEventListener("click", showModal)
+btnSignUp.addEventListener('click', showModal)
 function showModal(){
-  signupSection.style.display="block"
+  signupSection.style.display='block'
   
 };
-span.addEventListener("click", hiddenModal)
+span.addEventListener('click', hiddenModal)
 function hiddenModal(){
-  signupSection.style.display="none";
+  signupSection.style.display='none';
 };
 
 function verificationDisplay(){
-  homeSection.style.display="none"
-  signupSection.style.display="none";
-  verificationSection.style.display="flex";
+  homeSection.style.display='none'
+  signupSection.style.display='none';
+  verificationSection.style.display='flex';
 }
 
 form.addEventListener('submit', (e) => {
@@ -48,5 +48,5 @@ form.addEventListener('submit', (e) => {
 
       console.log(errorCode, errorMessage);
     });
-  verificationDisplay();
+ 
 });
