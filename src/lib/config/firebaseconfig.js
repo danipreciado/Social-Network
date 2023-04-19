@@ -20,5 +20,4 @@ export const auth = getAuth(app);
   } else {
     console.log('no user');
   }
-});
- */
+}); */
