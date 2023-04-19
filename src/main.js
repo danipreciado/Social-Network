@@ -18,7 +18,6 @@ btnSignUp.addEventListener('click', showModal);
 function hiddenModal() {
   signupSection.style.display = 'none';
 }
-
 span.addEventListener('click', hiddenModal);
 
 function verificationDisplay() {
@@ -44,6 +43,6 @@ form.addEventListener('submit', (e) => {
       const errorCode = error.code;
       const errorMessage = error.message;
 
-      console.log(errorCode, errorMessage);
+      // console.log(errorCode, errorMessage);
     });
 });
