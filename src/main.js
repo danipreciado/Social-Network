@@ -1,6 +1,7 @@
 // Este es el punto de entrada de tu aplicacion
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { auth } from './lib/config/firebaseconfig';
+import router from './lib/routes';
 
 const userEmail = document.querySelector('#userEmail');
 const userPassword = document.querySelector('#userPassword');
@@ -11,14 +12,16 @@ const span = document.getElementsByClassName('close')[0];
 const verificationSection = document.querySelector('.verification-section');
 const homeSection = document.querySelector('.home-section');
 
-function showModal() {
-  signupSection.style.display = 'block';
-}
-btnSignUp.addEventListener('click', showModal);
-function hiddenModal() {
-  signupSection.style.display = 'none';
-}
-span.addEventListener('click', hiddenModal);
+window.addEventListener('load', router);
+
+// function showModal() {
+//   signupSection.style.display = 'block';
+// }
+// btnSignUp.addEventListener('click', showModal);
+// function hiddenModal() {
+//   signupSection.style.display = 'none';
+// }
+// span.addEventListener('click', hiddenModal);
 
 function verificationDisplay() {
   homeSection.style.display = 'none';
