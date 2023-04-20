@@ -2,17 +2,22 @@
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { auth } from './lib/config/firebaseconfig';
 import router from './lib/routes';
+import signup from './templates/signUp';
 
-const userEmail = document.querySelector('#userEmail');
-const userPassword = document.querySelector('#userPassword');
-const form = document.querySelector('.signUp-form');
-const signupSection = document.querySelector('.signUp-section');
-const btnSignUp = document.querySelector('.btnSignUp');
-const span = document.getElementsByClassName('close')[0];
-const verificationSection = document.querySelector('.verification-section');
-const homeSection = document.querySelector('.home-section');
+// const form = document.querySelector('.signUp-form');
+const parser = new DOMParser();
+const temp = parser.parseFromString(signup, 'text/html').documentElement;
+const form = temp.querySelector('.signUp-form');
+const userEmail = temp.querySelector('#userEmail');
+const userPassword = temp.querySelector('#userPassword');
+// const signupSection = document.querySelector('.signUp-section');
+// const btnSignUp = document.querySelector('.btnSignUp');
+// const span = document.getElementsByClassName('close')[0];
+// const verificationSection = document.querySelector('.verification-section');
+// const homeSection = document.querySelector('.home-section');
 
 window.addEventListener('load', router);
+window.addEventListener('hashchange', router);
 
 // function showModal() {
 //   signupSection.style.display = 'block';
@@ -23,11 +28,11 @@ window.addEventListener('load', router);
 // }
 // span.addEventListener('click', hiddenModal);
 
-function verificationDisplay() {
-  homeSection.style.display = 'none';
-  signupSection.style.display = 'none';
-  verificationSection.style.display = 'flex';
-}
+// function verificationDisplay() {
+//   homeSection.style.display = 'none';
+//   signupSection.style.display = 'none';
+//   verificationSection.style.display = 'flex';
+// }
 
 form.addEventListener('submit', (e) => {
   e.preventDefault();
@@ -40,12 +45,12 @@ form.addEventListener('submit', (e) => {
     // Signed in
       const user = userCredential.user;
       /* console.log(userCredential); */
-      verificationDisplay();
+      // verificationDisplay();
     })
     .catch((error) => {
       const errorCode = error.code;
       const errorMessage = error.message;
 
-      // console.log(errorCode, errorMessage);
+      console.log(errorCode, errorMessage);
     });
 });

@@ -1,30 +1,21 @@
-// TODO: Replace the following with your app's Firebase project configuration
 import home from '../templates/home';
-import signUp from '../templates/signUp';
+import signup from '../templates/signUp';
 import verification from '../templates/verification';
+import getHash from './getHash';
+import resolveRoutes from './resolveRoutes';
 
 const routes = {
-  '/home': home,
-  '/signup': signUp,
+  '/': home,
+  '/signup': signup,
   '/verification': verification,
 };
 
-
 const router = async () => {
   const content = null || document.getElementById('content');
-  let request = window.location.hash.slice(1).toLowerCase().split('/')[1];
-  let template = routes[`/${request}`];
-  if (template) {
-    content.innerHTML = await template;
-  } else {
-    content.innerHTML = 'La página solicitada no existe';
-  }
+  const message = 'ERROR 404';
+  const hash = getHash();
+  const route = await resolveRoutes(hash);
+  const render = routes[route] ? routes[route] : message;
+  content.innerHTML = await render;
 };
-
-// const router = async () => {
-//   const content = null || document.getElementById('content');
-
-//   const render = routes;
-//   content.innerHTML = await render()
-// };
 export default router;

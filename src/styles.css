@@ -141,10 +141,8 @@ h2{
     display: none;
 }
 
-
-
 .verification-section{
-    display: none;
+    display: display;
     flex-direction: column;
 }
 .verification-logo img{
@@ -180,7 +178,7 @@ h2{
     color:#FFCA3A;
 }
 .signUp-section{
-    display: none;
+    display: flex;
     position: fixed; /* Stay in place */
     z-index: 1; /* Sit on top */
     left: 0;
