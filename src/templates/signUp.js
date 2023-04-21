@@ -1,4 +1,4 @@
-const signUp = () => {
+export const signup = () => {
   const view = `
 <section class="signUp-section" id="signUp-section">
  
@@ -19,5 +19,3 @@ const signUp = () => {
 </section>`;
   return view;
 };
-
-export default signUp;
