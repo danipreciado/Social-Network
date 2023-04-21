@@ -1,9 +1,6 @@
-// eslint-disable-next-line import/no-cycle
 import home from './templates/home';
 import { signup } from './templates/signUp';
 import verification from './templates/verification';
-// import getHash from './lib/getHash';
-// import resolveRoutes from './lib/resolveRoutes';
 
 const root = document.getElementById('content');
 const routes = {

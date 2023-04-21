@@ -1,6 +1,3 @@
-// eslint-disable-next-line import/no-cycle
-import { onNavigate } from '../main';
-
 const home = () => {
   const container = document.querySelector('#container-content');
 
@@ -23,7 +20,7 @@ const home = () => {
   btnSignUp.classList.add('btnSignUp');
   btnSignUp.textContent = 'Regístrate';
   btnSignUp.addEventListener('click', () => {
-    onNavigate('/signup');
+  //   // onNavigate('/signup');
     console.log('Hola');
   });
   const btnSignIn = document.createElement('button');
