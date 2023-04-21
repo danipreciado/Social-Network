@@ -1,5 +1,7 @@
-const verification = () => {
-  const view = `<section class="verification-section">
+export const verification = () => {
+  const section = document.createElement('section');
+  section.classList.add('verification-section');
+  section.innerHTML = `<section class="verification-section">
     <article class="pets-images">
    
     <img class="item-a" src="images/perrito1.png" alt="perrito1"/>
@@ -26,7 +28,6 @@ const verification = () => {
     </article>
     </article>
   </section>`;
-  return view;
-};
 
-export default verification;
+  return section;
+};

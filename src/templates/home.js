@@ -1,5 +1,3 @@
-export const btnSignUp = document.createElement('button');
-
 export const home = () => {
   const container = document.querySelector('#container-content');
 
@@ -16,13 +14,15 @@ export const home = () => {
       <h1>Bienvenidx a <span class="peta">Peta</span><span class="gram">gram</span></h1>
       <h2>Nuestra comunidad está dedicada a crear un espacio seguro y acogedor para que todos puedan compartir sus experiencias y celebrar el amor y la alegria que nuestras mascotas traen a nuestras vidas. ¡Únete a nosotros y comparte tu amor hoy mismo!</h2>
     </article>
+    <article>
+      <button type="button" class="btnSignUp">Regístrate</button>
+      <button type="button" class="btnSignIn">Ingresa</button>
+    </article>
   `;
 
-  const btnSignIn = document.createElement('button');
-  btnSignIn.classList.add('btnSignIn');
-  btnSignIn.textContent = 'Ingresa';
-  btnSignUp.classList.add('btnSignUn');
-  btnSignUp.textContent = 'Registrate';
+  const btnSignIn = section.querySelector('.btnSignIn');
+  const btnSignUp = section.querySelector('.btnSignUp');
+
   const article = document.createElement('article');
   article.classList.add('btn-article');
   article.appendChild(btnSignUp);

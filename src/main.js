@@ -1,9 +1,9 @@
-import { home, btnSignUp } from './templates/home';
+import { home } from './templates/home';
 import { signup } from './templates/signUp';
-import verification from './templates/verification';
+import { verification } from './templates/verification';
 
 const root = document.getElementById('content');
-const routes = {
+export const routes = {
   '/': home,
   '/signup': signup,
   '/verification': verification,
@@ -28,49 +28,7 @@ const onNavigate = (pathname) => {
   root.appendChild(routes[pathname]());
 };
 
+const btnSignUp = document.querySelector('.btnSignUp');
 btnSignUp.addEventListener('click', () => {
   onNavigate('/signup');
 });
-// const signupRoute = signup;
-// const routes = {
-//   '/': home,
-//   '/signup': signupRoute,
-//   '/verification': verification,
-// };
-// const router = async () => {
-//   const content = null || document.getElementById('content');
-//   const message = 'ERROR 404';
-//   const hash = getHash();
-//   const route = await resolveRoutes(hash);
-//   const render = routes[route] ? routes[route] : message;
-//   content.appendChild(render());
-// };
-// const router = async (pathname = window.location.pathname) => {
-//   const content = null || document.getElementById('content');
-//   const template = routes[pathname];
-//   if (template) {
-//     content.innerHTML = await template();
-//   } else {
-//     content.innerHTML = 'La página solicitada no existe';
-//   }
-// };
-
-// export const onNavigate = (pathname) => {
-//   window.history.pushState({}, pathname, window.location.origin + pathname);
-
-//   router(pathname);
-// };
-
-// const onNavigate = (pathname) => {
-//   window.history.pushState({}, pathname, window.location.origin + pathname);
-//   router();
-// };
-
-// window.addEventListener('load', router);
-// window.addEventListener('changestate', router);
-// export { onNavigate };
-
-// export default router;
-
-// window.addEventListener('load', router);
-// window.addEventListener('changehash', router);
