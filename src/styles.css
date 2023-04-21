@@ -32,8 +32,8 @@ body{
 }
 
 
-.home-description{
-    position: absolute;
+.home-description {
+    /* position: absolute; */
     background: rgba(6, 214, 160, 0.14);
     border-radius: 50px; 
     height: 55vh;
@@ -87,6 +87,12 @@ h2{
     
 
 }
+.btn-article{
+    position: absolute;
+    top:100%
+
+}
+
 .btnSignUp{
    
     text-decoration: none;

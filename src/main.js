@@ -1,56 +1,75 @@
-// Este es el punto de entrada de tu aplicacion
-import { createUserWithEmailAndPassword } from 'firebase/auth';
-import { auth } from './lib/config/firebaseconfig';
-import router from './lib/routes';
-import signup from './templates/signUp';
+// eslint-disable-next-line import/no-cycle
+import home from './templates/home';
+import { signup } from './templates/signUp';
+import verification from './templates/verification';
+// import getHash from './lib/getHash';
+// import resolveRoutes from './lib/resolveRoutes';
 
-// const form = document.querySelector('.signUp-form');
-const parser = new DOMParser();
-const temp = parser.parseFromString(signup, 'text/html').documentElement;
-const form = temp.querySelector('.signUp-form');
-const userEmail = temp.querySelector('#userEmail');
-const userPassword = temp.querySelector('#userPassword');
-// const signupSection = document.querySelector('.signUp-section');
-// const btnSignUp = document.querySelector('.btnSignUp');
-// const span = document.getElementsByClassName('close')[0];
-// const verificationSection = document.querySelector('.verification-section');
-// const homeSection = document.querySelector('.home-section');
+const root = document.getElementById('content');
+const routes = {
+  '/': home,
+  '/signup': signup,
+  '/verification': verification,
+};
+export const onNavigate = (pathname) => {
+  window.history.pushState(
+    {},
+    pathname,
+    window.location.origin + pathname,
+  );
 
-window.addEventListener('load', router);
-window.addEventListener('hashchange', router);
+  root.removeChild(root.firstChild);
+  root.appendChild(routes[pathname]());
+};
 
-// function showModal() {
-//   signupSection.style.display = 'block';
-// }
-// btnSignUp.addEventListener('click', showModal);
-// function hiddenModal() {
-//   signupSection.style.display = 'none';
-// }
-// span.addEventListener('click', hiddenModal);
+const component = routes[window.location.pathname];
 
-// function verificationDisplay() {
-//   homeSection.style.display = 'none';
-//   signupSection.style.display = 'none';
-//   verificationSection.style.display = 'flex';
-// }
+window.onpopstate = () => {
+  root.removeChild(root.firstChild);
+  root.appendChild(component());
+};
 
-form.addEventListener('submit', (e) => {
-  e.preventDefault();
+root.appendChild(component());
+// const signupRoute = signup;
+// const routes = {
+//   '/': home,
+//   '/signup': signupRoute,
+//   '/verification': verification,
+// };
+// const router = async () => {
+//   const content = null || document.getElementById('content');
+//   const message = 'ERROR 404';
+//   const hash = getHash();
+//   const route = await resolveRoutes(hash);
+//   const render = routes[route] ? routes[route] : message;
+//   content.appendChild(render());
+// };
+// const router = async (pathname = window.location.pathname) => {
+//   const content = null || document.getElementById('content');
+//   const template = routes[pathname];
+//   if (template) {
+//     content.innerHTML = await template();
+//   } else {
+//     content.innerHTML = 'La página solicitada no existe';
+//   }
+// };
 
-  const email = userEmail.value;
-  const password = userPassword.value;
+// export const onNavigate = (pathname) => {
+//   window.history.pushState({}, pathname, window.location.origin + pathname);
 
-  createUserWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
-    // Signed in
-      const user = userCredential.user;
-      /* console.log(userCredential); */
-      // verificationDisplay();
-    })
-    .catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
+//   router(pathname);
+// };
 
-      console.log(errorCode, errorMessage);
-    });
-});
+// const onNavigate = (pathname) => {
+//   window.history.pushState({}, pathname, window.location.origin + pathname);
+//   router();
+// };
+
+// window.addEventListener('load', router);
+// window.addEventListener('changestate', router);
+// export { onNavigate };
+
+// export default router;
+
+// window.addEventListener('load', router);
+// window.addEventListener('changehash', router);
