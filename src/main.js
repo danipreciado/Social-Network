@@ -1,27 +1,36 @@
 // Este es el punto de entrada de tu aplicacion
-import { createUserWithEmailAndPassword } from 'firebase/auth';
-import { auth } from './lib/config/firebaseconfig';
-import router from './lib/routes';
+/* import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { auth } from './lib/config/firebaseconfig'; */
+import { onNavigate } from './lib/routes';
 
-const userEmail = document.querySelector('#userEmail');
+/* const userEmail = document.querySelector('#userEmail');
 const userPassword = document.querySelector('#userPassword');
 const form = document.querySelector('.signUp-form');
-const signupSection = document.querySelector('.signUp-section');
-const btnSignUp = document.querySelector('.btnSignUp');
-const span = document.getElementsByClassName('close')[0];
+const signupSection = document.querySelector('.signUp-section'); */
+
+/* const span = document.getElementsByClassName('close')[0];
 const verificationSection = document.querySelector('.verification-section');
-const homeSection = document.querySelector('.home-section');
+const homeSection = document.querySelector('.home-section'); */
 
-window.addEventListener('load', router);
-
-// function showModal() {
-//   signupSection.style.display = 'block';
-// }
-// btnSignUp.addEventListener('click', showModal);
-// function hiddenModal() {
-//   signupSection.style.display = 'none';
-// }
-// span.addEventListener('click', hiddenModal);
+window.addEventListener('load', () => {
+  onNavigate('/');
+});
+/* document.addEventListener('DOMContentLoaded', () => {
+  const btnSignUp = document.getElementById('btnsign');
+  console.log(btnSignUp);
+  btnSignUp.addEventListener('click', () => {
+    onNavigate('/signup');
+  });
+}); */
+/* const btnSignUp = document.getElementById('btnsign');
+function showModal() {
+  onNavigate('/signup');
+}
+btnSignUp.addEventListener('click', showModal); */
+/* function hiddenModal() {
+  signupSection.style.display = 'none';
+}
+span.addEventListener('click', hiddenModal);
 
 function verificationDisplay() {
   homeSection.style.display = 'none';
@@ -39,13 +48,14 @@ form.addEventListener('submit', (e) => {
     .then((userCredential) => {
     // Signed in
       const user = userCredential.user;
-      /* console.log(userCredential); */
+      console.log(userCredential);
       verificationDisplay();
     })
     .catch((error) => {
       const errorCode = error.code;
       const errorMessage = error.message;
 
-      // console.log(errorCode, errorMessage);
+      console.log(errorCode, errorMessage);
     });
 });
+ */
