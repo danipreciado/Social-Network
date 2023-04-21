@@ -1,3 +1,6 @@
+*{
+    margin: 0;
+}
 html{
     font-size: 62.5%;
 }
@@ -36,15 +39,14 @@ body{
     /* position: absolute; */
     background: rgba(6, 214, 160, 0.14);
     border-radius: 50px; 
-    height: 55vh;
-   
+    height: 48vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
-    
     margin-top: 4rem;
+    padding: 7%;
 }
 
 
@@ -55,6 +57,7 @@ h1{
 
 h2{
     font-family: 'Varela Round', sans-serif;
+    font-size: 1.5rem;
     font-weight: 300;
 
 }
@@ -94,6 +97,7 @@ h2{
 }
 .btnRegister{
    
+    z-index: 3;
     text-decoration: none;
     border: none;
     background-color: #6A4C93;
@@ -116,6 +120,13 @@ h2{
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     
 }
+
+.btn-container{
+    display: flex;
+    margin-top: 5rem;
+    gap: 4rem;
+}
+
 .btnSignIn{
     
    
@@ -168,8 +179,10 @@ h2{
 }
 
 .verification-container{
- background: linear-gradient(180deg, rgba(248, 255, 229, 0) 0%, #F8FFE5 26.89%);
- margin-top: -13rem;
+    position: absolute;
+ background: linear-gradient(180deg, rgba(255, 229, 244, 0) 0%, #F8FFE5 26.89%);
+ margin-top: -17rem;
+ height: 30rem;
 }
 
 .verification-message{
@@ -177,7 +190,7 @@ h2{
     font-size: 1.8rem;
     border-radius: 50px;
     height: 20rem;
-    margin: 15rem 3rem;
+    margin: 19rem 3rem;
     text-align: center;
 }
 .thanks-message{

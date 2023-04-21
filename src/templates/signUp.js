@@ -6,7 +6,7 @@ export const signup = () => {
   section.innerHTML = `
  
   <form class="signUp-form">
-    <span class="close">&times;</span>  <!-- &times es una entidad de caracteres HTML que representa el símbolo "×" -->
+    <a href="/" class="close">&times;</a>  <!-- &times es una entidad de caracteres HTML que representa el símbolo "×" -->
     <label class="form"> Nombre de Usuario </label>
     <input type="text" >
     <label class="form"> Correo Electronico </label> 
@@ -17,19 +17,17 @@ export const signup = () => {
     <article class="return-home">
       <p>¿Ya tienes cuenta?</p> <a href="#">Ingresa aqui</a>
     </article>
-  </form>`;
+  </form>
+    
+</section>`;
 
   const btnRegister = section.querySelector('.btnRegister');
-  btnRegister.addEventListener('submit', () => {
-    onNavigate('/verification');
-  });
-
-  const article = document.createElement('article');
-  article.classList.add('btn-article');
-  article.appendChild(btnRegister);
-
   const div = document.createElement('div');
-  section.appendChild(article);
+  const form = section.querySelector('.signUp-form');
+  const close = section.querySelector('.close');
+
+  form.appendChild(btnRegister);
+  form.appendChild(close);
   div.appendChild(section);
 
   container.appendChild(div);
