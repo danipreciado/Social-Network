@@ -1,21 +1,24 @@
-/* import { createUserWithEmailAndPassword } from 'firebase/auth'; */
+import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { auth } from './firebaseconfig';
 
-/* signup.addEventListener('submit', (e) => {
-  e.preventDefault();
+export function authFunction(signup, userEmail, userPassword, onAuthSuccess) {
+  signup.addEventListener('submit', (e) => {
+    e.preventDefault();
 
-  const email = userEmail.value;
-  const password = userPassword.value;
+    const email = userEmail.value;
+    const password = userPassword.value;
 
-  createUserWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
-      // Signed in
-      const user = userCredential.user;
-      // console.log(userCredential);
-    })
-    .catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        // Signed in
+        const user = userCredential.user;
+        onAuthSuccess('/verification');
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
 
-      console.log(errorCode, errorMessage);
-    });
-}); */
+        console.log(errorCode, errorMessage);
+      });
+  });
+}

@@ -1,0 +1,39 @@
+@media screen and (min-width: 700px)  {
+
+    body{
+        background-color: #F8FFE5;
+    }
+
+    .home-image img{
+        width: 55vw;
+        height: 45vh;
+        
+    }
+
+    h2{
+        font-size: 2.3rem;
+    }
+
+    h1{
+        font-size: 4.3rem;
+    }
+
+    .btn-container button{
+        width: 19rem;
+        height: 5rem;
+        border-radius: 4rem;
+        font-size: 2.3rem;
+        font-weight: 700;
+    }
+
+    /* .home-description{
+   
+    }
+
+    .logo img{
+   
+    } */
+
+
+   
+}
