@@ -1,22 +1,38 @@
-const home = () => {
-  const view = `
-    <section class="home-section">
-        <article class="home-image">
-          <img src="./images/woman-cat-dog.png">
-        </article>
-        <article class="logo">
-          <img src="images/logo.png" alt="logo"/>
-        </article>
-        <article class="home-description">
-          <h1>Bienvenidx a <span class="peta">Peta</span><span class="gram">gram</span></h1>
-          <h2>Nuestra comunidad está dedicada a crear un espacio seguro y acogedor para que todos puedan compartir sus experiencias y celebrar el amor y la alegria que nuestras mascotas traen a nuestras vidas. ¡Únete a nosotros y comparte tu amor hoy mismo!</h2>
-          <article class="home-buttons">
-            <button class ="btnSignUp" id="btnsign" >Registrarme</button>
-            <button class ="btnSignIn">Ingresar</button>
-          </article>
-        </article>
-      </section>
-      `;
-  return view;
+export const btnSignUp = document.createElement('button');
+
+export const home = () => {
+  const container = document.querySelector('#container-content');
+
+  const section = document.createElement('section');
+  section.classList.add('home-section');
+  section.innerHTML = `
+    <article class="home-image">
+      <img src="./images/woman-cat-dog.png">
+    </article>
+    <article class="logo">
+      <img src="images/logo.png" alt="logo"/>
+    </article>
+    <article class="home-description">
+      <h1>Bienvenidx a <span class="peta">Peta</span><span class="gram">gram</span></h1>
+      <h2>Nuestra comunidad está dedicada a crear un espacio seguro y acogedor para que todos puedan compartir sus experiencias y celebrar el amor y la alegria que nuestras mascotas traen a nuestras vidas. ¡Únete a nosotros y comparte tu amor hoy mismo!</h2>
+    </article>
+  `;
+
+  const btnSignIn = document.createElement('button');
+  btnSignIn.classList.add('btnSignIn');
+  btnSignIn.textContent = 'Ingresa';
+  btnSignUp.classList.add('btnSignUn');
+  btnSignUp.textContent = 'Registrate';
+  const article = document.createElement('article');
+  article.classList.add('btn-article');
+  article.appendChild(btnSignUp);
+  article.appendChild(btnSignIn);
+
+  const div = document.createElement('div');
+  div.appendChild(section);
+  div.appendChild(article);
+
+  container.appendChild(div);
+
+  return container;
 };
-export default home;
