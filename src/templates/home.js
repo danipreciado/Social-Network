@@ -1,4 +1,6 @@
-const home = () => {
+export const btnSignUp = document.createElement('button');
+
+export const home = () => {
   const container = document.querySelector('#container-content');
 
   const section = document.createElement('section');
@@ -16,17 +18,11 @@ const home = () => {
     </article>
   `;
 
-  const btnSignUp = document.createElement('button');
-  btnSignUp.classList.add('btnSignUp');
-  btnSignUp.textContent = 'Regístrate';
-  btnSignUp.addEventListener('click', () => {
-  //   // onNavigate('/signup');
-    console.log('Hola');
-  });
   const btnSignIn = document.createElement('button');
   btnSignIn.classList.add('btnSignIn');
   btnSignIn.textContent = 'Ingresa';
-
+  btnSignUp.classList.add('btnSignUn');
+  btnSignUp.textContent = 'Registrate';
   const article = document.createElement('article');
   article.classList.add('btn-article');
   article.appendChild(btnSignUp);
@@ -37,6 +33,6 @@ const home = () => {
   div.appendChild(article);
 
   container.appendChild(div);
+
   return container;
 };
-export default home;

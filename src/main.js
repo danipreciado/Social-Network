@@ -1,4 +1,4 @@
-import home from './templates/home';
+import { home, btnSignUp } from './templates/home';
 import { signup } from './templates/signUp';
 import verification from './templates/verification';
 
@@ -7,16 +7,6 @@ const routes = {
   '/': home,
   '/signup': signup,
   '/verification': verification,
-};
-export const onNavigate = (pathname) => {
-  window.history.pushState(
-    {},
-    pathname,
-    window.location.origin + pathname,
-  );
-
-  root.removeChild(root.firstChild);
-  root.appendChild(routes[pathname]());
 };
 
 const component = routes[window.location.pathname];
@@ -27,6 +17,20 @@ window.onpopstate = () => {
 };
 
 root.appendChild(component());
+
+const onNavigate = (pathname) => {
+  window.history.pushState(
+    {},
+    pathname,
+    window.location.origin + pathname,
+  );
+  root.removeChild(root.firstChild);
+  root.appendChild(routes[pathname]());
+};
+
+btnSignUp.addEventListener('click', () => {
+  onNavigate('/signup');
+});
 // const signupRoute = signup;
 // const routes = {
 //   '/': home,
