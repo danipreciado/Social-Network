@@ -1,6 +1,7 @@
 import { home } from './templates/home';
 import { signup } from './templates/signUp';
 import verification from './templates/verification';
+import { page404 } from './templates/page404';
 import { authFunction } from './lib/config/auth';
 
 const root = document.getElementById('content');
@@ -8,6 +9,7 @@ const routes = {
   '/': home,
   '/signup': signup,
   '/verification': verification,
+  '/page404': page404,
 };
 
 const component = routes[window.location.pathname];

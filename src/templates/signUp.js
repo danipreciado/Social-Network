@@ -1,9 +1,8 @@
 const container = document.querySelector('#container-content');
 export const signup = () => {
   const section = document.createElement('section');
-  section.classList.add('home-section');
+  section.classList.add('signUp-section');
   section.innerHTML = `
-<section class="signUp-section" id="signUp-section">
  
   <form class="signUp-form">
     <a href="/" class="close">&times;</a>  <!-- &times es una entidad de caracteres HTML que representa el símbolo "×" -->
