@@ -25,14 +25,55 @@
         font-size: 2.3rem;
         font-weight: 700;
     }
+    .verification-message {
+        font-size: 3rem;
+        margin: 22rem 3rem
+    }
+    .verify-message{
+        font-size: 3rem;
 
-    /* .home-description{
-   
+    }
+    .verification-container{
+        margin-top: -32rem;
+        height: 40rem;
+    }
+    .pets-images img {
+        width: 25 vw;
+        
+    }
+    .verification-section{
+        background-color: rgba(6, 214, 160, 0.14);
+    }
+    .pets-images {
+        margin-left: 40px;
+        margin-right: 40px;
+        background-color: transparent;
+    }
+    .item a{
+        margin-left: 2rem;
+    }
+    .item-d{
+        margin-top: 10px;
+    }
+    .item-e {
+        margin-top: -58px;
+    }
+    .item-f{
+        margin-top: -104px;
+    }
+    .item-j{
+        margin-top: -68px;
+    }
+    .verification-logo img{
+        margin-bottom: 50rem;
+        width: 20rem;
+    }
+    .signIn-link{
+        font-size: 2.8rem;
     }
 
-    .logo img{
-   
-    } */
+
+
 
 
    
