@@ -292,6 +292,12 @@ h2{
     cursor: pointer;
   }
 
+
+  .errormessage{
+    font-size: 1.2rem;
+    color: #FFCA3A;
+  }
+
   .description-pageNotFound h1{
     color:#1B9AAA;
     font-size: 4.5rem;

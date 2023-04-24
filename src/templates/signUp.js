@@ -1,6 +1,5 @@
+const container = document.querySelector('#container-content');
 export const signup = () => {
-  const container = document.querySelector('#container-content');
-
   const section = document.createElement('section');
   section.classList.add('signUp-section');
   section.innerHTML = `
@@ -11,11 +10,13 @@ export const signup = () => {
     <input type="text" >
     <label class="form"> Correo Electronico </label> 
     <input type="email" id="userEmail">
+    <span id="errorEmailMessage" class="errormessage"></span>
     <label class="form"> Contraseña </label>
     <input type="password" id="userPassword">
+    <span id="errorPassMessage" class="errormessage"></span>
     <button class="btnRegister" type="submit">Registrarse</button>
     <article class="return-home">
-      <p>¿Ya tienes cuenta?</p> <a href="#">Ingresa aqui</a>
+      <p>¿Ya tienes cuenta?</p><a href="#">Ingresa aqui</a>
     </article>
   </form>
     
@@ -25,7 +26,6 @@ export const signup = () => {
   const div = document.createElement('div');
   const form = section.querySelector('.signUp-form');
   const close = section.querySelector('.close');
-
   form.appendChild(btnRegister);
   form.appendChild(close);
   div.appendChild(section);
