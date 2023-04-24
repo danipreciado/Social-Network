@@ -1,6 +1,6 @@
-export const verification = () => {
+const verification = () => {
   const section = document.createElement('section');
-  section.classList.add('verification-section');
+  section.classList.add('home-section');
   section.innerHTML = `<section class="verification-section">
     <article class="pets-images">
    
@@ -28,6 +28,7 @@ export const verification = () => {
     </article>
     </article>
   </section>`;
-
   return section;
 };
+
+export default verification;

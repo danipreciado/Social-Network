@@ -13,14 +13,74 @@
     .home-description{
         padding: 1%;
     }
+     
+    .verification-section{
+        display: grid;
+        
+        grid-gap: 1rem;
+        align-items: center;
+        width: 50vw;
+    }
+    .pets-images{
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(3, 1fr);
+        justify-items: center;
+        grid-column: 1 / 2;
+        margin-left: 10px;
+        margin-right: 60px;
+        max-height: 100vh;
+    }
+    .pets-images img{
+        width: 12vw;
 
-    /* .home-description{
-   
+    }
+    .item-e{
+        
+        margin-top: -50px;
+    }
+    .item-f{
+        margin-top: -30px;
+    }
+    .item-j{
+        margin-top: -10px;
+    }
+  
+    .verification-container{
+        grid-column: 1 / 2;
+        width: 50vw;
+        margin-top: 60rem;
+        max-height: 20vh;
+
     }
 
-    .logo img{
+    .verification-desktop{
+        display: grid;
+        width: 30vw;
+        grid-column: 2 / 3;
+        margin-left: 80rem;
+        margin-top: -50rem;
+        text-align: center;
+    }
+    .verification-message{
+        grid-column: 2/3;
+        margin-left: 75rem;
+        width: 40vw;
+        margin-top: 5rem;
+        font-size: 3rem;
+    }
    
-    } */
+    .verify-message{
+        font-size: 2rem;
+    }
+    .signIn-link{
+        font-size: 2rem;
+    }
+    .verification-logo img{
+        margin-bottom: 80rem;
+        margin-left: 68rem;
+        width: 10vw;
+    }
 
 
    

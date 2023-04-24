@@ -18,10 +18,6 @@ export const home = () => {
         <button type="button" class="btnSignIn">Ingresa</button>
       </article>
     </article>
-    <article>
-      <button type="button" class="btnSignUp">Regístrate</button>
-      <button type="button" class="btnSignIn">Ingresa</button>
-    </article>
   `;
 
   const btnSignIn = section.querySelector('.btnSignIn');

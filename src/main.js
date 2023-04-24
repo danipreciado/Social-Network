@@ -4,7 +4,7 @@ import verification from './templates/verification';
 import { authFunction } from './lib/config/auth';
 
 const root = document.getElementById('content');
-export const routes = {
+const routes = {
   '/': home,
   '/signup': signup,
   '/verification': verification,
