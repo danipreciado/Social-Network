@@ -281,3 +281,8 @@ h2{
     text-decoration: none;
     cursor: pointer;
   }
+
+  .errormessage{
+    font-size: 1.2rem;
+    color: #FFCA3A;
+  }
