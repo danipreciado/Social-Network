@@ -23,16 +23,16 @@ export function authFunction(signup, userEmail, userPassword, onAuthSuccess) {
     const password = userPassword.value;
     errorEmailMessage.innerHTML = '';
     errorPassMessage.innerHTML = '';
-
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
+        console.log(user);
         onAuthSuccess('/verification');
       })
       .catch((error) => {
         const errorCode = error.code;
-        console.log(errorCode);
+        return errorCode;
         errorMessages(errorCode, errorEmailMessage, errorPassMessage);
       });
   });
