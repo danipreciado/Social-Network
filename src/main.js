@@ -1,8 +1,9 @@
 import { home } from './templates/home';
+import { signIn } from './templates/SignIn';
 import { signup } from './templates/signUp';
 import verification from './templates/verification';
 import { page404 } from './templates/page404';
-import { authFunction } from './lib/config/auth';
+import { authFunction, googleLogin } from './lib/config/auth';
 
 const root = document.getElementById('content');
 const routes = {
@@ -10,6 +11,7 @@ const routes = {
   '/signup': signup,
   '/verification': verification,
   '/page404': page404,
+  '/signin': signIn,
 };
 
 const component = routes[window.location.pathname];
@@ -37,6 +39,7 @@ const onAuthSuccess = (pathname) => {
 
 function authSignUp() {
   onNavigate('/signup');
+  console.log(root.childNodes);
   const btnRegister = document.querySelector('.signUp-form');
   const email = document.getElementById('userEmail');
   const password = document.getElementById('userPassword');
@@ -72,6 +75,22 @@ if (btnSignUp) {
   });
 }
 
+const btnSignIn = document.querySelector('.btnSignIn');
+if (btnSignIn) {
+  btnSignIn.addEventListener('click', () => {
+    onNavigate('/signin');
+    console.log(root.childNodes);
+  });
+}
+const btnGoogle = document.querySelector('.btnGoogle');
+if (btnGoogle) {
+  btnGoogle.addEventListener('click', () => {
+    console.log('registra el click?');
+    googleLogin();
+    console.log(googleLogin());
+  // onNavigate('/signin');
+  });
+}
 // const router = async () => {
 //   const content = null || document.getElementById('content');
 //   const message = 'ERROR 404';
