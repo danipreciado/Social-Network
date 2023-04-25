@@ -74,21 +74,30 @@ if (btnSignUp) {
     signUpScreen();
   });
 }
-
-const btnSignIn = document.querySelector('.btnSignIn');
-if (btnSignIn) {
-  btnSignIn.addEventListener('click', () => {
-    onNavigate('/signin');
-    console.log(root.childNodes);
-  });
-}
 const btnGoogle = document.querySelector('.btnGoogle');
 if (btnGoogle) {
   btnGoogle.addEventListener('click', () => {
     console.log('registra el click?');
     googleLogin();
-    console.log(googleLogin());
-  // onNavigate('/signin');
+    // onNavigate('/signin');
+  });
+}
+function googleEvent() {
+  const btnGoogle2 = document.querySelector('.btnGoogle');
+  if (btnGoogle) {
+    btnGoogle2.addEventListener('click', () => {
+      console.log('registra el click?');
+      googleLogin();
+      // onNavigate('/signin');
+    });
+  }
+}
+
+const btnSignIn = document.querySelector('.btnSignIn');
+if (btnSignIn) {
+  btnSignIn.addEventListener('click', () => {
+    onNavigate('/signin');
+    googleEvent();
   });
 }
 // const router = async () => {
