@@ -1,8 +1,9 @@
 import { home } from './templates/home';
-import { signIn } from './templates/SignIn';
+import { signIn } from './templates/signIn';
 import { signup } from './templates/signUp';
 import verification from './templates/verification';
 import { page404 } from './templates/page404';
+import { wall } from './templates/wall';
 import { authFunction, googleLogin } from './lib/config/auth';
 
 const root = document.getElementById('content');
@@ -12,6 +13,7 @@ const routes = {
   '/verification': verification,
   '/page404': page404,
   '/signin': signIn,
+  '/wall': wall,
 };
 
 const component = routes[window.location.pathname];
@@ -74,7 +76,7 @@ if (btnSignUp) {
     signUpScreen();
   });
 }
-const btnGoogle = document.querySelector('.btnGoogle');
+let btnGoogle = document.querySelector('.btnGoogle');
 if (btnGoogle) {
   btnGoogle.addEventListener('click', () => {
     console.log('registra el click?');
@@ -83,9 +85,9 @@ if (btnGoogle) {
   });
 }
 function googleEvent() {
-  const btnGoogle2 = document.querySelector('.btnGoogle');
+  btnGoogle = document.querySelector('.btnGoogle');
   if (btnGoogle) {
-    btnGoogle2.addEventListener('click', () => {
+    btnGoogle.addEventListener('click', () => {
       console.log('registra el click?');
       googleLogin();
       // onNavigate('/signin');

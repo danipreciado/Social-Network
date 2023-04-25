@@ -216,7 +216,9 @@ h2{
 .signIn{
     color:#FFCA3A;
 }
-.signUp-section{
+
+/* Creacion del modal */
+.signUp-section, .signIn-section{
     display: flex;
     position: fixed; /* Stay in place */
     z-index: 1; /* Sit on top */
@@ -274,6 +276,57 @@ h2{
     width: 12rem;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
+
+.return-home{
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+}
+
+.signIn-form {
+  
+    background-color: #6A4C93;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 70vw; /* Could be more or less, depending on screen size */
+    height: 50%;
+    border-radius: 3rem;
+    margin-top: 15rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly; 
+    align-items: center;
+    font-size: 1.5rem;
+    color: #F8FFE5;
+  }
+  
+  .signIn-form label {
+    display: flex;
+    align-items: flex-start;
+    font-size: 2rem;
+  }
+  
+  .signIn-form input{
+      width: 25rem;
+      height: 2rem;
+      display: flex;
+      border-radius: 20px;
+      border: none;
+  }
+  
+  
+  .signIn-form button{
+      
+      text-decoration: none;
+      border: none;
+      background-color: #1B9AAA;
+      color: #F8FFE5;
+      padding: 0.7rem;
+      border-radius: 1rem;
+      width: 12rem;
+      box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  }
 
 /* The Close Button */
 .close {
