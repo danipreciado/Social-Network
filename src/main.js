@@ -1,9 +1,10 @@
 import { home } from './templates/home';
-import { signIn } from './templates/SignIn';
+import { signIn } from './templates/signIn';
 import { signup } from './templates/signUp';
 import verification from './templates/verification';
 import { page404 } from './templates/page404';
-import { authFunction /*  googleLogin */ } from './lib/config/auth';
+import { wall } from './templates/wall';
+import { authFunction, googleLogin } from './lib/config/auth';
 
 const root = document.getElementById('content');
 const routes = {
@@ -12,6 +13,7 @@ const routes = {
   '/verification': verification,
   '/page404': page404,
   '/signin': signIn,
+  '/wall': wall,
 };
 
 const component = routes[window.location.pathname];
@@ -64,31 +66,66 @@ function close() {
     onAuthSuccess('/');
   });
 }
+
+function linkSignInFunction() {
+  const linkSignIn = document.querySelector('#link-signIn');
+  if (linkSignIn) {
+    linkSignIn.addEventListener('click', () => {
+      authSignUp();
+      console.log(root.childNodes);
+    });
+  }
+}
+
+function linkSignUpFunction() {
+  const linkSignUp = document.querySelector('#link-signUp');
+  if (linkSignUp) {
+    linkSignUp.addEventListener('click', () => {
+      root.removeChild(root.firstChild);
+      onNavigate('/signin');
+      console.log(root.childNodes);
+    });
+  }
+}
+
 function signUpScreen() {
   authSignUp();
   close();
 }
+
 const btnSignUp = document.querySelector('.btnSignUp');
 if (btnSignUp) {
   btnSignUp.addEventListener('click', () => {
-    signUpScreen();
+    onNavigate('/signup');
+    // signUpScreen();
+    linkSignUpFunction();
   });
 }
+let btnGoogle = document.querySelector('.btnGoogle');
+if (btnGoogle) {
+  btnGoogle.addEventListener('click', () => {
+    console.log('registra el click?');
+    googleLogin();
+    // onNavigate('/signin');
+  });
+}
+function googleEvent() {
+  btnGoogle = document.querySelector('.btnGoogle');
+  if (btnGoogle) {
+    btnGoogle.addEventListener('click', () => {
+      console.log('registra el click?');
+      googleLogin();
+      // onNavigate('/signin');
+    });
+  }
+}
+
 const btnSignIn = document.querySelector('.btnSignIn');
 if (btnSignIn) {
   btnSignIn.addEventListener('click', () => {
     onNavigate('/signin');
-    console.log(root.childNodes);
-  });
-}
-
-const btnGoogle = document.querySelector('.btnGoogle');
-
-if (btnGoogle) {
-  btnGoogle.addEventListener('click', () => {
-    console.log('registra el click?');
-    /* console.log(googleLogin()); */
-  // onNavigate('/signin');
+    googleEvent();
+    linkSignInFunction();
   });
 }
 // const router = async () => {

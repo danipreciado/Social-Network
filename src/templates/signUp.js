@@ -1,4 +1,4 @@
-const container = document.querySelector('#container-content');
+const container = document.querySelector('#container-content2');
 export const signup = () => {
   const section = document.createElement('section');
   section.classList.add('signUp-section');
@@ -16,7 +16,7 @@ export const signup = () => {
     <span id="errorPassMessage" class="errormessage"></span>
     <button class="btnRegister" type="submit">Registrarse</button>
     <article class="return-home">
-      <p>¿Ya tienes cuenta?</p><a href="#">Ingresa aqui</a>
+      <p>¿Ya tienes cuenta?</p><a href="#" id="link-signUp">Ingresa aqui</a>
     </article>
   </form>
     
@@ -26,6 +26,9 @@ export const signup = () => {
   const div = document.createElement('div');
   const form = section.querySelector('.signUp-form');
   const close = section.querySelector('.close');
+  const linkSignUp = section.querySelector('#link-signUp');
+
+  form.appendChild(linkSignUp);
   form.appendChild(btnRegister);
   form.appendChild(close);
   div.appendChild(section);
