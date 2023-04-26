@@ -34,6 +34,9 @@ export const signup = () => {
   hasAccountLink.setAttribute('id', 'link-signUp');
   registerBtn.setAttribute('type', 'submit');
 
+  userLabel.textContent = 'Nombre de Usuario';
+  emailLabel.textContent = 'Correo Electronico';
+  passwordLabel.textContent = 'Contraseña';
   registerBtn.textContent = 'Registrarse';
   hasAccount.textContent = '¿Ya tienes cuenta?';
 
@@ -49,8 +52,12 @@ export const signup = () => {
   signupForm.appendChild(passwordError);
   signupForm.appendChild(registerBtn);
   signupForm.appendChild(returnArticle);
+  signupSection.appendChild(signupForm);
 
-  /*  section.innerHTML = `
+  return signupSection;
+};
+
+/*  section.innerHTML = `
   <form class="signUp-form">
     <label class="form"> Nombre de Usuario </label>
     <input type="text" >
@@ -69,6 +76,3 @@ export const signup = () => {
 </section>`;
 
    */
-
-  return signupSection;
-};

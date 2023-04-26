@@ -1,77 +1,81 @@
-
 export const signIn = () => {
-  const singInSection = document.createElement('section');
+  const signInSection = document.createElement('section');
   const signInForm = document.createElement('form');
   const emailLabel = document.createElement('label');
   const emailInput = document.createElement('input');
   const spanErrorEmail = document.createElement('span');
-  const passwordLabel = document.createElement('label')
-  const passwordInput = document.createElement ('input');
-  const spanErrorPass = document.createElement ('span');
-  const btnContainerSignUp = document.createElement('article')
+  const passwordLabel = document.createElement('label');
+  const passwordInput = document.createElement('input');
+  const spanErrorPass = document.createElement('span');
+  const btnContainerSignUp = document.createElement('article');
   const btnLogin = document.createElement('button');
   const btnGoogle = document.createElement('button');
-  const containerLinkSignIn = document.createElement('article')
-  const askingText = document.createElement('p')
-  const linkToSignUp = document.createElement('a')
+  const containerLinkSignIn = document.createElement('article');
+  const askingText = document.createElement('p');
+  const linkToSignUp = document.createElement('a');
 
-  
   signInSection.classList.add('signIn-section');
   signInForm.classList.add('signIn-form');
-  emailLabel.classList.add('form'); 
+  emailLabel.classList.add('form');
   spanErrorEmail.classList.add('errorMessage');
   btnContainerSignUp.classList.add('return-home');
+  btnLogin.classList.add('btnLogin');
+  btnGoogle.classList.add('btnGoogle');
+  passwordLabel.classList.add('form');
+  containerLinkSignIn.classList.add('return-home');
 
   emailInput.setAttribute('type', 'email');
   emailInput.setAttribute('id', 'loginUserEmail');
+  passwordInput.setAttribute('type', 'password');
+  passwordInput.setAttribute('id', 'loginUserPassword');
   spanErrorEmail.setAttribute('id', 'errorEmailMessage');
-  linkToSignUp.setAttribute('id','link-signIn');HOLA 
+  spanErrorPass.setAttribute('id', 'errorPassMessage');
+  linkToSignUp.setAttribute('id', 'link-signIn');
+  btnLogin.setAttribute('type', 'submit');
+  btnGoogle.setAttribute('type', 'button');
 
+  emailLabel.textContent = 'Correo Electronico';
+  passwordLabel.textContent = 'Contraseña';
+  btnLogin.textContent = 'Ingresa';
+  btnGoogle.textContent = 'Ingresa con Google';
+  askingText.textContent = '¿No tienes cuenta? ';
+  linkToSignUp.textContent = 'Registrate aquí';
 
+  btnContainerSignUp.appendChild(btnGoogle);
+  btnContainerSignUp.appendChild(btnLogin);
+  containerLinkSignIn.appendChild(askingText);
+  containerLinkSignIn.appendChild(linkToSignUp);
+  signInForm.appendChild(btnContainerSignUp);
+  signInForm.appendChild(containerLinkSignIn);
+  signInForm.appendChild(emailLabel);
+  signInForm.appendChild(emailInput);
+  signInForm.appendChild(passwordLabel);
+  signInForm.appendChild(passwordInput);
+  signInForm.appendChild(spanErrorEmail);
+  signInForm.appendChild(spanErrorPass);
 
-  btnLogin.setAttribute('class', 'btnLogin');
-  btnLogin.setAttribute('type', 'button');
-  btnGoogle.setAttribute('class','btnGoogle')
-  btnGoogle.setAttribute('type','button')
+  signInSection.appendChild(signInForm);
 
-  
-  section.innerHTML = `
- 
-  <form class="signIn-form">
-    
-    <label class="form"> Correo Electronico </label> 
-    <input type="email" id="loginUserEmail">
-    <span id="errorEmailMessage" class="errormessage"></span>
-    <label class="form"> Contraseña </label>
-    <input type="password" id="loginUserPassword">
-    <span id="errorPassMessage" class="errormessage"></span>
-    <article class="btn-container_signIn">
-      <button class="btnLogin" type="submit">Ingresa</button>
-      <button class="btnGoogle" type="button"> Ingresa con Google </button>
-    </article>
-    <article class="return-home">
-      <p>¿No tienes cuenta?</p><a href="#" id="link-signIn">Registrate aqui</a>
-    </article>
-  </form>
-    
-</section>`;
-
-  const form = section.querySelector('.signIn-form');
-  const btnLogin = section.querySelector('.btnLogin');
-  const btnGoogle = section.querySelector('.btnGoogle');
-  const article = section.querySelector('.btn-container_signIn');
-  const linkSignIn = section.querySelector('#link-signIn');
-  const div = document.createElement('div');
-  const letter = document.createElement('p');
-
-  form.appendChild(linkSignIn);
-  article.appendChild(btnLogin);
-  article.appendChild(btnGoogle);
-  form.appendChild(letter);
-  div.appendChild(section);
-  form.appendChild(article);
-
-  container.appendChild(div);
-
-  return container;
+  return signInSection;
 };
+
+//   section.innerHTML = `
+
+//   <form class="signIn-form">
+
+//     <label class="form"> Correo Electronico </label>
+//     <input type="email" id="loginUserEmail">
+//     <span id="errorEmailMessage" class="errormessage"></span>
+//     <label class="form"> Contraseña </label>
+//     <input type="password" id="loginUserPassword">
+//     <span id="errorPassMessage" class="errormessage"></span>
+//     <article class="btn-container_signIn">
+//       <button class="btnLogin" type="submit">Ingresa</button>
+//       <button class="btnGoogle" type="button"> Ingresa con Google </button>
+//     </article>
+//     <article class="return-home">
+//       <p>¿No tienes cuenta?</p><a href="#" id="link-signIn">Registrate aqui</a>
+//     </article>
+//   </form>
+
+// </section>`;
