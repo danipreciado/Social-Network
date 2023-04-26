@@ -3,7 +3,7 @@ import { signIn } from './templates/SignIn';
 import { signup } from './templates/signUp';
 import verification from './templates/verification';
 import { page404 } from './templates/page404';
-import { authFunction, googleLogin } from './lib/config/auth';
+import { authFunction /*  googleLogin */ } from './lib/config/auth';
 
 const root = document.getElementById('content');
 const routes = {
@@ -74,7 +74,6 @@ if (btnSignUp) {
     signUpScreen();
   });
 }
-
 const btnSignIn = document.querySelector('.btnSignIn');
 if (btnSignIn) {
   btnSignIn.addEventListener('click', () => {
@@ -82,12 +81,13 @@ if (btnSignIn) {
     console.log(root.childNodes);
   });
 }
+
 const btnGoogle = document.querySelector('.btnGoogle');
+
 if (btnGoogle) {
   btnGoogle.addEventListener('click', () => {
     console.log('registra el click?');
-    googleLogin();
-    console.log(googleLogin());
+    /* console.log(googleLogin()); */
   // onNavigate('/signin');
   });
 }
