@@ -1,7 +1,40 @@
-const container = document.querySelector('#container-content3');
+
 export const signIn = () => {
-  const section = document.createElement('section');
-  section.classList.add('signIn-section');
+  const singInSection = document.createElement('section');
+  const signInForm = document.createElement('form');
+  const emailLabel = document.createElement('label');
+  const emailInput = document.createElement('input');
+  const spanErrorEmail = document.createElement('span');
+  const passwordLabel = document.createElement('label')
+  const passwordInput = document.createElement ('input');
+  const spanErrorPass = document.createElement ('span');
+  const btnContainerSignUp = document.createElement('article')
+  const btnLogin = document.createElement('button');
+  const btnGoogle = document.createElement('button');
+  const containerLinkSignIn = document.createElement('article')
+  const askingText = document.createElement('p')
+  const linkToSignUp = document.createElement('a')
+
+  
+  signInSection.classList.add('signIn-section');
+  signInForm.classList.add('signIn-form');
+  emailLabel.classList.add('form'); 
+  spanErrorEmail.classList.add('errorMessage');
+  btnContainerSignUp.classList.add('return-home');
+
+  emailInput.setAttribute('type', 'email');
+  emailInput.setAttribute('id', 'loginUserEmail');
+  spanErrorEmail.setAttribute('id', 'errorEmailMessage');
+  linkToSignUp.setAttribute('id','link-signIn');HOLA 
+
+
+
+  btnLogin.setAttribute('class', 'btnLogin');
+  btnLogin.setAttribute('type', 'button');
+  btnGoogle.setAttribute('class','btnGoogle')
+  btnGoogle.setAttribute('type','button')
+
+  
   section.innerHTML = `
  
   <form class="signIn-form">
