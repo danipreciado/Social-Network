@@ -29,6 +29,12 @@ export const home = () => {
   btnSignInHome.setAttribute('type', 'button');
   imgLogo.setAttribute('alt', 'logo-img');
 
+  btnSignUpHome.textContent = 'Registrate';
+  btnSignInHome.textContent = 'Ingresa';
+  spanPeta.textContent = 'Peta';
+  spanGram.textContent = 'gram';
+  h1HomeDescription.textContent = 'Bienvenidx a ';
+  h2HomeDescription.textContent = 'Nuestra comunidad está dedicada a crear un espacio seguro y acogedor para que todos puedan compartir sus experiencias y celebrar el amor y la alegria que nuestras mascotas traen a nuestras vidas. ¡Únete a nosotros y comparte tu amor hoy mismo!';
   articleHomeImage.appendChild(imgHome);
   articleLogo.appendChild(imgLogo);
   articleHomeDescription.appendChild(h1HomeDescription);
