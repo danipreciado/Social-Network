@@ -462,6 +462,9 @@ h2{
  .btnComment{
     background-color: #6A4C93;
  }
+ .btnComment img{
+    width: 2.5vw;
+ }
  .posts-section{
     display: inline-block;
     align-items: center;

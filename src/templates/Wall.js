@@ -44,7 +44,7 @@ export const wall = () => {
                     <img src="images/cat.png" alt="cat reaction"/>
                     <p>18</p>
                 </div>
-                <button class="btnComment" type="button"> Comentar </button>
+                <button class="btnComment" type="button"> <img src="images/post-pawn.png"> Comentar </button>
             </div>
         </article>
         <article class="post">
@@ -62,7 +62,7 @@ export const wall = () => {
                     <img src="images/cat.png" alt="cat reaction"/>
                     <p>20</p>
                 </div>
-                <button class="btnComment" type="button"> Comentar </button>
+                <button class="btnComment" type="button"> <img src="images/post-pawn.png"> Comentar </button>
             </div> 
             
         </article>

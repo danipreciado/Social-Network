@@ -19,7 +19,6 @@ export function authFunction(signup, userEmail, userPassword, onAuthSuccess) {
   // const errorPassMessage = document.querySelector('#errorPassMessage');
   signup.addEventListener('submit', (e) => {
     e.preventDefault();
-
     const email = userEmail.value;
     const password = userPassword.value;
     // errorEmailMessage.innerHTML = '';
@@ -30,6 +29,8 @@ export function authFunction(signup, userEmail, userPassword, onAuthSuccess) {
         // Signed in
         // eslint-disable-next-line no-unused-vars
         const user = userCredential.user;
+        console.log('its inside');
+
         console.log(user);
         onAuthSuccess('/verification');
       })
@@ -41,19 +42,8 @@ export function authFunction(signup, userEmail, userPassword, onAuthSuccess) {
   });
 }
 
-// export function googleLogin() {
-//   const provider = new firebase.auth.GoogleAuthProvider();
-//   auth.signInWithPopup(provider)
-//     // eslint-disable-next-line no-unused-vars
-//     .then((result) => {
-//       console.log('google funciona');
-//     })
-//     .catch((err) => {
-//       console.log(err);
-//     });
-// }
 const provider = new GoogleAuthProvider();
-export const googleLogin = () => {
+export const googleLogin = (onNavigate) => {
   console.log('ENTRO');
   signInWithPopup(auth, provider)
     .then((result) => {
@@ -62,6 +52,7 @@ export const googleLogin = () => {
       const token = credential.accessToken;
       // The signed-in user info.
       const user = result.user;
+      onNavigate('/wall');
     // IdP data available using getAdditionalUserInfo(result)
     // ...
     }).catch((error) => {
