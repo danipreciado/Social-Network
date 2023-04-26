@@ -52,6 +52,7 @@ export const signup = () => {
   signupForm.appendChild(passwordError);
   signupForm.appendChild(registerBtn);
   signupForm.appendChild(returnArticle);
+
   signupSection.appendChild(signupForm);
 
   return signupSection;

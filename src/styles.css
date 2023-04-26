@@ -138,8 +138,12 @@ h2{
 
 .btn-container_signIn{
     display: flex;
-    margin-top: 2rem;
-    gap: 4rem;
+    margin-top: -3rem;
+    gap: 1rem;
+}
+
+.container-form{
+    
 }
 
 .btnSignIn{
@@ -259,11 +263,11 @@ h2{
 .signUp-form label {
   display: flex;
   align-items: flex-start;
-  font-size: 2rem;
+  font-size: 1.5rem;
 }
 
 .signUp-form input{
-    width: 25rem;
+    width: 68vw;
     height: 2rem;
     display: flex;
     border-radius: 20px;
@@ -284,9 +288,12 @@ h2{
 }
 
 .return-home{
+    margin-top: 1rem;
+    font-size: 1.5rem;
     display: flex;
-    flex-direction: row;
-    gap: 2vw;
+    flex-direction: column;
+    gap: 1rem;
+    
 }
 
 .signIn-form {
@@ -303,19 +310,19 @@ h2{
     flex-direction: column;
     justify-content: space-evenly; 
     align-items: center;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     color: #F8FFE5;
   }
   
   .signIn-form label {
     display: flex;
     align-items: flex-start;
-    font-size: 2rem;
+    font-size: 1.5rem;
   }
   
   .signIn-form input{
-      width: 25rem;
-      height: 2rem;
+      width: 68vw;
+      height: 4vh;
       display: flex;
       border-radius: 20px;
       border: none;
@@ -330,8 +337,10 @@ h2{
       color: #F8FFE5;
       padding: 0.7rem;
       border-radius: 1rem;
-      width: 12rem;
+      height: 7vh;
+      width: 32vw;
       box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+      font-weight: 600;
   }
 
 /* The Close Button */
