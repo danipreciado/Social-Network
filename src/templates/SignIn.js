@@ -24,7 +24,7 @@ export const signIn = () => {
   btnLogin.classList.add('btnLogin');
   btnGoogle.classList.add('btnGoogle');
   passwordLabel.classList.add('form');
-  containerLinkSignIn.classList.add('return-home');
+  containerLinkSignIn.classList.add('btn-container_signIn');
 
   emailInput.setAttribute('type', 'email');
   emailInput.setAttribute('id', 'loginUserEmail');
