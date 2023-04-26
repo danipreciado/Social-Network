@@ -410,6 +410,7 @@ h2{
   .profilePic img{
     width: 15vw;
     height: 8vh;
+    margin-right: 2rem;
   }
 
   .profilePic{
@@ -421,7 +422,7 @@ h2{
     height: 15vh;
     margin-top: -5vw;
   }
-  main{
+  .container-wall main{
     display: flex;
     flex-direction: column;
     
@@ -434,6 +435,7 @@ h2{
   .hamburguer {
     display: flex;
     margin-top:3vh;
+    margin-left: 2rem;
   }
   .user-image{
     width: 10vw;
@@ -478,6 +480,7 @@ h2{
     display:flex;
     justify-content: center;
     align-items: center;
+    margin-left: 3.2rem;
  }
 
  .your-postInput{
@@ -534,6 +537,7 @@ h2{
     flex-direction: row;
     margin-left:-25vw;
     margin-top:3vh;
+    
  }
 
  .post-content{
