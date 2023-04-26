@@ -2,7 +2,7 @@ export const home = () => {
   // const container = document.querySelector('#container-content');
   const sectionhome = document.createElement('section');
   const articleHomeImage = document.createElement('article');
-  const imgHome = document.createElement('article');
+  const imgHome = document.createElement('img');
   const articleLogo = document.createElement('article');
   const imgLogo = document.createElement('img');
   const articleHomeDescription = document.createElement('article');
@@ -25,9 +25,11 @@ export const home = () => {
   spanGram.classList.add('gram');
 
   imgHome.setAttribute('alt', 'home-img');
+  imgHome.setAttribute('src', 'images/woman-cat-dog.png');
   btnSignUpHome.setAttribute('type', 'button');
   btnSignInHome.setAttribute('type', 'button');
   imgLogo.setAttribute('alt', 'logo-img');
+  imgLogo.setAttribute('src', 'images/logo.png');
 
   btnSignUpHome.textContent = 'Registrate';
   btnSignInHome.textContent = 'Ingresa';
@@ -37,17 +39,16 @@ export const home = () => {
   h2HomeDescription.textContent = 'Nuestra comunidad está dedicada a crear un espacio seguro y acogedor para que todos puedan compartir sus experiencias y celebrar el amor y la alegria que nuestras mascotas traen a nuestras vidas. ¡Únete a nosotros y comparte tu amor hoy mismo!';
   articleHomeImage.appendChild(imgHome);
   articleLogo.appendChild(imgLogo);
+  h1HomeDescription.appendChild(spanPeta);
+  h1HomeDescription.appendChild(spanGram);
   articleHomeDescription.appendChild(h1HomeDescription);
-  articleHomeDescription.appendChild(spanPeta);
-  articleHomeDescription.appendChild(spanGram);
   articleHomeDescription.appendChild(h2HomeDescription);
   articleBtnContainer.appendChild(btnSignInHome);
   articleBtnContainer.appendChild(btnSignUpHome);
-
+  articleHomeDescription.appendChild(articleBtnContainer);
   sectionhome.appendChild(articleHomeImage);
   sectionhome.appendChild(articleLogo);
   sectionhome.appendChild(articleHomeDescription);
-  sectionhome.appendChild(articleBtnContainer);
   // section.innerHTML = `
   //   <article class="home-image">
   //     <img src="./images/woman-cat-dog.png">

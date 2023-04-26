@@ -22,7 +22,7 @@ export const signIn = () => {
   btnLogin.classList.add('btnLogin');
   btnGoogle.classList.add('btnGoogle');
   passwordLabel.classList.add('form');
-  containerLinkSignIn.classList.add('return-home');
+  containerLinkSignIn.classList.add('btn-container_signIn');
 
   emailInput.setAttribute('type', 'email');
   emailInput.setAttribute('id', 'loginUserEmail');
@@ -41,8 +41,6 @@ export const signIn = () => {
   askingText.textContent = '¿No tienes cuenta? ';
   linkToSignUp.textContent = 'Registrate aquí';
 
-  btnContainerSignUp.appendChild(btnGoogle);
-  btnContainerSignUp.appendChild(btnLogin);
   containerLinkSignIn.appendChild(askingText);
   containerLinkSignIn.appendChild(linkToSignUp);
   signInForm.appendChild(btnContainerSignUp);
@@ -53,6 +51,8 @@ export const signIn = () => {
   signInForm.appendChild(passwordInput);
   signInForm.appendChild(spanErrorEmail);
   signInForm.appendChild(spanErrorPass);
+  btnContainerSignUp.appendChild(btnGoogle);
+  btnContainerSignUp.appendChild(btnLogin);
 
   signInSection.appendChild(signInForm);
 
