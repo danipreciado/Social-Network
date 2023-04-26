@@ -1,5 +1,6 @@
 export const signIn = () => {
   const signInSection = document.createElement('section');
+  const articleForm = document.createElement('article');
   const signInForm = document.createElement('form');
   const emailLabel = document.createElement('label');
   const emailInput = document.createElement('input');
@@ -14,11 +15,12 @@ export const signIn = () => {
   const askingText = document.createElement('p');
   const linkToSignUp = document.createElement('a');
 
+  articleForm.classList.add('container-form');
   signInSection.classList.add('signIn-section');
   signInForm.classList.add('signIn-form');
   emailLabel.classList.add('form');
   spanErrorEmail.classList.add('errorMessage');
-  btnContainerSignUp.classList.add('return-home');
+  btnContainerSignUp.classList.add('btn-container_signIn');
   btnLogin.classList.add('btnLogin');
   btnGoogle.classList.add('btnGoogle');
   passwordLabel.classList.add('form');
@@ -41,18 +43,20 @@ export const signIn = () => {
   askingText.textContent = '¿No tienes cuenta? ';
   linkToSignUp.textContent = 'Registrate aquí';
 
-  btnContainerSignUp.appendChild(btnGoogle);
-  btnContainerSignUp.appendChild(btnLogin);
-  containerLinkSignIn.appendChild(askingText);
-  containerLinkSignIn.appendChild(linkToSignUp);
-  signInForm.appendChild(btnContainerSignUp);
-  signInForm.appendChild(containerLinkSignIn);
   signInForm.appendChild(emailLabel);
   signInForm.appendChild(emailInput);
   signInForm.appendChild(passwordLabel);
   signInForm.appendChild(passwordInput);
   signInForm.appendChild(spanErrorEmail);
   signInForm.appendChild(spanErrorPass);
+  btnContainerSignUp.appendChild(btnGoogle);
+  btnContainerSignUp.appendChild(btnLogin);
+  containerLinkSignIn.appendChild(askingText);
+  containerLinkSignIn.appendChild(linkToSignUp);
+
+  signInForm.appendChild(articleForm);
+  signInForm.appendChild(btnContainerSignUp);
+  signInForm.appendChild(containerLinkSignIn);
 
   signInSection.appendChild(signInForm);
 
