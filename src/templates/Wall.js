@@ -6,19 +6,24 @@ export const wall = () => {
     <article class="hamburguer">
       <img src="images/hamburguer.png" alt="hamburguer"/>
     </article>
-    <article class="logo">
-      <img src="images/logo.png" alt="logo"/>
+    <article class="logo-container">
+        <article class="wall-logo">
+        <img src="images/logo.png" alt="logo" width:"83px" height:"77px"/>
+        </article>
+        <article class="logo-span">
+        <span class="peta">Peta</span><span class="gram">gram</span>
+        </article>
     </article>
     <article class="profilePic">
         <img src="images/profile-img.png" alt="profile picture"/>
     </article>
   </header>
-  <main>
+  <main class="container-wall">
     <section class="post-input"> 
         <article class="your-post">
             <form>
                 <label for="your-postinput">¡Hola de nuevo, usuarix!</label><br>
-                <input type="text" id="your-postinput" name="your-postinput" value=""><br>
+                <input type="text" id="your-postinput" class="your-postInput" name="your-postinput" value="" placeholder="Escribe algo sobre tus mascotas..."><br>
                 <button class="btnyour-post"> <img src="images/pawn.png" alt="pawn"/>Publicar</button>
             </form>
         </article>
@@ -26,7 +31,7 @@ export const wall = () => {
     <section class="posts-section">
         <article class="post">
             <div class="post-header">
-                <img src="images/.png" alt="profile picture"/>
+                <img class="user-image" src="images/user1.png" alt="profile picture"/>
                 <p>Fulanitx escribió:  </p>
             </div>
             <div class="post-content">
@@ -44,7 +49,7 @@ export const wall = () => {
         </article>
         <article class="post">
             <div class="post-header">
-                <img src="images/.png" alt="profile picture"/>
+                <img class="user-image" src="images/user2.png" alt="profile picture"/>
                 <p>Fulanitx escribió:  </p>
             </div>
             <div class="post-content">
@@ -52,9 +57,9 @@ export const wall = () => {
             </div>
             <div class="post-bottom">
                 <div class="reactions">
-                    <img src="images/logo.png" alt="dog reaction"/>
+                    <img src="images/dog.png" alt="dog reaction"/>
                     <p>2</p>
-                    <img src="images/logo.png" alt="cat reaction"/>
+                    <img src="images/cat.png" alt="cat reaction"/>
                     <p>20</p>
                 </div>
                 <button class="btnComment" type="button"> Comentar </button>

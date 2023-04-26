@@ -66,14 +66,39 @@ function close() {
     onAuthSuccess('/');
   });
 }
+
+function linkSignInFunction() {
+  const linkSignIn = document.querySelector('#link-signIn');
+  if (linkSignIn) {
+    linkSignIn.addEventListener('click', () => {
+      authSignUp();
+      console.log(root.childNodes);
+    });
+  }
+}
+
+function linkSignUpFunction() {
+  const linkSignUp = document.querySelector('#link-signUp');
+  if (linkSignUp) {
+    linkSignUp.addEventListener('click', () => {
+      root.removeChild(root.firstChild);
+      onNavigate('/signin');
+      console.log(root.childNodes);
+    });
+  }
+}
+
 function signUpScreen() {
   authSignUp();
   close();
 }
+
 const btnSignUp = document.querySelector('.btnSignUp');
 if (btnSignUp) {
   btnSignUp.addEventListener('click', () => {
-    signUpScreen();
+    onNavigate('/signup');
+    // signUpScreen();
+    linkSignUpFunction();
   });
 }
 let btnGoogle = document.querySelector('.btnGoogle');
@@ -100,6 +125,7 @@ if (btnSignIn) {
   btnSignIn.addEventListener('click', () => {
     onNavigate('/signin');
     googleEvent();
+    linkSignInFunction();
   });
 }
 // const router = async () => {
