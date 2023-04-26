@@ -17,6 +17,11 @@ const routes = {
 };
 
 const component = routes[window.location.pathname];
+function clearContent() {
+  while (root.firstChild) {
+    root.removeChild(root.firstChild);
+  }
+}
 
 window.onpopstate = () => {
   root.removeChild(root.firstChild);
@@ -26,7 +31,9 @@ window.onpopstate = () => {
 root.appendChild(component());
 
 const onNavigate = (pathname) => {
-  root.removeChild(root.firstChild);
+  /* root.removeChild(root.firstChild); */
+  // agregue este clearcontent para remover todos los hijos antes de renderizar el nuevo template
+  clearContent();
   window.history.pushState(
     {},
     pathname,
@@ -35,7 +42,9 @@ const onNavigate = (pathname) => {
   root.appendChild(routes[pathname]());
 };
 const onAuthSuccess = (pathname) => {
-  root.removeChild(root.firstChild);
+  /* root.removeChild(root.firstChild); */
+  // aqui también agregue clearContent y comenté lo de arriba
+  clearContent();
   onNavigate(pathname);
 };
 
@@ -47,6 +56,7 @@ function authSignUp() {
   const password = document.getElementById('userPassword');
 
   authFunction(btnRegister, email, password, onAuthSuccess);
+
   /*   .then(() => onNavigate('/verification'))
     .catch((error) => console.error(error)); */
   // authFunction(btnRegister, email, password,);
@@ -55,8 +65,8 @@ function authSignUp() {
   //   onNavigate('/verification');
   /* console.log('se lee o no?'); */
 }
-
-function close() {
+// Comente esto porque no se estaba usando
+/* function close() {
   const closeBtn = document.querySelector('.close');
   // const modal = document.querySelector('.signUp-section');
 
@@ -65,13 +75,14 @@ function close() {
     // window.history.back();
     onAuthSuccess('/');
   });
-}
+} */
 
 function linkSignInFunction() {
   const linkSignIn = document.querySelector('#link-signIn');
   if (linkSignIn) {
     linkSignIn.addEventListener('click', () => {
-      authSignUp();
+      root.removeChild(root.firstChild);
+      onNavigate('/signin');
       console.log(root.childNodes);
     });
   }
@@ -81,23 +92,20 @@ function linkSignUpFunction() {
   const linkSignUp = document.querySelector('#link-signUp');
   if (linkSignUp) {
     linkSignUp.addEventListener('click', () => {
-      root.removeChild(root.firstChild);
-      onNavigate('/signin');
-      console.log(root.childNodes);
+      authSignUp();
     });
   }
 }
 
-function signUpScreen() {
+/* function signUpScreen() {
   authSignUp();
   close();
-}
+} */
 
 const btnSignUp = document.querySelector('.btnSignUp');
 if (btnSignUp) {
   btnSignUp.addEventListener('click', () => {
     onNavigate('/signup');
-    // signUpScreen();
     linkSignUpFunction();
   });
 }
@@ -114,7 +122,8 @@ function googleEvent() {
   if (btnGoogle) {
     btnGoogle.addEventListener('click', () => {
       console.log('registra el click?');
-      googleLogin();
+      googleLogin(onNavigate);
+      /* onNavigate('/wall'); */
       // onNavigate('/signin');
     });
   }
