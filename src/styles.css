@@ -548,7 +548,7 @@ h2{
 }
 
 .posts-section{
-    display: inline-block;
+    display: flex;
     flex-direction: column;
     gap: 4rem;
     align-items: center;
