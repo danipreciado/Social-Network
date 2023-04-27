@@ -123,8 +123,6 @@ function googleEvent() {
     btnGoogle.addEventListener('click', () => {
       console.log('registra el click?');
       googleLogin(onNavigate);
-      /* onNavigate('/wall'); */
-      // onNavigate('/signin');
     });
   }
 }
@@ -137,6 +135,8 @@ if (btnSignIn) {
     linkSignInFunction();
   });
 }
+
+
 // const router = async () => {
 //   const content = null || document.getElementById('content');
 //   const message = 'ERROR 404';

@@ -437,11 +437,11 @@ h2{
     
     align-items: center;
   }
-  .hamburguer img{
+  .hamburger img{
     width: 10vw;
     height: 5vh;
   }
-  .hamburguer {
+  .hamburger {
     display: flex;
     margin-top:3vh;
     margin-left: 2rem;

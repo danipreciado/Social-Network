@@ -1,4 +1,6 @@
-export const signup = () => {
+import { authFunction } from '../lib/config/auth';
+
+export const signup = (onNavigate) => {
   const signupSection = document.createElement('section');
   const signupForm = document.createElement('form');
   const userLabel = document.createElement('label');
@@ -39,6 +41,15 @@ export const signup = () => {
   passwordLabel.textContent = 'Contraseña';
   registerBtn.textContent = 'Registrarse';
   hasAccount.textContent = '¿Ya tienes cuenta?';
+
+  registerBtn.addEventListener('submit', (e) => {
+    e.preventDefault();
+    authFunction(emailInput, passwordInput, onNavigate);
+  });
+
+  hasAccountLink.addEventListener('click', () => {
+    onNavigate('/signin');
+  });
 
   returnArticle.appendChild(hasAccount);
   returnArticle.appendChild(hasAccountLink);

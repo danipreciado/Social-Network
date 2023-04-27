@@ -1,4 +1,6 @@
-export const signIn = () => {
+import { googleLogin } from '../lib/config/auth';
+
+export const signIn = (onNavigate) => {
   const signInSection = document.createElement('section');
   const articleForm = document.createElement('article');
   const signInForm = document.createElement('form');
@@ -42,6 +44,10 @@ export const signIn = () => {
   btnGoogle.textContent = 'Ingresa con Google';
   askingText.textContent = '¿No tienes cuenta? ';
   linkToSignUp.textContent = 'Registrate aquí';
+
+  btnGoogle.addEventListener('click', () => {
+    googleLogin(onNavigate);
+  });
 
   signInForm.appendChild(emailLabel);
   signInForm.appendChild(emailInput);
