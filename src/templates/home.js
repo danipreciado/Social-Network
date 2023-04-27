@@ -40,7 +40,7 @@ export const home = (onNavigate) => {
   btnSignInHome.addEventListener('click', () => {
     onNavigate('/signin');
   });
-  btnSignInHome.addEventListener('click', () => {
+  btnSignUpHome.addEventListener('click', () => {
     onNavigate('/signup');
   });
 
