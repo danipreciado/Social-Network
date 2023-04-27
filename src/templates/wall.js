@@ -34,9 +34,9 @@ export const wall = () => {
   const commentPostBtn = document.createElement('button');
 
   const userImage2 = document.createElement('img');
-  const userNameHeader2 = document.createElement('p');
+  /* const userNameHeader2 = document.createElement('p'); */
   const postContent2 = document.createElement('div');
-  const postText2 = document.createElement('p');
+  /* const postText2 = document.createElement('p'); */
 
   wallSection.classList.add('wall-section');
   hamburgerContainer.classList.add('hamburger');
