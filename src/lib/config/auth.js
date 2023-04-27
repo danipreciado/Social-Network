@@ -14,32 +14,29 @@ import { auth } from './firebaseconfig';
 //   }
 // }
 
-export function authFunction(signup, userEmail, userPassword, onAuthSuccess) {
+export function authFunction(userEmail, userPassword, onNavigate) {
   // const errorEmailMessage = document.querySelector('#errorEmailMessage');
   // const errorPassMessage = document.querySelector('#errorPassMessage');
-  signup.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const email = userEmail.value;
-    const password = userPassword.value;
-    // errorEmailMessage.innerHTML = '';
-    // errorPassMessage.innerHTML = '';
+  const email = userEmail.value;
+  const password = userPassword.value;
+  // errorEmailMessage.innerHTML = '';
+  // errorPassMessage.innerHTML = '';
 
-    createUserWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        // Signed in
-        // eslint-disable-next-line no-unused-vars
-        const user = userCredential.user;
-        console.log('its inside');
+  createUserWithEmailAndPassword(auth, email, password)
+    .then((userCredential) => {
+      // Signed in
+      // eslint-disable-next-line no-unused-vars
+      const user = userCredential.user;
+      console.log('its inside');
 
-        console.log(user);
-        onAuthSuccess('/verification');
-      })
-      .catch((error) => {
-        const errorCode = error.code;
-        console.log(errorCode);
-        // errorMessages(errorCode, errorEmailMessage, errorPassMessage);
-      });
-  });
+      console.log(user);
+      onNavigate('/verification');
+    })
+    .catch((error) => {
+      const errorCode = error.code;
+      console.log(errorCode);
+      // errorMessages(errorCode, errorEmailMessage, errorPassMessage);
+    });
 }
 
 const provider = new GoogleAuthProvider();
