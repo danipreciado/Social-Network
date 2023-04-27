@@ -136,7 +136,6 @@ if (btnSignIn) {
   });
 }
 
-
 // const router = async () => {
 //   const content = null || document.getElementById('content');
 //   const message = 'ERROR 404';

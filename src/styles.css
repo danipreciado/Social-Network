@@ -142,10 +142,6 @@ h2{
     gap: 1rem;
 }
 
-.container-form{
-    
-}
-
 .btnSignIn{
     
    
@@ -431,12 +427,12 @@ h2{
     height: 15vh;
     margin-top: -5vw;
   }
-  .container-wall main{
+ /*.container-wall main{
     display: flex;
     flex-direction: column;
     
     align-items: center;
-  }
+  }*/
   .hamburger img{
     width: 10vw;
     height: 5vh;
@@ -450,10 +446,7 @@ h2{
     width: 10vw;
     margin-bottom: 1rem;
  }
-.post-header{
-    display: flex;
-    align-items: center;
-}
+
  .btnyour-post img{
     width: 2.5vw;
  }
@@ -475,11 +468,6 @@ h2{
  }
  .btnComment img{
     width: 2.5vw;
- }
- .posts-section{
-    display: inline-block;
-    align-items: center;
-    justify-content: center;
  }
  .your-post{
     background-color:#FFCA3A;
@@ -546,6 +534,7 @@ h2{
     flex-direction: row;
     margin-left:-25vw;
     margin-top:3vh;
+    align-items: center;
     
  }
 
@@ -559,9 +548,11 @@ h2{
 }
 
 .posts-section{
-    display: flex;
+    display: inline-block;
     flex-direction: column;
     gap: 4rem;
+    align-items: center;
+    justify-content: center;
 }
 .logo-container {
     display:flex;
@@ -570,7 +561,7 @@ h2{
 }
 .logo-span{
     margin-top: -3rem;
-    margin-bottom: 3rem;;
+    margin-bottom: 3rem;
 }
 .logo-span span{
     font-size: 2rem;
