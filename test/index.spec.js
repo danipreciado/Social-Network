@@ -4,7 +4,6 @@
 import { home } from '../src/templates/home';
 import { signup } from '../src/templates/signUp';
 
-
 describe('home', () => {
   it('home debe ser una función', () => {
     expect(typeof home).toBe('function');
