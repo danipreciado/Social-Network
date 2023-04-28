@@ -37,6 +37,7 @@ export const home = (onNavigate) => {
   spanGram.textContent = 'gram';
   h1HomeDescription.textContent = 'Bienvenidx a ';
   h2HomeDescription.textContent = 'Nuestra comunidad está dedicada a crear un espacio seguro y acogedor para que todos puedan compartir sus experiencias y celebrar el amor y la alegria que nuestras mascotas traen a nuestras vidas. ¡Únete a nosotros y comparte tu amor hoy mismo!';
+
   btnSignInHome.addEventListener('click', () => {
     onNavigate('/signin');
   });

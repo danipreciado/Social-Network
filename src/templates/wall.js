@@ -33,6 +33,7 @@ export const wall = () => {
   const dogReactionCount1 = document.createElement('p');
   const catReaction1 = document.createElement('img');
   const catReactionCount1 = document.createElement('p');
+
   wallSection.classList.add('wall-section');
   hamburguerArticle.classList.add('hamburger');
   logoContainerArticle.classList.add('logo-container');
@@ -81,6 +82,7 @@ export const wall = () => {
   catReaction1.src = 'images/cat.png';
   catReaction1.alt = 'cat reaction';
   catReactionCount1.textContent = '18';
+
   hamburguerArticle.appendChild(hamburguerImage);
   header.appendChild(hamburguerArticle);
   wallLogoArticle.appendChild(logoImage);
@@ -108,6 +110,7 @@ export const wall = () => {
   reactions1.appendChild(dogReactionCount1);
   reactions1.appendChild(catReaction1);
   reactions1.appendChild(catReactionCount1);
+
   const commentBtn1 = document.createElement('button');
   commentBtn1.className = 'btnComment';
   commentBtn1.type = 'button';
@@ -172,5 +175,6 @@ export const wall = () => {
   postsSection.append(post1, post2);
   main.appendChild(postsSection);
   wallSection.append(header, main);
+
   return wallSection;
 };
