@@ -34,7 +34,7 @@ export const signup = (onNavigate) => {
   emailError.setAttribute('id', 'errorEmailMessage');
   passwordError.setAttribute('id', 'errorPassMessage');
   hasAccountLink.setAttribute('id', 'link-signUp');
-  registerBtn.setAttribute('type', 'submit');
+  registerBtn.setAttribute('type', 'button');
 
   userLabel.textContent = 'Nombre de Usuario';
   emailLabel.textContent = 'Correo Electronico';
@@ -42,9 +42,8 @@ export const signup = (onNavigate) => {
   registerBtn.textContent = 'Registrarse';
   hasAccount.textContent = '¿Ya tienes cuenta?';
 
-  registerBtn.addEventListener('submit', (e) => {
-    e.preventDefault();
-    authFunction(emailInput, passwordInput, onNavigate);
+  registerBtn.addEventListener('click', () => {
+    authFunction(emailInput, passwordInput, onNavigate, emailError, passwordError);
   });
 
   hasAccountLink.addEventListener('click', () => {

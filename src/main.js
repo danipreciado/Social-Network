@@ -27,11 +27,15 @@ function onNavigate(hash) {
       route.path,
       window.location.origin + route.path,
     );
-    const firstChild = root.firstChild;
-    // Check if the first child element exists and is a valid Node element
-    if (firstChild && firstChild instanceof Node) {
-      if (hash !== '/signin' && hash !== '/signup' && hash !== '/') {
-        root.removeChild(firstChild);
+    if (hash === '/signin' || hash === '/signup') {
+      // elimina todos sus hijos. No duplica home cuando navegas entre modales;
+      while (root.childNodes.length > 0) {
+        root.removeChild(root.lastChild);
+      }
+      root.appendChild(home(onNavigate));
+    } else {
+      while (root.firstChild) {
+        root.removeChild(root.firstChild);
       }
     }
     root.appendChild(route.component(onNavigate));
