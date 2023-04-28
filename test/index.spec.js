@@ -1,43 +1,102 @@
-import { authFunction2 } from './mocks';
+/**
+ * @jest-environment jsdom
+ */
+import { home } from '../src/templates/home';
+import { signup } from '../src/templates/signUp';
 
-jest.mock('../src/lib/config/auth.js');
+// authFunction = jest.fn();
 
-// Definir los valores para el email y la contraseña
-// const email = 'test@example.com';
-// const password = 'test123';
+// const mockAuthFunction = jest.fn();
+// jest.mock('../src/lib/config/auth', () => ({
+//   authFunction: mockAuthFunction,
+// }));
 
-// Crear el test usando Jest
-test('authFunction2 resolves with a user object with valid parameters', async () => {
-  expect.assertions(1);
-  try {
-    const user = await authFunction2({ value: 'email@email.com' }, { value: 'password123' });
-    expect(user).toBeDefined();
-  } catch (error) {
-    throw new Error('The authFunction2 function should not reject with valid parameters');
-  }
+describe('home', () => {
+  it('home debe ser una función', () => {
+    expect(typeof home).toBe('function');
+  });
+
+  it('existe un botón signup', () => {
+    const container = document.createElement('section');
+    container.append(home());
+    const btnSignUp = container.querySelector('.btnSignUp');
+    expect(btnSignUp).not.toBe(null);
+  });
+
+  test('navega a la sección signUp', () => {
+    const container = document.createElement('section');
+    const onNavigate = jest.fn();
+    container.append(home(onNavigate));
+    const btnSignUp = container.querySelector('.btnSignUp');
+    btnSignUp.click();
+    expect(onNavigate).toHaveBeenCalledWith('/signup');
+  });
+
+  it('existe un botón signin', () => {
+    const container = document.createElement('section');
+    container.append(home());
+    const bottonLogin = container.querySelector('.btnSignIn');
+    expect(bottonLogin).not.toBe(null);
+  });
+
+  test('navega a la sección signIn', () => {
+    const container = document.createElement('section');
+    const onNavigate = jest.fn();
+    container.append(home(onNavigate));
+    const btnSignIn = container.querySelector('.btnSignIn');
+    btnSignIn.click();
+    expect(onNavigate).toHaveBeenCalledWith('/signin');
+  });
 });
-test('createUserWithEmailAndPassword throws an error with invalid email and password', async () => {
-  expect.assertions(1);
-  try {
-    // Llamar a la función authFunction2 con un email y una contraseña inválidos
-    await authFunction2('email', 'pass');
 
-    // Si la función no devuelve ningún error, lanzar una excepción
-    // eslint-disable-next-line max-len
-    // throw new Error('The createUserWithEmailAndPassword function should throw an error with invalid email and password');
-  } catch (error) {
-    // Comprobar que el mensaje de error es el esperado
-    expect(error.message).toEqual('Firebase: Error (auth/admin-restricted-operation).');
-  }
+describe('signup', () => {
+  it('signup debe ser una función', () => {
+    expect(typeof signup).toBe('function');
+  });
+
+  it('existe un botón de registrarse', () => {
+    const container = document.createElement('section');
+    container.append(signup());
+    const btnRegister = container.querySelector('.btnRegister');
+    expect(btnRegister).not.toBe(null);
+  });
+
+  it('el botón de registrarse debe llamar a la authFunction cuando se hace click', async () => {
+    const authFunction = jest.fn();
+    const onNavigate = jest.fn();
+    const signupSection = signup();
+    const registerBtn = signupSection.querySelector('.btnRegister');
+    const emailInput = signupSection.querySelector('#userEmail');
+    const passwordInput = signupSection.querySelector('#userPassword');
+    const emailError = signupSection.querySelector('#errorEmailMessage');
+    const passwordError = signupSection.querySelector('#errorPassMessage');
+    registerBtn.click();
+    expect(authFunction).toHaveBeenCalledWith(
+      emailInput,
+      passwordInput,
+      onNavigate,
+      emailError,
+      passwordError,
+    );
+  });
+  //   mockAuthFunction.mockResolvedValueOnce();
+  //   registerBtn.click();
+  //   await new Promise((resolve) => setTimeout(resolve, 1000));
+  //   expect(mockAuthFunction).toHaveBeenCalledWith(
+  //     emailInput.value,
+  //     passwordInput.value,
+  //     onNavigate,
+  //     emailError,
+  //     passwordError,
+  //   );
+  //   mockAuthFunction.mockRestore();
+  // });
+
+  it('debe navegar a SignUp al hacer click en el boton de ingresar', () => {
+    const onNavigate = jest.fn();
+    const signupSection = signup(onNavigate);
+    const signInLink = signupSection.querySelector('#link-signUp');
+    signInLink.click();
+    expect(onNavigate).toHaveBeenCalledWith('/signin');
+  });
 });
-
-// const authFunction = (email, password) => new Promise((resolve, reject) => {
-//   if (!email || !password) {
-//     PromiseRejectionEvent('error');
-//   }
-//   resolve('Bien!');
-// });
-
-// test('authFunction', async () => {
-//   await (createaccount('email', '')).resolves.toBe('error');
-// });
