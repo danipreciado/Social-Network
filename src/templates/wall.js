@@ -1,104 +1,210 @@
 export const wall = () => {
   const wallSection = document.createElement('section');
-  const wallHeader = document.createElement('header');
-  const hamburgerContainer = document.createElement('article');
-  const hamburgerImg = document.createElement('img');
-  const logoContainer = document.createElement('article');
-  const logoImgContainer = document.createElement('article');
-  const logoImg = document.createElement('img');
-  const logoSpanContainer = document.createElement('article');
-  const peta = document.createElement('span');
-  const gram = document.createElement('span');
-  const profileContainer = document.createElement('article');
-  const profileImg = document.createElement('img');
-  const wallMain = document.createElement('main');
+  const header = document.createElement('header');
+  const hamburguerArticle = document.createElement('article');
+  const hamburguerImage = document.createElement('img');
+  const logoContainerArticle = document.createElement('article');
+  const wallLogoArticle = document.createElement('article');
+  const logoImage = document.createElement('img');
+  const logoSpanArticle = document.createElement('article');
+  const petaSpan = document.createElement('span');
+  const gramSpan = document.createElement('span');
+  const profilePicArticle = document.createElement('article');
+  const profilePicImage = document.createElement('img');
+  const main = document.createElement('main');
   const postInputSection = document.createElement('section');
-  const postArticle = document.createElement('article');
-  const postForm = document.createElement('form');
-  const inputLabel = document.createElement('label');
-  const postInput = document.createElement('input');
-  const postBtn = document.createElement('button');
+  const yourPostArticle = document.createElement('article');
+  const form = document.createElement('form');
+  const label = document.createElement('label');
+  const br = document.createElement('br');
+  const input = document.createElement('input');
+  const button = document.createElement('button');
+  const pawnImage = document.createElement('img');
   const postsSection = document.createElement('section');
-  const postsArticle = document.createElement('article');
-  const postHeaderDiv = document.createElement('div');
-  const userImage = document.createElement('img');
-  const userNameHeader = document.createElement('p');
-  const postContent = document.createElement('div');
-  const postText = document.createElement('p');
-  const postFooter = document.createElement('div');
-  const reactions = document.createElement('div');
-  const dogReaction = document.createElement('img');
-  const dogReactionCount = document.createElement('p');
-  const catReaction = document.createElement('img');
-  const catReactionCount = document.createElement('p');
-  const commentPostBtn = document.createElement('button');
-
-  const userImage2 = document.createElement('img');
-  /* const userNameHeader2 = document.createElement('p'); */
-  const postContent2 = document.createElement('div');
-  /* const postText2 = document.createElement('p'); */
+  const post1 = document.createElement('article');
+  const post1Header = document.createElement('div');
+  const userImg1 = document.createElement('img');
+  const user1Name = document.createElement('p');
+  const post1Content = document.createElement('div');
+  const post1Text = document.createElement('p');
+  const post1Bottom = document.createElement('div');
+  const reactions1 = document.createElement('div');
+  const dogReaction1 = document.createElement('img');
+  const dogReactionCount1 = document.createElement('p');
+  const catReaction1 = document.createElement('img');
+  const catReactionCount1 = document.createElement('p');
 
   wallSection.classList.add('wall-section');
-  hamburgerContainer.classList.add('hamburger');
-  logoContainer.classList.add('logo-container');
-  logoImgContainer.classList.add('wall-logo');
-  logoSpanContainer.classList.add('logo-span');
-  peta.classList.add('peta');
-  gram.classList.add('gram');
-  profileContainer.classList.add('profilePic');
-  wallMain.classList.add('container-wall');
+  hamburguerArticle.classList.add('hamburger');
+  logoContainerArticle.classList.add('logo-container');
+  wallLogoArticle.classList.add('wall-logo');
+  logoSpanArticle.classList.add('logo-span');
+  petaSpan.classList.add('peta');
+  gramSpan.classList.add('gram');
+  profilePicArticle.classList.add('profilePic');
+  main.classList.add('container-wall');
   postInputSection.classList.add('post-input');
-  postArticle.classList.add('your-post');
-  postInput.classList.add('your-postinput');
-  postBtn.classList.add('btnyour-post');
+  yourPostArticle.classList.add('your-post');
+  input.classList.add('your-postInput');
+  button.classList.add('btnyour-post');
   postsSection.classList.add('posts-section');
-  postsArticle.classList.add('post');
-  postHeaderDiv.classList.add('post-header');
-  userImage.classList.add('user-image');
-  postContent.classList.add('post-content');
-  postFooter.classList.add('post-bottom');
-  reactions.classList.add('reactions');
-  commentPostBtn.classList.add('btnComment');
-  userImage2.classList.add('user-image');
-  postContent2.classList.add('post-content');
+  post1.className = 'post';
+  post1Header.className = 'post-header';
+  userImg1.className = 'user-image';
+  post1Content.className = 'post-content';
+  post1Bottom.className = 'post-bottom';
+  reactions1.className = 'reactions';
+  
 
-  hamburgerImg.setAttribute('src', 'images/hamburguer.png');
-  hamburgerImg.setAttribute('alt', 'hamburger');
-  logoImg.setAttribute('src', 'images/logo.png');
-  logoImg.setAttribute('alt', 'logo');
-  logoImg.setAttribute('width', '83px');
-  logoImg.setAttribute('height', '77px');
-  profileImg.setAttribute('src', 'images/profile-img.png');
-  profileImg.setAttribute('alt', 'profile picture');
-  inputLabel.setAttribute('for', 'your-postinput');
+  hamburguerImage.src = 'images/hamburguer.png';
+  hamburguerImage.alt = 'hamburguer';
+  logoImage.src = 'images/logo.png';
+  logoImage.alt = 'logo';
+  logoImage.width = '83';
+  logoImage.height = '77';
+  petaSpan.innerText = 'Peta';
+  gramSpan.innerText = 'gram';
+  profilePicImage.src = 'images/profile-img.png';
+  profilePicImage.alt = 'profile picture';
+  label.htmlFor = 'your-postinput';
+  label.innerText = '¡Hola de nuevo, usuarix!';
+  input.type = 'text';
+  input.id = 'your-postinput';
+  input.name = 'your-postinput';
+  input.placeholder = 'Escribe algo sobre tus mascotas...';
+  pawnImage.src = 'images/pawn.png';
+  pawnImage.alt = 'pawn';
+  userImg1.src = 'images/user1.png';
+  userImg1.alt = 'profile picture';
+  user1Name.textContent = 'Fulanitx escribió:';
+  post1Text.textContent = '¡Hola a todxs! Dale like si a tu mascota le gusta el pollito.';
+  dogReaction1.src = 'images/dog.png';
+  dogReaction1.alt = 'dog reaction';
+  dogReactionCount1.textContent = '10';
+  catReaction1.src = 'images/cat.png';
+  catReaction1.alt = 'cat reaction';
+  catReactionCount1.textContent = '18';
 
-  peta.textContent = 'Peta';
-  gram.textContent = 'gram';
+  hamburguerArticle.appendChild(hamburguerImage);
+  header.appendChild(hamburguerArticle);
+  wallLogoArticle.appendChild(logoImage);
+  logoContainerArticle.appendChild(wallLogoArticle);
+  logoSpanArticle.appendChild(petaSpan);
+  logoSpanArticle.appendChild(gramSpan);
+  logoContainerArticle.appendChild(logoSpanArticle);
+  header.appendChild(logoContainerArticle);
+  profilePicArticle.appendChild(profilePicImage);
+  header.appendChild(profilePicArticle);
+  button.appendChild(pawnImage);
+  button.appendChild(document.createTextNode('Publicar'));
+  form.appendChild(label);
+  form.appendChild(br);
+  form.appendChild(input);
+  form.appendChild(br.cloneNode());
+  form.appendChild(button);
+  yourPostArticle.appendChild(form);
+  postInputSection.appendChild(yourPostArticle);
+  main.appendChild(postInputSection);
+  post1Header.appendChild(userImg1);
+  post1Header.appendChild(user1Name);
+  post1Content.appendChild(post1Text);
+  reactions1.appendChild(dogReaction1);
+  reactions1.appendChild(dogReactionCount1);
+  reactions1.appendChild(catReaction1);
+  reactions1.appendChild(catReactionCount1);
 
-  hamburgerContainer.appendChild(hamburgerImg);
-  logoImgContainer.appendChild(logoImg);
-  logoSpanContainer.appendChild(peta);
-  logoSpanContainer.appendChild(gram);
-  logoContainer.appendChild(logoImgContainer);
-  logoContainer.appendChild(logoSpanContainer);
-  profileContainer.appendChild(profileImg);
-  wallHeader.append(hamburgerContainer, logoContainer, profileContainer);
-  //  main-section post input
+  const commentBtn1 = document.createElement('button');
+  commentBtn1.className = 'btnComment';
+  commentBtn1.type = 'button';
 
-  postForm.append(inputLabel, postInput, postBtn);
-  postArticle.appendChild(postForm);
-  postInputSection.appendChild(postArticle);
+  const commentBtnIcon1 = document.createElement('img');
+  commentBtnIcon1.src = 'images/post-pawn.png';
 
-  //  post section
+  const commentBtnText1 = document.createTextNode('Comentar');
 
-  postHeaderDiv.append(userImage, userNameHeader);
-  postContent.appendChild(postText);
+  commentBtn1.appendChild(commentBtnIcon1);
+  commentBtn1.appendChild(commentBtnText1);
 
-  reactions.append(dogReaction, dogReactionCount, catReaction, catReactionCount);
-  postFooter.appendChild(reactions);
-  postFooter.appendChild(commentPostBtn);
-  postsArticle.appendChild(postHeaderDiv, postContent, postFooter);
-  wallMain.append(postInputSection, postInputSection);
-  wallSection.append(wallHeader, wallMain);
+  post1Bottom.appendChild(reactions1);
+  post1Bottom.appendChild(commentBtn1);
+
+  post1.appendChild(post1Header);
+  post1.appendChild(post1Content);
+  post1.appendChild(post1Bottom);
+
+  const post2 = document.createElement('article');
+  post2.className = 'post';
+
+  const post2Header = document.createElement('div');
+  post2Header.className = 'post-header';
+
+  const userImg2 = document.createElement('img');
+  userImg2.className = 'user-image';
+  userImg2.src = 'images/user2.png';
+  userImg2.alt = 'profile picture';
+
+  const user2Name = document.createElement('p');
+  user2Name.textContent = 'Fulanitx escribió:';
+
+  post2Header.appendChild(userImg2);
+  post2Header.appendChild(user2Name);
+
+  const post2Content = document.createElement('div');
+  post2Content.className = 'post-content';
+
+  const post2Text = document.createElement('p');
+  post2Text.textContent = 'Les recomiendo estos lugares pet-friendly: Patazonia, TacoFriends y Cinemalitos.';
+
+  post2Content.appendChild(post2Text);
+
+  const post2Bottom = document.createElement('div');
+  post2Bottom.className = 'post-bottom';
+
+  const reactions2 = document.createElement('div');
+  reactions2.className = 'reactions';
+
+  const dogReaction2 = document.createElement('img');
+  dogReaction2.src = 'images/dog.png';
+  dogReaction2.alt = 'dog reaction';
+
+  const dogReactionCount2 = document.createElement('p');
+  dogReactionCount2.textContent = '2';
+
+  const catReaction2 = document.createElement('img');
+  catReaction2.src = 'images/cat.png';
+  catReaction2.alt = 'cat reaction';
+
+  const catReactionCount2 = document.createElement('p');
+  catReactionCount2.textContent = '18';
+
+  reactions2.appendChild(dogReaction2);
+  reactions2.appendChild(dogReactionCount2);
+  reactions2.appendChild(catReaction2);
+  reactions2.appendChild(catReactionCount2);
+
+  const commentBtn2 = document.createElement('button');
+  commentBtn2.className = 'btnComment';
+  commentBtn2.type = 'button';
+
+  const commentBtnIcon2 = document.createElement('img');
+  commentBtnIcon2.src = 'images/post-pawn.png';
+
+  const commentBtnText2 = document.createTextNode('Comentar');
+
+  commentBtn2.appendChild(commentBtnIcon2);
+  commentBtn2.appendChild(commentBtnText2);
+
+  post2Bottom.appendChild(reactions2);
+  post2Bottom.appendChild(commentBtn2);
+
+  post2.appendChild(post2Header);
+  post2.appendChild(post2Content);
+  post2.appendChild(post2Bottom);
+
+  postsSection.append(post1, post2);
+  main.appendChild(postsSection);
+
+  wallSection.append(header, main);
+
   return wallSection;
 };
