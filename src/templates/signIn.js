@@ -1,4 +1,4 @@
-import { googleLogin } from '../lib/config/auth';
+import { googleLogin, login } from '../lib/config/auth';
 
 export const signIn = (onNavigate) => {
   const signInSection = document.createElement('section');
@@ -35,7 +35,7 @@ export const signIn = (onNavigate) => {
   spanErrorEmail.setAttribute('id', 'errorEmailMessage');
   spanErrorPass.setAttribute('id', 'errorPassMessage');
   linkToSignUp.setAttribute('id', 'link-signIn');
-  btnLogin.setAttribute('type', 'submit');
+  btnLogin.setAttribute('type', 'button');
   btnGoogle.setAttribute('type', 'button');
 
   emailLabel.textContent = 'Correo Electronico';
@@ -44,6 +44,10 @@ export const signIn = (onNavigate) => {
   btnGoogle.textContent = 'Ingresa con Google';
   askingText.textContent = '¿No tienes cuenta? ';
   linkToSignUp.textContent = 'Registrate aquí';
+
+  btnLogin.addEventListener('click', () => {
+    login(onNavigate, emailInput, passwordInput);
+  });
 
   btnGoogle.addEventListener('click', () => {
     googleLogin(onNavigate);
