@@ -30,7 +30,7 @@ export const signup = (onNavigate) => {
   emailInput.setAttribute('type', 'email');
   emailInput.setAttribute('id', 'userEmail');
   passwordInput.setAttribute('type', 'password');
-  emailInput.setAttribute('id', 'userPassword');
+  passwordInput.setAttribute('id', 'userPassword');
   emailError.setAttribute('id', 'errorEmailMessage');
   passwordError.setAttribute('id', 'errorPassMessage');
   hasAccountLink.setAttribute('id', 'link-signUp');
