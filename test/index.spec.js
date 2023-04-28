@@ -1,14 +1,9 @@
 /**
  * @jest-environment jsdom
  */
-
 import { home } from '../src/templates/home';
 import { signup } from '../src/templates/signUp';
-import { authFunction } from '../src/lib/config/auth';
 
-jest.mock('../src/lib/config/auth', () => ({
-  authFunction: jest.fn(),
-}));
 
 describe('home', () => {
   it('home debe ser una función', () => {
@@ -53,12 +48,47 @@ describe('signup', () => {
     expect(typeof signup).toBe('function');
   });
 
-  it('existe un botón de registrarse', () => {
-    const container = document.createElement('section');
-    container.append(signup());
-    const btnRegister = container.querySelector('.btnRegister');
-    expect(btnRegister).not.toBe(null);
+  it('should call the authFunction with the correct arguments when the register button is clicked', async () => {
+    // Definir los mocks y las variables necesarias
+    const authFunction = jest.fn(() => Promise.resolve());
+    const onNavigate = jest.fn();
+    const signupSection = signup(authFunction);
+    const registerBtn = signupSection.querySelector('.btnRegister');
+    const emailInput = signupSection.querySelector('#userEmail');
+    const passwordInput = signupSection.querySelector('#userPassword');
+    const emailError = signupSection.querySelector('#errorEmailMessage');
+    const passwordError = signupSection.querySelector('#errorPassMessage');
+
+    // Simular los valores de entrada del usuario
+    emailInput.value = 'emeeail@gmail.com';
+    passwordInput.value = 'password123';
+
+    // Simular el evento de click en el botón de registro
+    registerBtn.click();
+
+    // Comprobar que se ha llamado a authFunction con los argumentos correctos
+    expect(authFunction).toHaveBeenCalledWith(
+      emailInput.value,
+      passwordInput.value,
+      onNavigate,
+      emailError,
+      passwordError,
+    );
   });
+
+  
+  //   mockAuthFunction.mockResolvedValueOnce();
+  //   registerBtn.click();
+  //   await new Promise((resolve) => setTimeout(resolve, 1000));
+  //   expect(mockAuthFunction).toHaveBeenCalledWith(
+  //     emailInput.value,
+  //     passwordInput.value,
+  //     onNavigate,
+  //     emailError,
+  //     passwordError,
+  //   );
+  //   mockAuthFunction.mockRestore();
+  // });
 
   it('debe navegar a SignUp al hacer click en el boton de ingresar', () => {
     const onNavigate = jest.fn();
@@ -66,27 +96,5 @@ describe('signup', () => {
     const signInLink = signupSection.querySelector('#link-signUp');
     signInLink.click();
     expect(onNavigate).toHaveBeenCalledWith('/signin');
-  });
-
-  it('authFunction debe ser llamado cuando se hace click en el botón de registrarse', () => {
-    const onNavigate = jest.fn();
-    const signupSection = signup(onNavigate);
-    const btnRegister = signupSection.querySelector('.btnRegister');
-    const emailInput = signupSection.querySelector('#userEmail');
-    const passwordInput = signupSection.querySelector('#userPassword');
-    const emailError = signupSection.querySelector('#errorEmailMessage');
-    const passwordError = signupSection.querySelector('#errorPassMessage');
-
-    // Click the register button
-    btnRegister.click();
-
-    // Check that authFunction was called with the correct arguments
-    expect(authFunction).toHaveBeenCalledWith(
-      emailInput,
-      passwordInput,
-      onNavigate,
-      emailError,
-      passwordError,
-    );
   });
 });
