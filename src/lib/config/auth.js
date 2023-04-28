@@ -1,5 +1,11 @@
 /* eslint-disable no-unused-vars */
-import { signInWithPopup, GoogleAuthProvider, createUserWithEmailAndPassword } from 'firebase/auth';
+import {
+  signInWithPopup,
+  GoogleAuthProvider,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  sendEmailVerification,
+} from 'firebase/auth';
 import { auth } from './firebaseconfig';
 
 function errorMessages(errorCode, emailError, passwordError) {
@@ -24,6 +30,11 @@ export function authFunction(userEmail, userPassword, onNavigate, emailError, pa
     .then((userCredential) => {
       // eslint-disable-next-line no-unused-vars
       const user = userCredential.user;
+      //  onNavigate('/verification');
+      return sendEmailVerification(user);
+    })
+    .then(() => {
+      // Email verification sent successfully
       onNavigate('/verification');
     })
     .catch((error) => {
@@ -32,6 +43,23 @@ export function authFunction(userEmail, userPassword, onNavigate, emailError, pa
       errorMessages(errorCode, emailError, passwordError);
     });
 }
+
+export const login = (onNavigate, userEmail, userPassword) => {
+  console.log('esta adentro');
+  const email = userEmail.value;
+  const password = userPassword.value;
+  signInWithEmailAndPassword(auth, email, password)
+    .then((userCredential) => {
+    // Signed in
+      const user = userCredential.user;
+      onNavigate('/wall');
+    // ...
+    })
+    .catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+    });
+};
 
 const provider = new GoogleAuthProvider();
 export const googleLogin = (onNavigate) => {

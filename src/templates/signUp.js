@@ -41,6 +41,7 @@ export const signup = (onNavigate) => {
   passwordLabel.textContent = 'Contraseña';
   registerBtn.textContent = 'Registrarse';
   hasAccount.textContent = '¿Ya tienes cuenta?';
+  hasAccountLink.textContent = 'Ingresa aquí';
 
   registerBtn.addEventListener('click', () => {
     authFunction(emailInput, passwordInput, onNavigate, emailError, passwordError);
