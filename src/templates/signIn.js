@@ -49,6 +49,10 @@ export const signIn = (onNavigate) => {
     googleLogin(onNavigate);
   });
 
+  linkToSignUp.addEventListener('click', () => {
+    onNavigate('/signup');
+  });
+
   signInForm.appendChild(emailLabel);
   signInForm.appendChild(emailInput);
   signInForm.appendChild(passwordLabel);
@@ -65,7 +69,6 @@ export const signIn = (onNavigate) => {
   signInForm.appendChild(containerLinkSignIn);
 
   signInSection.appendChild(signInForm);
-
   return signInSection;
 };
 

@@ -1,4 +1,4 @@
-const verification = () => {
+const verification = (onNavigate) => {
   const verificationSection = document.createElement('section');
   const petsImages = document.createElement('article');
   const perrito1 = document.createElement('img');
@@ -73,6 +73,10 @@ const verification = () => {
   spanVerify.textContent = 'Necesitamos que verifiques tu correo electronico para completar tu registro';
   spanSignInAsk.textContent = '¿Ya verificaste tu cuenta?';
   spanSignInLink.textContent = 'Ingresa aquí';
+
+  spanSignInLink.addEventListener('click', () => {
+    onNavigate('/signin');
+  });
 
   petsImages.appendChild(perrito1);
   petsImages.appendChild(animalito2);
