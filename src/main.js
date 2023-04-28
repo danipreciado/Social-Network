@@ -4,67 +4,79 @@ import { signup } from './templates/signUp';
 import verification from './templates/verification';
 import { page404 } from './templates/page404';
 import { wall } from './templates/wall';
-import { authFunction, googleLogin } from './lib/config/auth';
+// import { authFunction, googleLogin } from './lib/config/auth';
 
 const root = document.getElementById('content');
-const routes = {
-  '/': home,
-  '/signup': signup,
-  '/verification': verification,
-  '/page404': page404,
-  '/signin': signIn,
-  '/wall': wall,
-};
+const routes = [
+  { path: '/', component: home },
+  { path: '/signup', component: signup },
+  { path: '/verification', component: verification },
+  { path: '/page404', component: page404 },
+  { path: '/signin', component: signIn },
+  { path: '/wall', component: wall },
+];
 
-const component = routes[window.location.pathname];
-function clearContent() {
-  while (root.firstChild) {
-    root.removeChild(root.firstChild);
+const defaultRoute = '/';
+
+function onNavigate(hash) {
+  const route = routes.find((routeFound) => routeFound.path === hash);
+
+  if (route && route.component) {
+    window.history.pushState(
+      {},
+      route.path,
+      window.location.origin + route.path,
+    );
+    if (hash === '/signin' || hash === '/signup') {
+      // elimina todos sus hijos. No duplica home cuando navegas entre modales;
+      while (root.childNodes.length > 0) {
+        root.removeChild(root.lastChild);
+      }
+      root.appendChild(home(onNavigate));
+    } else {
+      while (root.firstChild) {
+        root.removeChild(root.firstChild);
+      }
+    }
+    root.appendChild(route.component(onNavigate));
+  } else {
+    onNavigate('/page404');
   }
 }
+// window.onpopstate = () => {
+//   onNavigate(window.location.pathname);
+// };
 
-window.onpopstate = () => {
-  root.removeChild(root.firstChild);
-  root.appendChild(component());
-};
+window.addEventListener('popstate', () => {
+  const path = window.location.pathname;
+  onNavigate(path);
+});
 
-root.appendChild(component());
+onNavigate(window.location.pathname || defaultRoute);
+// const onAuthSuccess = (pathname) => {
+//   /* root.removeChild(root.firstChild); */
+//   // aqui también agregue clearContent y comenté lo de arriba
+//   clearContent();
+//   onNavigate(pathname);
+// };
 
-const onNavigate = (pathname) => {
-  /* root.removeChild(root.firstChild); */
-  // agregue este clearcontent para remover todos los hijos antes de renderizar el nuevo template
-  clearContent();
-  window.history.pushState(
-    {},
-    pathname,
-    window.location.origin + pathname,
-  );
-  root.appendChild(routes[pathname]());
-};
-const onAuthSuccess = (pathname) => {
-  /* root.removeChild(root.firstChild); */
-  // aqui también agregue clearContent y comenté lo de arriba
-  clearContent();
-  onNavigate(pathname);
-};
+// function authSignUp() {
+//   onNavigate('/signup');
+//   console.log(root.childNodes);
+//   const btnRegister = document.querySelector('.signUp-form');
+//   const email = document.getElementById('userEmail');
+//   const password = document.getElementById('userPassword');
 
-function authSignUp() {
-  onNavigate('/signup');
-  console.log(root.childNodes);
-  const btnRegister = document.querySelector('.signUp-form');
-  const email = document.getElementById('userEmail');
-  const password = document.getElementById('userPassword');
+//   authFunction(btnRegister, email, password, onAuthSuccess);
 
-  authFunction(btnRegister, email, password, onAuthSuccess);
-
-  /*   .then(() => onNavigate('/verification'))
+/*   .then(() => onNavigate('/verification'))
     .catch((error) => console.error(error)); */
-  // authFunction(btnRegister, email, password,);
-  // console.log(authFunction);
-  // btnRegister.addEventListener('submit', () => {
-  //   onNavigate('/verification');
-  /* console.log('se lee o no?'); */
-}
+// authFunction(btnRegister, email, password,);
+// console.log(authFunction);
+// btnRegister.addEventListener('submit', () => {
+//   onNavigate('/verification');
+/* console.log('se lee o no?'); */
+// }
 // Comente esto porque no se estaba usando
 /* function close() {
   const closeBtn = document.querySelector('.close');
@@ -77,64 +89,64 @@ function authSignUp() {
   });
 } */
 
-function linkSignInFunction() {
-  const linkSignIn = document.querySelector('#link-signIn');
-  if (linkSignIn) {
-    linkSignIn.addEventListener('click', () => {
-      root.removeChild(root.firstChild);
-      onNavigate('/signin');
-      console.log(root.childNodes);
-    });
-  }
-}
+// function linkSignInFunction() {
+//   const linkSignIn = document.querySelector('#link-signIn');
+//   if (linkSignIn) {
+//     linkSignIn.addEventListener('click', () => {
+//       root.removeChild(root.firstChild);
+//       onNavigate('/signin');
+//       console.log(root.childNodes);
+//     });
+//   }
+// }
 
-function linkSignUpFunction() {
-  const linkSignUp = document.querySelector('#link-signUp');
-  if (linkSignUp) {
-    linkSignUp.addEventListener('click', () => {
-      authSignUp();
-    });
-  }
-}
+// function linkSignUpFunction() {
+//   const linkSignUp = document.querySelector('#link-signUp');
+//   if (linkSignUp) {
+//     linkSignUp.addEventListener('click', () => {
+//       authSignUp();
+//     });
+//   }
+// }
 
-/* function signUpScreen() {
-  authSignUp();
-  close();
-} */
+// /* function signUpScreen() {
+//   authSignUp();
+//   close();
+// } */
 
-const btnSignUp = document.querySelector('.btnSignUp');
-if (btnSignUp) {
-  btnSignUp.addEventListener('click', () => {
-    onNavigate('/signup');
-    linkSignUpFunction();
-  });
-}
-let btnGoogle = document.querySelector('.btnGoogle');
-if (btnGoogle) {
-  btnGoogle.addEventListener('click', () => {
-    console.log('registra el click?');
-    googleLogin();
-    // onNavigate('/signin');
-  });
-}
-function googleEvent() {
-  btnGoogle = document.querySelector('.btnGoogle');
-  if (btnGoogle) {
-    btnGoogle.addEventListener('click', () => {
-      console.log('registra el click?');
-      googleLogin(onNavigate);
-    });
-  }
-}
+// const btnSignUp = document.querySelector('.btnSignUp');
+// if (btnSignUp) {
+//   btnSignUp.addEventListener('click', () => {
+//     onNavigate('/signup');
+//     linkSignUpFunction();
+//   });
+// }
+// let btnGoogle = document.querySelector('.btnGoogle');
+// if (btnGoogle) {
+//   btnGoogle.addEventListener('click', () => {
+//     console.log('registra el click?');
+//     googleLogin();
+//     // onNavigate('/signin');
+//   });
+// }
+// function googleEvent() {
+//   btnGoogle = document.querySelector('.btnGoogle');
+//   if (btnGoogle) {
+//     btnGoogle.addEventListener('click', () => {
+//       console.log('registra el click?');
+//       googleLogin(onNavigate);
+//     });
+//   }
+// }
 
-const btnSignIn = document.querySelector('.btnSignIn');
-if (btnSignIn) {
-  btnSignIn.addEventListener('click', () => {
-    onNavigate('/signin');
-    googleEvent();
-    linkSignInFunction();
-  });
-}
+// const btnSignIn = document.querySelector('.btnSignIn');
+// if (btnSignIn) {
+//   btnSignIn.addEventListener('click', () => {
+//     onNavigate('/signin');
+//     googleEvent();
+//     linkSignInFunction();
+//   });
+// }
 
 // const router = async () => {
 //   const content = null || document.getElementById('content');

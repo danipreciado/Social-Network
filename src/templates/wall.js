@@ -54,8 +54,6 @@ export const wall = () => {
   post1Content.className = 'post-content';
   post1Bottom.className = 'post-bottom';
   reactions1.className = 'reactions';
-  
-
   hamburguerImage.src = 'images/hamburguer.png';
   hamburguerImage.alt = 'hamburguer';
   logoImage.src = 'images/logo.png';
@@ -116,94 +114,66 @@ export const wall = () => {
   const commentBtn1 = document.createElement('button');
   commentBtn1.className = 'btnComment';
   commentBtn1.type = 'button';
-
   const commentBtnIcon1 = document.createElement('img');
   commentBtnIcon1.src = 'images/post-pawn.png';
-
   const commentBtnText1 = document.createTextNode('Comentar');
-
   commentBtn1.appendChild(commentBtnIcon1);
   commentBtn1.appendChild(commentBtnText1);
-
   post1Bottom.appendChild(reactions1);
   post1Bottom.appendChild(commentBtn1);
-
   post1.appendChild(post1Header);
   post1.appendChild(post1Content);
   post1.appendChild(post1Bottom);
-
   const post2 = document.createElement('article');
   post2.className = 'post';
-
   const post2Header = document.createElement('div');
   post2Header.className = 'post-header';
-
   const userImg2 = document.createElement('img');
   userImg2.className = 'user-image';
   userImg2.src = 'images/user2.png';
   userImg2.alt = 'profile picture';
-
   const user2Name = document.createElement('p');
   user2Name.textContent = 'Fulanitx escribió:';
-
   post2Header.appendChild(userImg2);
   post2Header.appendChild(user2Name);
-
   const post2Content = document.createElement('div');
   post2Content.className = 'post-content';
-
   const post2Text = document.createElement('p');
   post2Text.textContent = 'Les recomiendo estos lugares pet-friendly: Patazonia, TacoFriends y Cinemalitos.';
-
   post2Content.appendChild(post2Text);
-
   const post2Bottom = document.createElement('div');
   post2Bottom.className = 'post-bottom';
-
   const reactions2 = document.createElement('div');
   reactions2.className = 'reactions';
-
   const dogReaction2 = document.createElement('img');
   dogReaction2.src = 'images/dog.png';
   dogReaction2.alt = 'dog reaction';
-
   const dogReactionCount2 = document.createElement('p');
   dogReactionCount2.textContent = '2';
-
   const catReaction2 = document.createElement('img');
   catReaction2.src = 'images/cat.png';
   catReaction2.alt = 'cat reaction';
-
   const catReactionCount2 = document.createElement('p');
   catReactionCount2.textContent = '18';
-
   reactions2.appendChild(dogReaction2);
   reactions2.appendChild(dogReactionCount2);
   reactions2.appendChild(catReaction2);
   reactions2.appendChild(catReactionCount2);
-
   const commentBtn2 = document.createElement('button');
   commentBtn2.className = 'btnComment';
   commentBtn2.type = 'button';
-
   const commentBtnIcon2 = document.createElement('img');
   commentBtnIcon2.src = 'images/post-pawn.png';
-
   const commentBtnText2 = document.createTextNode('Comentar');
-
   commentBtn2.appendChild(commentBtnIcon2);
   commentBtn2.appendChild(commentBtnText2);
-
   post2Bottom.appendChild(reactions2);
   post2Bottom.appendChild(commentBtn2);
-
   post2.appendChild(post2Header);
   post2.appendChild(post2Content);
   post2.appendChild(post2Bottom);
-
   postsSection.append(post1, post2);
   main.appendChild(postsSection);
-
   wallSection.append(header, main);
 
   return wallSection;

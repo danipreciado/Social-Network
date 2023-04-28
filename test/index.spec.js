@@ -1,6 +1,6 @@
 import { authFunction2 } from './mocks';
 
-jest.mock('../src/lib/config/auth');
+jest.mock('../src/lib/config/auth.js');
 
 // Definir los valores para el email y la contraseña
 // const email = 'test@example.com';
@@ -10,7 +10,7 @@ jest.mock('../src/lib/config/auth');
 test('authFunction2 resolves with a user object with valid parameters', async () => {
   expect.assertions(1);
   try {
-    const user = await authFunction2({ value: 'test@test.com' }, { value: 'password123' });
+    const user = await authFunction2({ value: 'email@email.com' }, { value: 'password123' });
     expect(user).toBeDefined();
   } catch (error) {
     throw new Error('The authFunction2 function should not reject with valid parameters');
@@ -20,7 +20,7 @@ test('createUserWithEmailAndPassword throws an error with invalid email and pass
   expect.assertions(1);
   try {
     // Llamar a la función authFunction2 con un email y una contraseña inválidos
-    await authFunction2('invalidEmail', 'invalidPassword');
+    await authFunction2('email', 'pass');
 
     // Si la función no devuelve ningún error, lanzar una excepción
     // eslint-disable-next-line max-len
