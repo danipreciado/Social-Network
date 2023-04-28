@@ -1,15 +1,14 @@
 /**
  * @jest-environment jsdom
  */
+
 import { home } from '../src/templates/home';
 import { signup } from '../src/templates/signUp';
+import { authFunction } from '../src/lib/config/auth';
 
-// authFunction = jest.fn();
-
-// const mockAuthFunction = jest.fn();
-// jest.mock('../src/lib/config/auth', () => ({
-//   authFunction: mockAuthFunction,
-// }));
+jest.mock('../src/lib/config/auth', () => ({
+  authFunction: jest.fn(),
+}));
 
 describe('home', () => {
   it('home debe ser una función', () => {
@@ -61,16 +60,27 @@ describe('signup', () => {
     expect(btnRegister).not.toBe(null);
   });
 
-  it('el botón de registrarse debe llamar a la authFunction cuando se hace click', async () => {
-    const authFunction = jest.fn();
+  it('debe navegar a SignUp al hacer click en el boton de ingresar', () => {
     const onNavigate = jest.fn();
-    const signupSection = signup();
-    const registerBtn = signupSection.querySelector('.btnRegister');
+    const signupSection = signup(onNavigate);
+    const signInLink = signupSection.querySelector('#link-signUp');
+    signInLink.click();
+    expect(onNavigate).toHaveBeenCalledWith('/signin');
+  });
+
+  it('authFunction debe ser llamado cuando se hace click en el botón de registrarse', () => {
+    const onNavigate = jest.fn();
+    const signupSection = signup(onNavigate);
+    const btnRegister = signupSection.querySelector('.btnRegister');
     const emailInput = signupSection.querySelector('#userEmail');
     const passwordInput = signupSection.querySelector('#userPassword');
     const emailError = signupSection.querySelector('#errorEmailMessage');
     const passwordError = signupSection.querySelector('#errorPassMessage');
-    registerBtn.click();
+
+    // Click the register button
+    btnRegister.click();
+
+    // Check that authFunction was called with the correct arguments
     expect(authFunction).toHaveBeenCalledWith(
       emailInput,
       passwordInput,
@@ -78,25 +88,5 @@ describe('signup', () => {
       emailError,
       passwordError,
     );
-  });
-  //   mockAuthFunction.mockResolvedValueOnce();
-  //   registerBtn.click();
-  //   await new Promise((resolve) => setTimeout(resolve, 1000));
-  //   expect(mockAuthFunction).toHaveBeenCalledWith(
-  //     emailInput.value,
-  //     passwordInput.value,
-  //     onNavigate,
-  //     emailError,
-  //     passwordError,
-  //   );
-  //   mockAuthFunction.mockRestore();
-  // });
-
-  it('debe navegar a SignUp al hacer click en el boton de ingresar', () => {
-    const onNavigate = jest.fn();
-    const signupSection = signup(onNavigate);
-    const signInLink = signupSection.querySelector('#link-signUp');
-    signInLink.click();
-    expect(onNavigate).toHaveBeenCalledWith('/signin');
   });
 });
