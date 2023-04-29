@@ -85,7 +85,81 @@
         width: 10vw;
     }
 
+    header{
+        padding: 0.3vw;
+    }
+    .hamburger {
+        display:none;
+    }
+    .logo-container{
+        flex-direction: row;
+    }
+    .logo-container span{
+        font-size: 3rem;
+    }
+    .wall-logo img{
+        object-fit: cover;
+        max-width: 10vw;
+        max-height: 25vh;
+    }
+    .profilePic img{
+        object-fit: cover;
+        max-width: 5vw;
+        height: auto;
+    }
+    .logo-container{
+        margin-top:4rem;
+    }
+    .container-wall{
+        display: flex;
+        align-items: center;
+    }
+    .your-post{
+        margin-left: 0;
+        width: 50vw;
+        height: 25vh;
+        padding: 1vw;
+    }
+    .post{
+        margin-left: 0;
+        width: 50vw;
+        height: 40vh;
+        padding: 1vw;
+    }
+
+    .your-post input, .post-content p{
+        width: 44vw;
+        height: 10;
+        font-size: 1.7rem;
+    }
+    .your-post label{
+        display: flex;
+        font-size: 2.2rem;
+        margin-top:1vh ;
+    }
+    .your-post button, .btnComment {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 14vw;
+        height: 7vh;
+        margin-top: 3vh;
+        margin-left: 69%;
+        font-size: 2rem;
+        gap:0.5vw;
+    }
+    .btnyour-post img, .btnComment img{
+        object-fit: cover;
+        max-width: 2vw;
+        height: auto;
+    }
+    .post-header img{
+        object-fit: cover;
+        max-width: 5vw;
+        height: auto;
+    }
 
 
-   
+    
+
 }
