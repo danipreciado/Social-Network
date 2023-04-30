@@ -5,7 +5,7 @@
     }
 
     .home-image img{
-        width: 35vw;
+        width: 30vw;
         height: 44vh;
         
     }
@@ -99,6 +99,7 @@
     }
     .wall-logo img{
         object-fit: cover;
+        margin-top: -5vw; 
         max-width: 10vw;
         max-height: 25vh;
     }
@@ -117,14 +118,14 @@
     .your-post{
         margin-left: 0;
         width: 50vw;
-        height: 25vh;
+        height: 30vh;
         padding: 1vw;
     }
     .post{
         margin-left: 0;
         width: 50vw;
-        height: 40vh;
-        padding: 1vw;
+        height: 35vh;
+        padding: 1vw 0 0 0;
     }
 
     .your-post input, .post-content p{
@@ -132,18 +133,45 @@
         height: 10;
         font-size: 1.7rem;
     }
+    .post-content p{
+        margin-left:1vw;
+    }
+    .post-content{
+        border-radius: 10px;
+    }
     .your-post label{
         display: flex;
         font-size: 2.2rem;
-        margin-top:1vh ;
+        margin-top:1vh;
+        
     }
-    .your-post button, .btnComment {
+    .containerbutton {
+        display: flex;
+        width: 44vw;
+        height: 10vh;
+        justify-content: end;
+    }
+    .form-yourpost{
+        width: 44vw;
+        margin-bottom: 15vh;
+    
+    }
+    .your-post button {
         display: flex;
         justify-content: center;
         align-items: center;
         width: 14vw;
         height: 7vh;
-        margin-top: 3vh;
+        margin-left: 69%;
+        font-size: 2rem;
+        gap:0.5vw;
+    }
+    .btnComment {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 14vw;
+        height: 7vh;
         margin-left: 69%;
         font-size: 2rem;
         gap:0.5vw;
@@ -155,11 +183,46 @@
     }
     .post-header img{
         object-fit: cover;
+        margin-top:-3vh;
         max-width: 5vw;
         height: auto;
     }
-
-
-    
-
+    .post-header p{
+        font-size: 1.6rem;
+     }
+    .post-header {
+    display: flex;
+    margin-left: 0;
+    gap:1rem;
+    width: 44vw;
+    }
+    .post-bottom{
+        display: flex;
+        flex-direction: row;
+        width: 44vw;
+        justify-content: space-between;;
+        align-items: center;
+        margin-top: 3vh;
+    }
+    .reactions {
+        align-items: center;
+        gap:0.3vw;
+    }
+    .post button {
+        margin-top: 0;
+        margin-left: 0;
+    }
+    .reactions img{
+        object-fit: cover;
+        margin-top:-3vh;
+        max-width: 3vw;
+        height: auto;
+    }
+    .cat404{
+        margin-right:10vw;
+    }
+    .dog404 {
+        margin-left:10vw;
+        margin-top:-25vh;
+    }
 }

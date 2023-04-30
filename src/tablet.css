@@ -57,43 +57,27 @@
     }
 
     .description-pageNotFound h1{
-        font-size: 6.5rem;
         margin: 4vh 11vw;
         text-align: center;
         
       }
     
       .btn-pageNotfound{
-       
+        margin-top:-7vh;
         padding: 1rem;
         border-radius: 20px;
         width: 22rem;
         box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
         font-size: 2.5rem;
       }
-    
+      .dog404{
+        margin-top:-10vh;
+      }
       .container-btn_pageNotFound{
         display: flex;
         flex-direction: column;
         align-items: center;
         margin: 7%;
-      }
-    
-      .cat404{
-        position: relative;
-        left: 50vw;
-      }
-    
-      .cat404 img{
-        margin-top: 2vh;
-        margin-right: 3vw;
-        width: 45vw;
-        height: 30vh;
-      }
-    
-      .dog404 img{
-        width: 38vw;
-        height: 27vh;
       }
     
     .verification-container{
