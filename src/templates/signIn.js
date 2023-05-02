@@ -3,6 +3,7 @@ import { googleLogin, login } from '../lib/config/auth';
 export const signIn = (onNavigate) => {
   const signInSection = document.createElement('section');
   const articleForm = document.createElement('article');
+  const closeBtn = document.createElement('button');
   const signInForm = document.createElement('form');
   const emailLabel = document.createElement('label');
   const emailInput = document.createElement('input');
@@ -19,6 +20,7 @@ export const signIn = (onNavigate) => {
 
   articleForm.classList.add('container-form');
   signInSection.classList.add('signIn-section');
+  closeBtn.classList.add('close-signIn');
   signInForm.classList.add('signIn-form');
   emailLabel.classList.add('form');
   spanErrorEmail.classList.add('errormessage');
@@ -27,7 +29,7 @@ export const signIn = (onNavigate) => {
   btnLogin.classList.add('btnLogin');
   btnGoogle.classList.add('btnGoogle');
   passwordLabel.classList.add('form');
-  containerLinkSignIn.classList.add('btn-container_signIn');
+  containerLinkSignIn.classList.add('btn-container_link');
 
   emailInput.setAttribute('type', 'email');
   emailInput.setAttribute('id', 'loginUserEmail');
@@ -45,6 +47,7 @@ export const signIn = (onNavigate) => {
   btnGoogle.textContent = 'Ingresa con Google';
   askingText.textContent = '¿No tienes cuenta? ';
   linkToSignUp.textContent = 'Registrate aquí';
+  closeBtn.innerHTML = '&times;';
 
   btnLogin.addEventListener('click', () => {
     login(onNavigate, emailInput, passwordInput, spanErrorEmail, spanErrorPass);
@@ -58,6 +61,11 @@ export const signIn = (onNavigate) => {
     onNavigate('/signup');
   });
 
+  closeBtn.addEventListener('click', () => {
+    onNavigate('/');
+  });
+
+  signInForm.appendChild(closeBtn);
   signInForm.appendChild(emailLabel);
   signInForm.appendChild(emailInput);
   signInForm.appendChild(spanErrorEmail);
