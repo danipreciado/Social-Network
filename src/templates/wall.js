@@ -18,6 +18,7 @@ export const wall = () => {
   const label = document.createElement('label');
   const br = document.createElement('br');
   const input = document.createElement('input');
+  const containerbutton = document.createElement('article');
   const button = document.createElement('button');
   const pawnImage = document.createElement('img');
   const postsSection = document.createElement('section');
@@ -45,7 +46,9 @@ export const wall = () => {
   main.classList.add('container-wall');
   postInputSection.classList.add('post-input');
   yourPostArticle.classList.add('your-post');
+  form.classList.add('form-yourpost');
   input.classList.add('your-postInput');
+  containerbutton.classList.add('containerbutton');
   button.classList.add('btnyour-post');
   postsSection.classList.add('posts-section');
   post1.className = 'post';
@@ -99,7 +102,8 @@ export const wall = () => {
   form.appendChild(br);
   form.appendChild(input);
   form.appendChild(br.cloneNode());
-  form.appendChild(button);
+  containerbutton.appendChild(button);
+  form.appendChild(containerbutton);
   yourPostArticle.appendChild(form);
   postInputSection.appendChild(yourPostArticle);
   main.appendChild(postInputSection);
