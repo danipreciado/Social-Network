@@ -138,6 +138,7 @@ h2{
 
 .btn-container_signIn{
     display: flex;
+    flex-direction: row;
     margin-top: -3rem;
     gap: 1rem;
 }
@@ -250,7 +251,7 @@ h2{
   margin-top: 15rem;
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly; 
+  justify-content: space-between; 
   align-items: center;
   font-size: 1.5rem;
   
@@ -259,19 +260,19 @@ h2{
 .signUp-form label {
   display: flex;
   align-items: flex-start;
-  font-size: 1.5rem;
+  font-size: 1.8rem;
 }
 
 .signUp-form input{
     width: 68vw;
-    height: 2rem;
+    height: 2.5rem;
     display: flex;
     border-radius: 20px;
     border: none;
 }
 
 
-.signUp-form button{
+.signUp-form .btnRegister{
     
     text-decoration: none;
     border: none;
@@ -296,7 +297,7 @@ h2{
   
     background-color: #6A4C93;
     margin: 15% auto; /* 15% from the top and centered */
-    padding: 20px;
+    padding: 28px;
     border: 1px solid #888;
     width: 70vw; /* Could be more or less, depending on screen size */
     height: 50%;
@@ -304,28 +305,38 @@ h2{
     margin-top: 15rem;
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly; 
+    justify-content: space-between; 
     align-items: center;
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     color: #F8FFE5;
   }
   
   .signIn-form label {
     display: flex;
     align-items: flex-start;
-    font-size: 1.5rem;
+    font-size: 1.8rem;
   }
   
   .signIn-form input{
       width: 68vw;
-      height: 4vh;
+      height: 4.5vh;
       display: flex;
       border-radius: 20px;
       border: none;
   }
   
+  .close-signIn {
+    color: #6A4C93;
+    position: relative;
+    left: 40%;
+    font-size: 28px;
+    font-weight: bold;
+    background-color: none;
+    border-style: none;
+    border-radius: 50px;
+  }
   
-  .signIn-form button{
+  .btnGoogle{
       
       text-decoration: none;
       border: none;
@@ -337,24 +348,41 @@ h2{
       width: 32vw;
       box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
       font-weight: 600;
+      font-size: 1.5rem;
   }
+  .btnLogin{
+      
+    text-decoration: none;
+    border: none;
+    background-color: #1B9AAA;
+    color: #F8FFE5;
+    padding: 0.7rem;
+    border-radius: 1rem;
+    height: 7vh;
+    width: 32vw;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    font-weight: 600;
+    font-size: 1.5rem
+}
 
 /* The Close Button */
 .close {
-    color: #F8FFE5;
+    color: #6A4C93;
     position: relative;
     left: 40%;
     font-size: 28px;
     font-weight: bold;
-    
+    background-color: none;
+    border-style: none;
+    border-radius: 50px;
   }
   
-  .close:hover,
+  /* .close:hover,
   .close:focus {
     color: #6A4C93;
     text-decoration: none;
     cursor: pointer;
-  }
+  } */
 
 
   .errormessage{

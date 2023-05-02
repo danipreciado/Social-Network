@@ -3,6 +3,7 @@ import { authFunction } from '../lib/config/auth';
 export const signup = (onNavigate) => {
   const signupSection = document.createElement('section');
   const signupForm = document.createElement('form');
+  const closeBtn = document.createElement('button');
   const userLabel = document.createElement('label');
   const userInput = document.createElement('input');
   const emailLabel = document.createElement('label');
@@ -18,6 +19,7 @@ export const signup = (onNavigate) => {
 
   signupSection.classList.add('signUp-section');
   signupForm.classList.add('signUp-form');
+  closeBtn.classList.add('close');
   userLabel.classList.add('form');
   emailLabel.classList.add('form');
   emailError.classList.add('errormessage');
@@ -42,6 +44,11 @@ export const signup = (onNavigate) => {
   registerBtn.textContent = 'Registrarse';
   hasAccount.textContent = '¿Ya tienes cuenta?';
   hasAccountLink.textContent = 'Ingresa aquí';
+  closeBtn.innerHTML = '&times;';
+
+  closeBtn.addEventListener('click', () => {
+    onNavigate('/');
+  });
 
   registerBtn.addEventListener('click', () => {
     authFunction(emailInput, passwordInput, onNavigate, emailError, passwordError);
@@ -53,6 +60,7 @@ export const signup = (onNavigate) => {
 
   returnArticle.appendChild(hasAccount);
   returnArticle.appendChild(hasAccountLink);
+  signupForm.appendChild(closeBtn);
   signupForm.appendChild(userLabel);
   signupForm.appendChild(userInput);
   signupForm.appendChild(emailLabel);
