@@ -93,6 +93,7 @@
     }
     .logo-container{
         flex-direction: row;
+        margin-top:4rem;
     }
     .logo-container span{
         font-size: 3rem;
@@ -107,9 +108,6 @@
         object-fit: cover;
         max-width: 5vw;
         height: auto;
-    }
-    .logo-container{
-        margin-top:4rem;
     }
     .container-wall{
         display: flex;
@@ -191,16 +189,16 @@
         font-size: 1.6rem;
      }
     .post-header {
-    display: flex;
-    margin-left: 0;
-    gap:1rem;
-    width: 44vw;
+        display: flex;
+        margin-left: 0;
+        gap:1rem;
+        width: 44vw;
     }
     .post-bottom{
         display: flex;
         flex-direction: row;
         width: 44vw;
-        justify-content: space-between;;
+        justify-content: space-between;
         align-items: center;
         margin-top: 3vh;
     }
