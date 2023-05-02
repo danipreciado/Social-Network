@@ -5,6 +5,7 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   sendEmailVerification,
+  updateProfile,
 } from 'firebase/auth';
 import { auth } from './firebaseconfig';
 
@@ -24,7 +25,14 @@ function errorMessages(errorCode, emailError, passwordError) {
   }
 }
 
-export function authFunction(userEmail, userPassword, onNavigate, emailError, passwordError) {
+export function authFunction(
+  userEmail,
+  userPassword,
+  onNavigate,
+  emailError,
+  passwordError,
+  input,
+) {
   const email = userEmail.value;
   const password = userPassword.value;
   emailError.textContent = '';
@@ -34,8 +42,11 @@ export function authFunction(userEmail, userPassword, onNavigate, emailError, pa
     .then((userCredential) => {
       // eslint-disable-next-line no-unused-vars
       const user = userCredential.user;
-      //  onNavigate('/verification');
-      return sendEmailVerification(user);
+      const username = input.value;
+      sendEmailVerification(user);
+      updateProfile(auth.currentUser, {
+        displayName: username, // Aquí se especifica el valor para la propiedad displayName
+      });
     })
     .then(() => {
       // Email verification sent successfully
