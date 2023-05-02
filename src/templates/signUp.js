@@ -60,9 +60,8 @@ export const signup = (onNavigate) => {
   btnGoogle.appendChild(iconGoogle);
   btnGoogle.appendChild(document.createTextNode('Ingresa con Google'));
 
-
   registerBtn.addEventListener('click', () => {
-    authFunction(emailInput, passwordInput, onNavigate, emailError, passwordError);
+    authFunction(emailInput, passwordInput, onNavigate, emailError, passwordError, userInput);
   });
 
   hasAccountLink.addEventListener('click', () => {
