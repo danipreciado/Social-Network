@@ -215,7 +215,7 @@ export const wall = () => {
         postHeader.appendChild(userImage);
 
         const userNameElem = document.createElement('p');
-        userNameElem.textContent = 'Usuarie escribió: ';
+        userNameElem.textContent = `${pos.userid} escribió: `;
         postHeader.appendChild(userNameElem);
 
         const postContent = document.createElement('div');

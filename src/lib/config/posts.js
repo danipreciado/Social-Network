@@ -1,5 +1,5 @@
 import { addDoc, getDocs, serverTimestamp } from 'firebase/firestore';
-import { colRef } from './firebaseconfig';
+import { colRef, auth } from './firebaseconfig';
 
 getDocs(colRef)
   .then((snapshot) => {
@@ -14,9 +14,11 @@ getDocs(colRef)
   });
 
 export function posting(input, form) {
+  const userId = auth.currentUser.displayName;
   addDoc(colRef, {
     text: input.value,
     timestamp: serverTimestamp(),
+    userid: userId,
   })
     .then(() => {
       form.reset();
