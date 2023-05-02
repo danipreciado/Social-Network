@@ -22,6 +22,7 @@ const verification = (onNavigate) => {
   const articleSignInLink = document.createElement('article');
   const spanSignInAsk = document.createElement('span');
   const spanSignInLink = document.createElement('span');
+  const deg = document.createElement('article');
 
   verificationSection.classList.add('verification-section');
   petsImages.classList.add('pets-images');
@@ -45,6 +46,7 @@ const verification = (onNavigate) => {
   articleSignInLink.classList.add('signIn-link');
   spanSignInAsk.classList.add('verification');
   spanSignInLink.classList.add('signIn');
+  deg.classList.add('deg');
 
   perrito1.setAttribute('src', 'images/perrito1.png');
   perrito1.setAttribute('alt', 'perrito1');
@@ -69,7 +71,7 @@ const verification = (onNavigate) => {
   imgGirlCat.setAttribute('src', 'images/girl-cat-reading.png');
   imgGirlCat.setAttribute('alt', 'girl-cat-reading');
 
-  spanThanks.innerHTML = '¡Gracias por unirte a <span class="peta">Peta</span><span class="gram">gram</span>, la red social para mascotas!.';
+  spanThanks.innerHTML = '¡Gracias por unirte a <span class="peta">Peta</span><span class="gram">gram</span>, la red social para mascotas!';
   spanVerify.textContent = 'Necesitamos que verifiques tu correo electronico para completar tu registro';
   spanSignInAsk.textContent = '¿Ya verificaste tu cuenta?';
   spanSignInLink.textContent = 'Ingresa aquí';
@@ -100,6 +102,7 @@ const verification = (onNavigate) => {
   verificationSection.appendChild(petsImages);
   verificationSection.appendChild(articleLogo);
   verificationSection.appendChild(articleVerificationContainer);
+  verificationSection.appendChild(deg);
 
   return verificationSection;
 };
