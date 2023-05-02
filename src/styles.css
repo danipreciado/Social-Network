@@ -272,8 +272,12 @@ h2{
 }
 
 
-.signUp-form .btnRegister{
-    
+
+.signUp-form button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
     text-decoration: none;
     border: none;
     background-color: #6A4C93;
@@ -282,6 +286,15 @@ h2{
     border-radius: 1rem;
     width: 12rem;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.signUp-form .btnGoogle{
+    width: 12rem;
+    text-align: center;
+
+}
+.btnGoogle img{
+    width: 2rem;
+    
 }
 
 .return-home{
@@ -418,20 +431,24 @@ h2{
   }
 
   .cat404{
-    position: relative;
-    left: 50vw;
+    display: flex;
+    justify-content: end;
+    margin:2vw;
   }
-
+  .dog404{
+    display: flex;
+    justify-content: start;
+    margin:2vw;
+  }
   .cat404 img{
-    margin-top: 2vh;
-    margin-right: 3vw;
-    width: 48vw;
-    height: 27vh;
+    object-fit: cover;
+    min-width: 20vw;
+    max-width: 40vw;
   }
-
   .dog404 img{
-    width: 40vw;
-    height: 29vh;
+    object-fit: cover;
+    min-width: 10vw;
+    max-width: 30vw;
   }
   header{
     display:flex;
@@ -440,20 +457,21 @@ h2{
     justify-content: space-between;
     margin-top: 2rem;
   }
-  .profilePic img{
-    width: 15vw;
-    height: 8vh;
-    margin-right: 2rem;
-  }
+  .profilePic img {
+    object-fit: cover;
+    max-width: 13vw;
+    max-height: 10vh;
+}
 
   .profilePic{
     margin-top: 1rem;
   }
 
   .wall-logo img{
-    width: 25vw;
-    height: 15vh;
-    margin-top: -5vw;
+    /* margin-top: -5vw; */
+    object-fit: cover;
+    max-width: 25vw;
+    max-height: 15vh;
   }
  /*.container-wall main{
     display: flex;
@@ -462,8 +480,9 @@ h2{
     align-items: center;
   }*/
   .hamburger img{
-    width: 10vw;
-    height: 5vh;
+    object-fit: cover;
+    max-width: 10vw;
+    max-height: 5vh;
   }
   .hamburger {
     display: flex;
@@ -471,14 +490,39 @@ h2{
     margin-left: 2rem;
   }
   .user-image{
-    width: 10vw;
-    margin-bottom: 1rem;
+    object-fit: cover;
+    max-width: 13vw;
+    max-height: 10vh;
  }
 
  .btnyour-post img{
     width: 2.5vw;
  }
- .btnyour-post, .btnComment{
+ .btnyour-post{
+    text-decoration: none;
+    border: none;
+    color: #F8FFE5;
+    padding: 0.7rem;
+    border-radius: 1rem;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    background-color: #1B9AAA;
+    margin-top: 2vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 25vw;
+    height: 5vh;
+    font-size: 1.3rem;
+    gap: 0.5vw;   
+ }
+ .btnComment {
+    display: flex;
+    background-color: #6A4C93;
+    justify-content: center;
+    align-items: center;
+    height: 5vh;
+    font-size: 1.3rem;
+    gap:0.5vw;
     text-decoration: none;
     border: none;
     color: #F8FFE5;
@@ -486,16 +530,14 @@ h2{
     border-radius: 1rem;
     width: 12rem;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    font-size: 1rem;
- }
- .btnyour-post{
-   background-color: #1B9AAA;
- }
- .btnComment{
-    background-color: #6A4C93;
- }
+}
+
  .btnComment img{
     width: 2.5vw;
+ }
+ .post-input{
+    display:flex;
+    justify-content: center;
  }
  .your-post{
     background-color:#FFCA3A;
@@ -505,48 +547,50 @@ h2{
     display:flex;
     justify-content: center;
     align-items: center;
-    margin-left: 3.2rem;
+    
  }
 
  .your-postInput{
-    font-size: 1.3rem;
- }
- 
- .your-post input{
     width: 70vw;
     height: 10vh;
     border: none;
     border-radius: 10px;
+    font-size: 1.3rem;
  }
+
  .post-content p{
     width: 70vw;
     height: 10vh;
     border: none;
-    border-radius: 10px;
     margin-top:1rem;
     font-size: 1.5rem;
+ }
+ .post-content{
+    border-radius: 10px;
+    background-color: #F8FFE5; 
  }
  .your-post label{
     color:#6A4C93 ;
     font-size: 1.5rem;
 
  }
+ .form-yourpost{
+    width: 70vw;
+    height: 10vh;
+    margin-bottom: 10vh;
+ }
  
- .your-post button{
-    margin-top:2vh;
-    margin-left: 35vw;
+ .containerbutton{
+    display: flex;
+    width: 70vw;
+    justify-content: end;
  }
- .post button{
-    margin-top:-4vh;
-    margin-left: 35vw;
- }
- .reactions img{
-    width: 5vw;
- }
+ 
  .post{
     background-color:#D9D9D9;
     width: 80vw;
-    height: 33vh;
+    min-height: 33vh;
+    max-height: 35vh;
     border-radius: 20px;
     display:flex;
     align-items: center;
@@ -556,19 +600,43 @@ h2{
     display:flex;
     flex-direction: row;
     margin-top:2vh;
+    align-items: center;
+    gap:0.3vw;
  }
  .post-header{
-    display:flex;
+    display: flex;
     flex-direction: row;
-    margin-left:-25vw;
-    margin-top:3vh;
+    margin-left: -25vw;
+    margin-top: 3vh;
     align-items: center;
+    gap: 1rem;
+    width: 44vw;
     
  }
-
- .post-content{
-    background-color: #F8FFE5;
+ .post-header p{
+    font-size: 1.2rem;
  }
+ .post-bottom{
+    display: flex;
+    flex-direction: row;
+    width: 70vw;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 2vh;
+}
+.reactions p {
+    font-size: 1.3rem;
+}
+.post button {
+    margin-top: 0;
+    margin-left: 0;
+}
+.reactions img{
+    object-fit: cover;
+    margin-top:-3vh;
+    max-width: 5vw;
+    height: auto;
+}
 .container-wall{
     display: flex;
     flex-direction: column;

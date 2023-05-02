@@ -17,6 +17,10 @@ function errorMessages(errorCode, emailError, passwordError) {
     emailError.textContent = 'Escribe un correo valido';
   } else if (errorCode === 'auth/missing-password') {
     passwordError.textContent = 'Escribe una contraseña valida';
+  } else if (errorCode === 'auth/user-not-found') {
+    emailError.textContent = 'Email no registrado';
+  } else if (errorCode === 'auth/wrong-password') {
+    passwordError.textContent = 'Contraseña incorrecta';
   }
 }
 
@@ -44,10 +48,11 @@ export function authFunction(userEmail, userPassword, onNavigate, emailError, pa
     });
 }
 
-export const login = (onNavigate, userEmail, userPassword) => {
-  console.log('esta adentro');
+export const login = (onNavigate, userEmail, userPassword, emailError, passwordError) => {
   const email = userEmail.value;
   const password = userPassword.value;
+  emailError.textContent = '';
+  passwordError.textContent = '';
   signInWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
     // Signed in
@@ -57,7 +62,7 @@ export const login = (onNavigate, userEmail, userPassword) => {
     })
     .catch((error) => {
       const errorCode = error.code;
-      const errorMessage = error.message;
+      errorMessages(errorCode, emailError, passwordError);
     });
 };
 

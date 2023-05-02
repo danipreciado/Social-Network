@@ -1,4 +1,4 @@
-import { authFunction } from '../lib/config/auth';
+import { authFunction, googleLogin } from '../lib/config/auth';
 
 export const signup = (onNavigate) => {
   const signupSection = document.createElement('section');
@@ -16,6 +16,8 @@ export const signup = (onNavigate) => {
   const returnArticle = document.createElement('article');
   const hasAccount = document.createElement('p');
   const hasAccountLink = document.createElement('a');
+  const btnGoogle = document.createElement('button');
+  const iconGoogle = document.createElement('img');
 
   signupSection.classList.add('signUp-section');
   signupForm.classList.add('signUp-form');
@@ -27,6 +29,7 @@ export const signup = (onNavigate) => {
   passwordError.classList.add('errormessage');
   registerBtn.classList.add('btnRegister');
   returnArticle.classList.add('return-home');
+  btnGoogle.classList.add('btnGoogle');
 
   userInput.setAttribute('type', 'text');
   emailInput.setAttribute('type', 'email');
@@ -37,6 +40,9 @@ export const signup = (onNavigate) => {
   passwordError.setAttribute('id', 'errorPassMessage');
   hasAccountLink.setAttribute('id', 'link-signUp');
   registerBtn.setAttribute('type', 'button');
+  btnGoogle.setAttribute('type', 'button');
+  iconGoogle.setAttribute('alt', 'Google icon');
+  iconGoogle.setAttribute('src', 'images/googleIcon.png');
 
   userLabel.textContent = 'Nombre de Usuario';
   emailLabel.textContent = 'Correo Electronico';
@@ -44,11 +50,16 @@ export const signup = (onNavigate) => {
   registerBtn.textContent = 'Registrarse';
   hasAccount.textContent = '¿Ya tienes cuenta?';
   hasAccountLink.textContent = 'Ingresa aquí';
+
   closeBtn.innerHTML = '&times;';
 
   closeBtn.addEventListener('click', () => {
     onNavigate('/');
   });
+
+  btnGoogle.appendChild(iconGoogle);
+  btnGoogle.appendChild(document.createTextNode('Ingresa con Google'));
+
 
   registerBtn.addEventListener('click', () => {
     authFunction(emailInput, passwordInput, onNavigate, emailError, passwordError);
@@ -56,6 +67,10 @@ export const signup = (onNavigate) => {
 
   hasAccountLink.addEventListener('click', () => {
     onNavigate('/signin');
+  });
+
+  btnGoogle.addEventListener('click', () => {
+    googleLogin(onNavigate);
   });
 
   returnArticle.appendChild(hasAccount);
@@ -70,6 +85,7 @@ export const signup = (onNavigate) => {
   signupForm.appendChild(passwordInput);
   signupForm.appendChild(passwordError);
   signupForm.appendChild(registerBtn);
+  signupForm.appendChild(btnGoogle);
   signupForm.appendChild(returnArticle);
 
   signupSection.appendChild(signupForm);
