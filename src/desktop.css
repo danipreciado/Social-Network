@@ -13,23 +13,21 @@
     .home-description{
         padding: 1%;
     }
-     
+    
     .verification-section{
-        display: grid;
-        
-        grid-gap: 1rem;
+        display: flex;
+        flex-direction: row;
+        background: linear-gradient(to right, rgba(6, 214, 160, 0.14) 50%, #F8FFE5 50%);
+       
         align-items: center;
-        width: 50vw;
+        width: 100vw;
     }
     .pets-images{
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        grid-template-rows: repeat(3, 1fr);
+        
         justify-items: center;
-        grid-column: 1 / 2;
-        margin-left: 10px;
-        margin-right: 60px;
         max-height: 100vh;
+       /*  margin-left: 10rem; */
+        gap: 2rem;
     }
     .pets-images img{
         width: 12vw;
@@ -50,39 +48,51 @@
     }
   
     .verification-container{
-        grid-column: 1 / 2;
+         
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-left: 50vw;
         width: 50vw;
-        margin-top: 60rem;
-        max-height: 20vh;
+        /* max-height: 20vh; */
 
     }
 
     .verification-desktop{
-        display: grid;
+        display: block;
         width: 30vw;
-        grid-column: 2 / 3;
-        margin-left: 80rem;
-        margin-top: -50rem;
-        text-align: center;
+        margin-top: 20vh;
+        
+
     }
+ 
     .verification-message{
-        grid-column: 2/3;
-        margin-left: 75rem;
-        width: 40vw;
-        margin-top: 5rem;
+        width:45vw; 
         font-size: 3rem;
+        margin: 5rem 3rem;
+       
     }
+
    
     .verify-message{
         font-size: 2rem;
+       
     }
     .signIn-link{
         font-size: 2rem;
     }
     .verification-logo img{
-        margin-bottom: 80rem;
-        margin-left: 68rem;
-        width: 10vw;
+       width: 10vw;
+       margin-top: 60vh;
+       margin-right: 42vw;
+    }
+    .deg {
+        background: linear-gradient(180deg, rgba(255, 229, 244, 0) 0%, #F8FFE5 26.89%);
+        width: 50vw;
+        height: 10vw;
+        position:absolute;
+        margin-top: 80vh;
+        
     }
 
 

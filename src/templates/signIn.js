@@ -21,7 +21,8 @@ export const signIn = (onNavigate) => {
   signInSection.classList.add('signIn-section');
   signInForm.classList.add('signIn-form');
   emailLabel.classList.add('form');
-  spanErrorEmail.classList.add('errorMessage');
+  spanErrorEmail.classList.add('errormessage');
+  spanErrorPass.classList.add('errormessage');
   btnContainerSignUp.classList.add('btn-container_signIn');
   btnLogin.classList.add('btnLogin');
   btnGoogle.classList.add('btnGoogle');
@@ -46,7 +47,7 @@ export const signIn = (onNavigate) => {
   linkToSignUp.textContent = 'Registrate aquí';
 
   btnLogin.addEventListener('click', () => {
-    login(onNavigate, emailInput, passwordInput);
+    login(onNavigate, emailInput, passwordInput, spanErrorEmail, spanErrorPass);
   });
 
   btnGoogle.addEventListener('click', () => {
@@ -59,9 +60,9 @@ export const signIn = (onNavigate) => {
 
   signInForm.appendChild(emailLabel);
   signInForm.appendChild(emailInput);
+  signInForm.appendChild(spanErrorEmail);
   signInForm.appendChild(passwordLabel);
   signInForm.appendChild(passwordInput);
-  signInForm.appendChild(spanErrorEmail);
   signInForm.appendChild(spanErrorPass);
   btnContainerSignUp.appendChild(btnGoogle);
   btnContainerSignUp.appendChild(btnLogin);
