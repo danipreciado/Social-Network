@@ -256,7 +256,8 @@ export const wall = () => {
         commentBtnIcon.src = 'images/post-pawn.png';
         commentBtnIcon.alt = 'comment';
         commentBtn.appendChild(commentBtnIcon);
-
+        const btnText = document.createTextNode('Comentar');
+        commentBtn.appendChild(btnText);
         postBottom.appendChild(reactions);
         postBottom.appendChild(commentBtn);
 
