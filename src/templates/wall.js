@@ -1,3 +1,7 @@
+import { getDocs, query, orderBy } from 'firebase/firestore';
+import { colRef } from '../lib/config/firebaseconfig';
+import { posting } from '../lib/config/posts';
+
 export const wall = () => {
   const wallSection = document.createElement('section');
   const header = document.createElement('header');
@@ -180,5 +184,92 @@ export const wall = () => {
   main.appendChild(postsSection);
   wallSection.append(header, main);
 
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const postText = input.value.trim();
+    if (postText !== '') {
+      posting(input, form);
+    }
+  });
+
+  const q = query(colRef, orderBy('timestamp', 'desc'));
+  getDocs(q)
+    .then((snapshot) => {
+      const postsArr = [];
+      snapshot.docs.forEach((doc) => {
+        postsArr.push({ ...doc.data(), id: doc.id });
+      });
+
+      // Create HTML elements for each post
+      postsArr.forEach((pos) => {
+        const post = document.createElement('article');
+        post.className = 'post';
+
+        const postHeader = document.createElement('div');
+        postHeader.className = 'post-header';
+
+        const userImage = document.createElement('img');
+        userImage.className = 'user-image';
+        userImage.src = 'images/user1.png';
+        userImage.alt = 'profile picture';
+        postHeader.appendChild(userImage);
+
+        const userNameElem = document.createElement('p');
+        userNameElem.textContent = 'Usuarie escribió: ';
+        postHeader.appendChild(userNameElem);
+
+        const postContent = document.createElement('div');
+        postContent.className = 'post-content';
+
+        const postText = document.createElement('p');
+        postContent.appendChild(postText);
+
+        const postBottom = document.createElement('div');
+        postBottom.className = 'post-bottom';
+
+        const reactions = document.createElement('div');
+        reactions.className = 'reactions';
+
+        const dogReaction = document.createElement('img');
+        dogReaction.src = 'images/dog.png';
+        dogReaction.alt = 'dog reaction';
+        reactions.appendChild(dogReaction);
+
+        // const dogReactionCount = document.createElement('p');
+        // dogReactionCount.textContent = dogCount.toString();
+        // reactions.appendChild(dogReactionCount);
+
+        const catReaction = document.createElement('img');
+        catReaction.src = 'images/cat.png';
+        catReaction.alt = 'cat reaction';
+        reactions.appendChild(catReaction);
+
+        // const catReactionCount = document.createElement('p');
+        // catReactionCount.textContent = catCount.toString();
+        // reactions.appendChild(catReactionCount);
+
+        const commentBtn = document.createElement('button');
+        commentBtn.className = 'btnComment';
+        commentBtn.type = 'button';
+
+        const commentBtnIcon = document.createElement('img');
+        commentBtnIcon.src = 'images/post-pawn.png';
+        commentBtnIcon.alt = 'comment';
+        commentBtn.appendChild(commentBtnIcon);
+
+        postBottom.appendChild(reactions);
+        postBottom.appendChild(commentBtn);
+
+        post.appendChild(postHeader);
+        postText.textContent = pos.text;
+        post.appendChild(postContent);
+        post.appendChild(postBottom);
+
+        postsSection.appendChild(post);
+      });
+    })
+    .catch((err) => {
+      console.log(err.message);
+    });
   return wallSection;
 };
