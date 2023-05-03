@@ -20,6 +20,14 @@ a{
     color:#FFCA3A;
 }
 
+a:hover{
+    cursor: pointer;
+}
+
+button:hover{
+    cursor: pointer;
+}
+
 .home-section{
     background-color: #F8FFE5;
     position: relative;
@@ -136,10 +144,17 @@ h2{
     gap: 4rem;
 }
 
-.btn-container_signIn{
+.btn-container_link{
     display: flex;
     flex-direction: row;
-    margin-top: -3rem;
+    gap: 1.5rem;
+}
+
+
+.btn-container_signIn{
+    display: flex;
+    flex-direction: column;
+    margin-top: -1rem;
     gap: 1rem;
 }
 
@@ -265,7 +280,7 @@ h2{
 
 .signUp-form input{
     width: 68vw;
-    height: 2.5rem;
+    height: 3.5rem;
     display: flex;
     border-radius: 20px;
     border: none;
@@ -273,7 +288,7 @@ h2{
 
 
 
-.signUp-form button{
+.signUp-form .btnGoogle{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -296,13 +311,27 @@ h2{
     width: 2rem;
     
 }
+.btnGoogle{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    text-decoration: none;
+    border: none;
+    background-color: #6A4C93;
+    color: #F8FFE5;
+    padding: 0.7rem;
+    border-radius: 1rem;
+    width: 12rem;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
 
 .return-home{
     margin-top: 1rem;
     font-size: 1.5rem;
     display: flex;
-    flex-direction: column;
-    gap: 1rem;
+    flex-direction: row;
+    gap: 1.5rem;
     
 }
 
@@ -332,7 +361,7 @@ h2{
   
   .signIn-form input{
       width: 68vw;
-      height: 4.5vh;
+      height: 3.8rem;
       display: flex;
       border-radius: 20px;
       border: none;
@@ -344,9 +373,24 @@ h2{
     left: 40%;
     font-size: 28px;
     font-weight: bold;
-    background-color: none;
+    background-color: #FFCA3A;
     border-style: none;
-    border-radius: 50px;
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 50%;
+  }
+
+  .close-signUp {
+    color: #1B9AAA;
+    position: relative;
+    left: 40%;
+    font-size: 28px;
+    font-weight: bold;
+    background-color: #FFCA3A;
+    border-style: none;
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 50%;
   }
   
   .btnGoogle{
@@ -357,8 +401,8 @@ h2{
       color: #F8FFE5;
       padding: 0.7rem;
       border-radius: 1rem;
-      height: 7vh;
-      width: 32vw;
+      height: 6vh;
+      width: 12rem;
       box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
       font-weight: 600;
       font-size: 1.5rem;
@@ -370,12 +414,15 @@ h2{
     background-color: #1B9AAA;
     color: #F8FFE5;
     padding: 0.7rem;
+    margin-top: -2rem;
+    margin-bottom: 2rem;
     border-radius: 1rem;
-    height: 7vh;
-    width: 32vw;
+    height: 4vh;
+    width: 12rem;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     font-weight: 600;
     font-size: 1.5rem
+    
 }
 
 /* The Close Button */
@@ -564,6 +611,7 @@ h2{
     border: none;
     margin-top:1rem;
     font-size: 1.5rem;
+    margin-left: 2vw;
  }
  .post-content{
     border-radius: 10px;

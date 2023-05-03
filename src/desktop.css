@@ -36,6 +36,11 @@
     .signUp-form {
         width: 40vw;
     }
+
+    .signIn-form{
+        width: 40vw;
+    }
+
     .item-e{
         
         margin-top: -50px;
@@ -141,9 +146,11 @@
         height: 10;
         font-size: 1.7rem;
     }
-    .post-content p{
+
+    /* .post-content p{
         margin-left:1vw;
-    }
+    } */
+
     .post-content{
         border-radius: 10px;
     }

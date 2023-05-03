@@ -38,9 +38,32 @@
     }
 
     .signUp-form input{
-        width: 35rem;
-        height: 3rem;
+        width: 44rem;
+        height: 3.5rem;
         border-radius: 20px;
+    }
+
+    .signIn-form label{
+        font-size: 2rem;
+    }
+
+    .signIn-form input{
+        width: 44rem;
+        height: 3.5rem;
+        border-radius: 20px;
+    }
+
+    .btn-container_signIn{
+        flex-direction: column;
+    }
+
+   
+    .btnGoogle{
+        width: 15rem;
+    }
+
+    .btnLogin{
+        width: 15rem;
     }
 
     p{
@@ -53,6 +76,10 @@
     }
 
     .signUp-form{
+        width: 60vw;
+    }
+
+    .signIn-form{
         width: 60vw;
     }
 
