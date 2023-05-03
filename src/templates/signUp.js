@@ -21,7 +21,7 @@ export const signup = (onNavigate) => {
 
   signupSection.classList.add('signUp-section');
   signupForm.classList.add('signUp-form');
-  closeBtn.classList.add('close');
+  closeBtn.classList.add('close-signUp');
   userLabel.classList.add('form');
   emailLabel.classList.add('form');
   emailError.classList.add('errormessage');
