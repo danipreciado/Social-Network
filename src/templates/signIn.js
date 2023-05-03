@@ -14,6 +14,7 @@ export const signIn = (onNavigate) => {
   const btnContainerSignUp = document.createElement('article');
   const btnLogin = document.createElement('button');
   const btnGoogle = document.createElement('button');
+  const iconGoogle = document.createElement('img');
   const containerLinkSignIn = document.createElement('article');
   const askingText = document.createElement('p');
   const linkToSignUp = document.createElement('a');
@@ -40,11 +41,12 @@ export const signIn = (onNavigate) => {
   linkToSignUp.setAttribute('id', 'link-signIn');
   btnLogin.setAttribute('type', 'button');
   btnGoogle.setAttribute('type', 'button');
+  iconGoogle.setAttribute('alt', 'Google icon');
+  iconGoogle.setAttribute('src', 'images/googleIcon.png');
 
   emailLabel.textContent = 'Correo Electronico';
   passwordLabel.textContent = 'Contraseña';
   btnLogin.textContent = 'Ingresa';
-  btnGoogle.textContent = 'Ingresa con Google';
   askingText.textContent = '¿No tienes cuenta? ';
   linkToSignUp.textContent = 'Registrate aquí';
   closeBtn.innerHTML = '&times;';
@@ -65,6 +67,8 @@ export const signIn = (onNavigate) => {
     onNavigate('/');
   });
 
+  btnGoogle.appendChild(iconGoogle);
+  btnGoogle.appendChild(document.createTextNode('Ingresa con Google'));
   signInForm.appendChild(closeBtn);
   signInForm.appendChild(emailLabel);
   signInForm.appendChild(emailInput);
@@ -72,8 +76,8 @@ export const signIn = (onNavigate) => {
   signInForm.appendChild(passwordLabel);
   signInForm.appendChild(passwordInput);
   signInForm.appendChild(spanErrorPass);
-  btnContainerSignUp.appendChild(btnGoogle);
   btnContainerSignUp.appendChild(btnLogin);
+  btnContainerSignUp.appendChild(btnGoogle);
   containerLinkSignIn.appendChild(askingText);
   containerLinkSignIn.appendChild(linkToSignUp);
 
