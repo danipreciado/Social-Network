@@ -76,6 +76,7 @@ describe('signup', () => {
     const passwordInput = signupSection.querySelector('#userPassword');
     const emailError = signupSection.querySelector('#errorEmailMessage');
     const passwordError = signupSection.querySelector('#errorPassMessage');
+    const userInput = signupSection.querySelector('#user-input');
 
     // Click the register button
     btnRegister.click();
@@ -87,6 +88,7 @@ describe('signup', () => {
       onNavigate,
       emailError,
       passwordError,
+      userInput,
     );
   });
 });

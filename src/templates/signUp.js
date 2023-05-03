@@ -43,6 +43,7 @@ export const signup = (onNavigate) => {
   btnGoogle.setAttribute('type', 'button');
   iconGoogle.setAttribute('alt', 'Google icon');
   iconGoogle.setAttribute('src', 'images/googleIcon.png');
+  userInput.setAttribute('id', 'user-input');
 
   userLabel.textContent = 'Nombre de Usuario';
   emailLabel.textContent = 'Correo Electronico';
