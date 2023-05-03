@@ -38,7 +38,7 @@ export const signIn = (onNavigate) => {
   passwordInput.setAttribute('id', 'loginUserPassword');
   spanErrorEmail.setAttribute('id', 'errorEmailMessage');
   spanErrorPass.setAttribute('id', 'errorPassMessage');
-  linkToSignUp.setAttribute('id', 'link-signIn');
+  linkToSignUp.setAttribute('id', 'link-signUp');
   btnLogin.setAttribute('type', 'button');
   btnGoogle.setAttribute('type', 'button');
   iconGoogle.setAttribute('alt', 'Google icon');

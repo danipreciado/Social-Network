@@ -4,10 +4,13 @@
 
 import { home } from '../src/templates/home';
 import { signup } from '../src/templates/signUp';
-import { authFunction } from '../src/lib/config/auth';
+import { signIn } from '../src/templates/signIn';
+import { authFunction, googleLogin, login } from '../src/lib/config/auth';
 
 jest.mock('../src/lib/config/auth', () => ({
   authFunction: jest.fn(),
+  googleLogin: jest.fn(),
+  login: jest.fn(),
 }));
 
 describe('home', () => {
@@ -60,10 +63,10 @@ describe('signup', () => {
     expect(btnRegister).not.toBe(null);
   });
 
-  it('debe navegar a SignUp al hacer click en el boton de ingresar', () => {
+  it('debe navegar a SignIn al hacer click en el boton de ingresar', () => {
     const onNavigate = jest.fn();
     const signupSection = signup(onNavigate);
-    const signInLink = signupSection.querySelector('#link-signUp');
+    const signInLink = signupSection.querySelector('#link-signIn');
     signInLink.click();
     expect(onNavigate).toHaveBeenCalledWith('/signin');
   });
@@ -90,5 +93,83 @@ describe('signup', () => {
       passwordError,
       userInput,
     );
+  });
+  it('debe navegar a Home al hacer click en el boton cerrar', () => {
+    const onNavigate = jest.fn();
+    const signupSection = signup(onNavigate);
+    const closeBtn = signupSection.querySelector('.close-signUp');
+
+    // Click the close button
+    closeBtn.click();
+
+    // Check that onNavigate was called with the correct argument
+    expect(onNavigate).toHaveBeenCalledWith('/');
+  });
+  it('googleLogin debe ser llamado cuando se hace click en el botón de Google', () => {
+    const onNavigate = jest.fn();
+    const signupSection = signup(onNavigate);
+    const btnGoogle = signupSection.querySelector('.btnGoogle');
+    btnGoogle.click();
+    expect(googleLogin).toHaveBeenCalledWith(onNavigate);
+  });
+});
+
+describe('signIn', () => {
+  it('signIn debe ser una función', () => {
+    expect(typeof signIn).toBe('function');
+  });
+
+  it('existe un botón de ingresar', () => {
+    const container = document.createElement('section');
+    container.append(signIn());
+    const btnLogin = container.querySelector('.btnLogin');
+    expect(btnLogin).not.toBe(null);
+  });
+
+  it('debe navegar a SignUp al hacer click en el boton de Registrarse', () => {
+    const onNavigate = jest.fn();
+    const signInSection = signIn(onNavigate);
+    const signUpLink = signInSection.querySelector('#link-signUp');
+    signUpLink.click();
+    expect(onNavigate).toHaveBeenCalledWith('/signup');
+  });
+
+  it('login debe ser llamado cuando se hace click en el botón de Ingresar', () => {
+    const onNavigate = jest.fn();
+    const signInSection = signIn(onNavigate);
+    const btnLogin = signInSection.querySelector('.btnLogin');
+    const emailInput = signInSection.querySelector('#loginUserEmail');
+    const passwordInput = signInSection.querySelector('#loginUserPassword');
+    const spanErrorEmail = signInSection.querySelector('#errorEmailMessage');
+    const spanErrorPass = signInSection.querySelector('#errorPassMessage');
+
+    // Click the register button
+    btnLogin.click();
+    // Check that authFunction was called with the correct arguments
+    expect(login).toHaveBeenCalledWith(
+      onNavigate,
+      emailInput,
+      passwordInput,
+      spanErrorEmail,
+      spanErrorPass,
+    );
+  });
+  it('debe navegar a Home al hacer click en el boton cerrar', () => {
+    const onNavigate = jest.fn();
+    const signInSection = signIn(onNavigate);
+    const closeBtn = signInSection.querySelector('.close-signIn');
+
+    // Click the close button
+    closeBtn.click();
+
+    // Check that onNavigate was called with the correct argument
+    expect(onNavigate).toHaveBeenCalledWith('/');
+  });
+  it('googleLogin debe ser llamado cuando se hace click en el botón de Google', () => {
+    const onNavigate = jest.fn();
+    const signInSection = signIn(onNavigate);
+    const btnGoogle = signInSection.querySelector('.btnGoogle');
+    btnGoogle.click();
+    expect(googleLogin).toHaveBeenCalledWith(onNavigate);
   });
 });
