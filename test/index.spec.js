@@ -2,10 +2,10 @@
  * @jest-environment jsdom
  */
 
-import { home } from '../src/templates/home';
-import { signup } from '../src/templates/signUp';
-import { signIn } from '../src/templates/signIn';
-import { authFunction, googleLogin, login } from '../src/lib/config/auth';
+import { home } from '../src/templates/home.js';
+import { signup } from '../src/templates/signUp.js';
+import { signIn } from '../src/templates/signIn.js';
+import { authFunction, googleLogin, login } from '../src/lib/config/auth.js';
 
 jest.mock('../src/lib/config/auth', () => ({
   authFunction: jest.fn(),
