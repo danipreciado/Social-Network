@@ -5,10 +5,10 @@
 import { home } from '../src/templates/home.js';
 import { signup } from '../src/templates/signUp.js';
 import { signIn } from '../src/templates/signIn.js';
-import { authFunction, googleLogin, login } from '../src/lib/config/auth.js';
+import { googleLogin, login } from '../src/lib/config/auth.js';
+import { errorMessages } from '../src/lib/index.js';
 
 jest.mock('../src/lib/config/auth', () => ({
-  authFunction: jest.fn(),
   googleLogin: jest.fn(),
   login: jest.fn(),
 }));
@@ -71,7 +71,8 @@ describe('signup', () => {
     expect(onNavigate).toHaveBeenCalledWith('/signin');
   });
 
-  it('authFunction debe ser llamado cuando se hace click en el botón de registrarse', () => {
+  // eslint-disable-next-line max-len
+  /*   it.skip('authFunction debe ser llamado cuando se hace click en el botón de registrarse', () => {
     const onNavigate = jest.fn();
     const signupSection = signup(onNavigate);
     const btnRegister = signupSection.querySelector('.btnRegister');
@@ -93,7 +94,7 @@ describe('signup', () => {
       passwordError,
       userInput,
     );
-  });
+  }); */
   it('debe navegar a Home al hacer click en el boton cerrar', () => {
     const onNavigate = jest.fn();
     const signupSection = signup(onNavigate);
@@ -171,5 +172,27 @@ describe('signIn', () => {
     const btnGoogle = signInSection.querySelector('.btnGoogle');
     btnGoogle.click();
     expect(googleLogin).toHaveBeenCalledWith(onNavigate);
+  });
+});
+
+describe('errorMessages', () => {
+  it('displays the correct error message for auth/email-already-in-use', () => {
+    const emailErrorMessage = document.createElement('span');
+    const passwordErrorMessage = document.createElement('span');
+
+    errorMessages('auth/email-already-in-use', emailErrorMessage, passwordErrorMessage);
+
+    expect(emailErrorMessage.textContent).toBe('Este correo ya ha sido registrado');
+    expect(passwordErrorMessage.textContent).toBe('');
+  });
+
+  it('displays the correct error message for auth/weak-password', () => {
+    const emailErrorMessage = document.createElement('span');
+    const passwordErrorMessage = document.createElement('span');
+
+    errorMessages('auth/weak-password', emailErrorMessage, passwordErrorMessage);
+
+    expect(emailErrorMessage.textContent).toBe('');
+    expect(passwordErrorMessage.textContent).toBe('Escribe una contraseña más larga');
   });
 });

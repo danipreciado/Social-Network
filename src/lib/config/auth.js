@@ -9,56 +9,6 @@ import {
 } from 'firebase/auth';
 import { auth } from './firebaseconfig.js';
 
-function errorMessages(errorCode, emailError, passwordError) {
-  if (errorCode === 'auth/email-already-in-use') {
-    emailError.textContent = 'Este correo ya ha sido registrado';
-  } else if (errorCode === 'auth/weak-password') {
-    passwordError.textContent = 'Escribe una contraseña más larga';
-  } else if (errorCode === 'auth/invalid-email') {
-    emailError.textContent = 'Escribe un correo valido';
-  } else if (errorCode === 'auth/missing-password') {
-    passwordError.textContent = 'Escribe una contraseña valida';
-  } else if (errorCode === 'auth/user-not-found') {
-    emailError.textContent = 'Email no registrado';
-  } else if (errorCode === 'auth/wrong-password') {
-    passwordError.textContent = 'Contraseña incorrecta';
-  }
-}
-
-export function authFunction(
-  userEmail,
-  userPassword,
-  onNavigate,
-  emailError,
-  passwordError,
-  input,
-) {
-  const email = userEmail.value;
-  const password = userPassword.value;
-  emailError.textContent = '';
-  passwordError.textContent = '';
-
-  createUserWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
-      // eslint-disable-next-line no-unused-vars
-      const user = userCredential.user;
-      const username = input.value;
-      sendEmailVerification(user);
-      updateProfile(auth.currentUser, {
-        displayName: username, // Aquí se especifica el valor para la propiedad displayName
-      });
-    })
-    .then(() => {
-      // Email verification sent successfully
-      onNavigate('/verification');
-    })
-    .catch((error) => {
-      const errorCode = error.code;
-      console.log(errorCode);
-      errorMessages(errorCode, emailError, passwordError);
-    });
-}
-
 export const login = (onNavigate, userEmail, userPassword, emailError, passwordError) => {
   const email = userEmail.value;
   const password = userPassword.value;
@@ -73,9 +23,19 @@ export const login = (onNavigate, userEmail, userPassword, emailError, passwordE
     })
     .catch((error) => {
       const errorCode = error.code;
-      errorMessages(errorCode, emailError, passwordError);
     });
 };
+
+export function registerUserWithEmailAndPassword(email, password, username) {
+  return createUserWithEmailAndPassword(auth, email, password)
+    .then((userCredential) => {
+      const user = userCredential.user;
+      sendEmailVerification(user);
+      return updateProfile(auth.currentUser, {
+        displayName: username,
+      });
+    });
+}
 
 const provider = new GoogleAuthProvider();
 export const googleLogin = (onNavigate) => {
