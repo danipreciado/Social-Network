@@ -288,7 +288,7 @@ h2{
 
 
 
-.signUp-form .btnGoogle{
+.btnGoogle .signUp-form {
     display: flex;
     justify-content: center;
     align-items: center;

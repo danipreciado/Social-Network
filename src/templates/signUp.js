@@ -1,4 +1,5 @@
-import { authFunction, googleLogin } from '../lib/config/auth';
+import { registerUserWithEmailAndPassword, googleLogin } from '../lib/config/auth';
+import { errorMessages } from '../lib/index.js';
 
 export const signup = (onNavigate) => {
   const signupSection = document.createElement('section');
@@ -52,6 +53,24 @@ export const signup = (onNavigate) => {
   hasAccount.textContent = '¿Ya tienes cuenta?';
   hasAccountLink.textContent = 'Ingresa aquí';
 
+  function authFunction(userEmail, userPassword, input) {
+    const email = userEmail.value;
+    const password = userPassword.value;
+    emailError.textContent = '';
+    passwordError.textContent = '';
+
+    registerUserWithEmailAndPassword(email, password, input.value)
+      .then(() => {
+      // Email verification sent successfully
+        onNavigate('/verification');
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        console.log(errorCode);
+        errorMessages(errorCode, emailError, passwordError);
+      });
+  }
+
   closeBtn.innerHTML = '&times;';
 
   closeBtn.addEventListener('click', () => {
@@ -62,7 +81,7 @@ export const signup = (onNavigate) => {
   btnGoogle.appendChild(document.createTextNode('Ingresa con Google'));
 
   registerBtn.addEventListener('click', () => {
-    authFunction(emailInput, passwordInput, onNavigate, emailError, passwordError, userInput);
+    authFunction(emailInput, passwordInput, userInput);
   });
 
   hasAccountLink.addEventListener('click', () => {
@@ -92,23 +111,3 @@ export const signup = (onNavigate) => {
 
   return signupSection;
 };
-
-/*  section.innerHTML = `
-  <form class="signUp-form">
-    <label class="form"> Nombre de Usuario </label>
-    <input type="text" >
-    <label class="form"> Correo Electronico </label>
-    <input type="email" id="userEmail">
-    <span id="errorEmailMessage" class="errormessage"></span>
-    <label class="form"> Contraseña </label>
-    <input type="password" id="userPassword">
-    <span id="errorPassMessage" class="errormessage"></span>
-    <button class="btnRegister" type="submit">Registrarse</button>
-    <article class="return-home">
-      <p>¿Ya tienes cuenta?</p><a href="#" id="link-signUp">Ingresa aqui</a>
-    </article>
-  </form>
-
-</section>`;
-
-   */
