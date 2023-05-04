@@ -7,7 +7,7 @@ import {
   sendEmailVerification,
   updateProfile,
 } from 'firebase/auth';
-import { auth } from './firebaseconfig';
+import { auth } from './firebaseconfig.js';
 
 function errorMessages(errorCode, emailError, passwordError) {
   if (errorCode === 'auth/email-already-in-use') {

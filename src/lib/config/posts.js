@@ -1,5 +1,5 @@
 import { addDoc, getDocs, serverTimestamp } from 'firebase/firestore';
-import { colRef, auth } from './firebaseconfig';
+import { colRef, auth } from './firebaseconfig.js';
 
 getDocs(colRef)
   .then((snapshot) => {
