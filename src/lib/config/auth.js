@@ -6,6 +6,7 @@ import {
   signInWithEmailAndPassword,
   sendEmailVerification,
   updateProfile,
+  signOut,
 } from 'firebase/auth';
 import { auth } from './firebaseconfig.js';
 
@@ -34,6 +35,15 @@ export function registerUserWithEmailAndPassword(email, password, username) {
       return updateProfile(auth.currentUser, {
         displayName: username,
       });
+    });
+}
+
+export function signOutUser() {
+  return signOut(auth)
+    .then(() => {
+      console.log('El usuario salió');
+    }).catch((error) => {
+      console.log(error.message);
     });
 }
 

@@ -1,3 +1,5 @@
+import { onAuthStateChanged } from 'firebase/auth';
+import { auth } from './lib/config/firebaseconfig.js';
 import { home } from './templates/home.js';
 import { signIn } from './templates/signIn.js';
 import { signup } from './templates/signUp.js';
@@ -12,9 +14,17 @@ const routes = [
   { path: '/verification', component: verification },
   { path: '/page404', component: page404 },
   { path: '/signin', component: signIn },
-  { path: '/wall', component: wall },
+  // { path: '/wall', component: wall },
 ];
 
+onAuthStateChanged(auth, (user) => {
+  if (user) {
+    routes.push({ path: '/wall', component: wall });
+    console.log(routes);
+  } else {
+    console.log('el usuario no esta activo');
+  }
+});
 const defaultRoute = '/';
 
 function onNavigate(hash) {
