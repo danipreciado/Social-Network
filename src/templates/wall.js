@@ -1,8 +1,9 @@
 import { getDocs, query, orderBy } from 'firebase/firestore';
 import { colRef } from '../lib/config/firebaseconfig.js';
 import { posting } from '../lib/config/posts.js';
+import { signOutUser } from '../lib/config/auth.js';
 
-export const wall = () => {
+export const wall = (onNavigate) => {
   const wallSection = document.createElement('section');
   const header = document.createElement('header');
   const hamburguerArticle = document.createElement('article');
@@ -38,7 +39,10 @@ export const wall = () => {
   const dogReactionCount1 = document.createElement('p');
   const catReaction1 = document.createElement('img');
   const catReactionCount1 = document.createElement('p');
+  const btnLogout = document.createElement('button');
 
+  btnLogout.classList.add('btn-logout');
+  btnLogout.textContent = 'Cerrar sesión';
   wallSection.classList.add('wall-section');
   hamburguerArticle.classList.add('hamburger');
   logoContainerArticle.classList.add('logo-container');
@@ -93,6 +97,7 @@ export const wall = () => {
   hamburguerArticle.appendChild(hamburguerImage);
   header.appendChild(hamburguerArticle);
   wallLogoArticle.appendChild(logoImage);
+  logoContainerArticle.appendChild(btnLogout);
   logoContainerArticle.appendChild(wallLogoArticle);
   logoSpanArticle.appendChild(petaSpan);
   logoSpanArticle.appendChild(gramSpan);
@@ -190,6 +195,18 @@ export const wall = () => {
     if (postText !== '') {
       posting(input, form);
     }
+  });
+
+  btnLogout.addEventListener('click', (e) => {
+    e.preventDefault();
+    signOutUser()
+      .then(() => {
+        // Email verification sent successfully
+        onNavigate('/');
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
   });
 
   const q = query(colRef, orderBy('timestamp', 'desc'));
