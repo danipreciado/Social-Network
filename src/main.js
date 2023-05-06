@@ -14,17 +14,9 @@ const routes = [
   { path: '/verification', component: verification },
   { path: '/page404', component: page404 },
   { path: '/signin', component: signIn },
-  // { path: '/wall', component: wall },
+  { path: '/wall', component: wall },
 ];
 
-onAuthStateChanged(auth, (user) => {
-  if (user) {
-    routes.push({ path: '/wall', component: wall });
-    console.log(routes);
-  } else {
-    console.log('el usuario no esta activo');
-  }
-});
 const defaultRoute = '/';
 
 function onNavigate(hash) {
@@ -52,6 +44,15 @@ function onNavigate(hash) {
     onNavigate('/page404');
   }
 }
+function validateUserAccess(user) {
+  const isProtectedRoute = window.location.pathname === '/wall';
+  const isAuthenticated = Boolean(user);
+
+  if (isProtectedRoute && !isAuthenticated) {
+    onNavigate('/signin');
+  }
+}
+onAuthStateChanged(auth, validateUserAccess);
 
 window.addEventListener('popstate', () => {
   const path = window.location.pathname;
