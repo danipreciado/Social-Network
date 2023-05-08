@@ -364,6 +364,17 @@ export const wall = (onNavigate) => {
         userNameElem.textContent = `${pos.userid} escribió: `;
         postHeader.appendChild(userNameElem);
 
+        const dotContainer = document.createElement('article');
+        const moreOptionsimg = document.createElement('img');
+
+        const frameOptions = document.createElement('div');
+
+        frameOptions.className = 'frame-options';
+        moreOptionsimg.src = 'images/dot-menu.png';
+        moreOptionsimg.alt = 'more-options';
+
+        dotContainer.append(moreOptionsimg, frameOptions);
+
         const editBtn = document.createElement('button');
         editBtn.textContent = 'Editar';
         editBtn.addEventListener('click', () => {
@@ -408,8 +419,9 @@ export const wall = (onNavigate) => {
         });
 
         if (pos.userid === auth.currentUser.displayName) {
-          postHeader.appendChild(deleteButton);
-          postHeader.appendChild(editBtn);
+          frameOptions.appendChild(deleteButton);
+          frameOptions.appendChild(editBtn);
+          postHeader.appendChild(dotContainer);
         }
 
         const postContent = document.createElement('div');
