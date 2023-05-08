@@ -1,11 +1,13 @@
-import { addDoc, getDocs, serverTimestamp } from 'firebase/firestore';
+import {
+  addDoc, getDocs, serverTimestamp, deleteDoc, doc,
+} from 'firebase/firestore';
 import { colRef, auth } from './firebaseconfig.js';
 
 getDocs(colRef)
   .then((snapshot) => {
     const posts = [];
-    snapshot.docs.forEach((doc) => {
-      posts.push({ ...doc.data(), id: doc.id });
+    snapshot.docs.forEach((docu) => {
+      posts.push({ ...docu.data(), id: docu.id });
     });
     console.log(posts);
   })
@@ -24,4 +26,16 @@ export function posting(input, form) {
       form.reset();
     });
   console.log(getDocs(colRef));
+}
+
+export function deletePost(postId) {
+  const postDocRef = doc(colRef, postId);
+
+  return deleteDoc(postDocRef)
+    .then(() => {
+      console.log(`Post ${postId} deleted successfully`);
+    })
+    .catch((err) => {
+      console.log(`Error deleting post ${postId}: ${err.message}`);
+    });
 }
