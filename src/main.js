@@ -16,12 +16,9 @@ const routes = [
   { path: '/signin', component: signIn },
   { path: '/wall', component: wall },
 ];
-
 const defaultRoute = '/';
-
 function onNavigate(hash) {
   const route = routes.find((routeFound) => routeFound.path === hash);
-
   if (route && route.component) {
     window.history.pushState(
       {},
@@ -47,7 +44,6 @@ function onNavigate(hash) {
 function validateUserAccess(user) {
   const isProtectedRoute = window.location.pathname === '/wall';
   const isAuthenticated = Boolean(user);
-
   if (isProtectedRoute && !isAuthenticated) {
     onNavigate('/signin');
   }
@@ -58,5 +54,4 @@ window.addEventListener('popstate', () => {
   const path = window.location.pathname;
   onNavigate(path);
 });
-
 onNavigate(window.location.pathname || defaultRoute);

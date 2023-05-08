@@ -1,6 +1,6 @@
 import { getDocs, query, orderBy } from 'firebase/firestore';
 import { colRef } from '../lib/config/firebaseconfig.js';
-import { posting } from '../lib/config/posts.js';
+import { posting, deletePost } from '../lib/config/posts.js';
 import { signOutUser } from '../lib/config/auth.js';
 
 export const wall = (onNavigate) => {
@@ -271,6 +271,30 @@ export const wall = (onNavigate) => {
     sectionMenu.classList.toggle('active');
   });
 
+  // create confirmation modal
+  const confirmationModal = document.createElement('div');
+  confirmationModal.className = 'confirmationModal';
+  confirmationModal.style.display = 'none';
+
+  const confirmationMessage = document.createElement('p');
+  confirmationMessage.textContent = '¿Segurx que deseas eliminar esta publicación?';
+  const confirmDog = document.createElement('img');
+  confirmDog.src = 'images/dogConfirm.png';
+
+  const confirmBtn = document.createElement('button');
+  confirmBtn.className = 'confirmBtn';
+  confirmBtn.textContent = 'Eliminar';
+
+  const cancelBtn = document.createElement('button');
+  cancelBtn.className = 'cancelBtn';
+  cancelBtn.textContent = 'Cancelar';
+
+  confirmationModal.appendChild(confirmationMessage);
+  confirmationModal.appendChild(confirmDog);
+  confirmationModal.appendChild(confirmBtn);
+  confirmationModal.appendChild(cancelBtn);
+  wallSection.appendChild(confirmationModal);
+
   form.addEventListener('submit', (e) => {
     e.preventDefault();
     const postText = input.value.trim();
@@ -316,6 +340,30 @@ export const wall = (onNavigate) => {
         const userNameElem = document.createElement('p');
         userNameElem.textContent = `${pos.userid} escribió: `;
         postHeader.appendChild(userNameElem);
+
+        const deleteButton = document.createElement('button');
+        deleteButton.textContent = 'Delete';
+        deleteButton.addEventListener('click', () => {
+          // Mostrar modal mensaje de confirmación
+
+          confirmationModal.style.display = 'block';
+
+          confirmBtn.addEventListener('click', () => {
+            deletePost(pos.id)
+              .then(() => {
+                window.location.reload();
+              });
+            // Esconder el modal de cofirmación
+            confirmationModal.style.display = 'none';
+          });
+
+          // Esconder el modal de confirmación si el usuario da click en cancelar
+          cancelBtn.addEventListener('click', () => {
+            confirmationModal.style.display = 'none';
+          });
+        });
+
+        postHeader.appendChild(deleteButton);
 
         const postContent = document.createElement('div');
         postContent.className = 'post-content';
