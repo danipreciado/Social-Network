@@ -4,8 +4,7 @@
 
 import { home } from '../src/templates/home.js';
 import { signup } from '../src/templates/signUp.js';
-import { signIn } from '../src/templates/signIn.js';
-import { googleLogin, login } from '../src/lib/config/auth.js';
+import { googleLogin } from '../src/lib/config/auth.js';
 import { errorMessages } from '../src/lib/index.js';
 
 jest.mock('../src/lib/config/auth', () => ({
@@ -115,66 +114,6 @@ describe('signup', () => {
   });
 });
 
-describe('signIn', () => {
-  it('signIn debe ser una función', () => {
-    expect(typeof signIn).toBe('function');
-  });
-
-  it('existe un botón de ingresar', () => {
-    const container = document.createElement('section');
-    container.append(signIn());
-    const btnLogin = container.querySelector('.btnLogin');
-    expect(btnLogin).not.toBe(null);
-  });
-
-  it('debe navegar a SignUp al hacer click en el boton de Registrarse', () => {
-    const onNavigate = jest.fn();
-    const signInSection = signIn(onNavigate);
-    const signUpLink = signInSection.querySelector('#link-signUp');
-    signUpLink.click();
-    expect(onNavigate).toHaveBeenCalledWith('/signup');
-  });
-
-  it('login debe ser llamado cuando se hace click en el botón de Ingresar', () => {
-    const onNavigate = jest.fn();
-    const signInSection = signIn(onNavigate);
-    const btnLogin = signInSection.querySelector('.btnLogin');
-    const emailInput = signInSection.querySelector('#loginUserEmail');
-    const passwordInput = signInSection.querySelector('#loginUserPassword');
-    const spanErrorEmail = signInSection.querySelector('#errorEmailMessage');
-    const spanErrorPass = signInSection.querySelector('#errorPassMessage');
-
-    // Click the register button
-    btnLogin.click();
-    // Check that authFunction was called with the correct arguments
-    expect(login).toHaveBeenCalledWith(
-      onNavigate,
-      emailInput,
-      passwordInput,
-      spanErrorEmail,
-      spanErrorPass,
-    );
-  });
-  it('debe navegar a Home al hacer click en el boton cerrar', () => {
-    const onNavigate = jest.fn();
-    const signInSection = signIn(onNavigate);
-    const closeBtn = signInSection.querySelector('.close-signIn');
-
-    // Click the close button
-    closeBtn.click();
-
-    // Check that onNavigate was called with the correct argument
-    expect(onNavigate).toHaveBeenCalledWith('/');
-  });
-  it('googleLogin debe ser llamado cuando se hace click en el botón de Google', () => {
-    const onNavigate = jest.fn();
-    const signInSection = signIn(onNavigate);
-    const btnGoogle = signInSection.querySelector('.btnGoogle');
-    btnGoogle.click();
-    expect(googleLogin).toHaveBeenCalledWith(onNavigate);
-  });
-});
-
 describe('errorMessages', () => {
   it('displays the correct error message for auth/email-already-in-use', () => {
     const emailErrorMessage = document.createElement('span');
@@ -195,4 +134,52 @@ describe('errorMessages', () => {
     expect(emailErrorMessage.textContent).toBe('');
     expect(passwordErrorMessage.textContent).toBe('Escribe una contraseña más larga');
   });
+
+  it('displays the correct error message for auth/invalid-email', () => {
+    const emailErrorMessage = document.createElement('span');
+    const passwordErrorMessage = document.createElement('span');
+
+    errorMessages('auth/invalid-email', emailErrorMessage, passwordErrorMessage);
+
+    expect(emailErrorMessage.textContent).toBe('Escribe un correo valido');
+    expect(passwordErrorMessage.textContent).toBe('');
+  });
+
+  it('displays the correct error message for auth/missing-password', () => {
+    const emailErrorMessage = document.createElement('span');
+    const passwordErrorMessage = document.createElement('span');
+
+    errorMessages('auth/missing-password', emailErrorMessage, passwordErrorMessage);
+
+    expect(emailErrorMessage.textContent).toBe('');
+    expect(passwordErrorMessage.textContent).toBe('Escribe una contraseña valida');
+  });
+
+  it('displays the correct error message for auth/user-not-found', () => {
+    const emailErrorMessage = document.createElement('span');
+    const passwordErrorMessage = document.createElement('span');
+
+    errorMessages('auth/user-not-found', emailErrorMessage, passwordErrorMessage);
+
+    expect(emailErrorMessage.textContent).toBe('Email no registrado');
+    expect(passwordErrorMessage.textContent).toBe('');
+  });
+
+  it('displays the correct error message for auth/wrong-password', () => {
+    const emailErrorMessage = document.createElement('span');
+    const passwordErrorMessage = document.createElement('span');
+
+    errorMessages('auth/wrong-password', emailErrorMessage, passwordErrorMessage);
+
+    expect(emailErrorMessage.textContent).toBe('');
+    expect(passwordErrorMessage.textContent).toBe('Contraseña incorrecta');
+  });
+});
+
+it('googleLogin debe ser llamado cuando se hace click en el botón de Google', () => {
+  const onNavigate = jest.fn();
+  const signupSection = signup(onNavigate);
+  const btnGoogle = signupSection.querySelector('.btnGoogle');
+  btnGoogle.click();
+  expect(googleLogin).toHaveBeenCalledWith(onNavigate);
 });
