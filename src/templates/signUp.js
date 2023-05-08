@@ -17,6 +17,7 @@ export const signup = (onNavigate) => {
   const returnArticle = document.createElement('article');
   const hasAccount = document.createElement('p');
   const hasAccountLink = document.createElement('a');
+  const separator = document.createElement('div');
   const btnGoogle = document.createElement('button');
   const iconGoogle = document.createElement('img');
 
@@ -31,6 +32,7 @@ export const signup = (onNavigate) => {
   registerBtn.classList.add('btnRegister');
   returnArticle.classList.add('return-home');
   btnGoogle.classList.add('btnGoogle');
+  separator.classList.add('separator');
 
   userInput.setAttribute('type', 'text');
   emailInput.setAttribute('type', 'email');
@@ -78,7 +80,7 @@ export const signup = (onNavigate) => {
   });
 
   btnGoogle.appendChild(iconGoogle);
-  btnGoogle.appendChild(document.createTextNode('Ingresa con Google'));
+  btnGoogle.appendChild(document.createTextNode('Acceder con Google'));
 
   registerBtn.addEventListener('click', () => {
     authFunction(emailInput, passwordInput, userInput);
@@ -104,6 +106,7 @@ export const signup = (onNavigate) => {
   signupForm.appendChild(passwordInput);
   signupForm.appendChild(passwordError);
   signupForm.appendChild(registerBtn);
+  signupForm.appendChild(separator);
   signupForm.appendChild(btnGoogle);
   signupForm.appendChild(returnArticle);
 
