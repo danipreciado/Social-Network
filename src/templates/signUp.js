@@ -55,6 +55,15 @@ export const signup = (onNavigate) => {
   hasAccount.textContent = '¿Ya tienes cuenta?';
   hasAccountLink.textContent = 'Ingresa aquí';
 
+  closeBtn.innerHTML = '&times;';
+
+  closeBtn.addEventListener('click', () => {
+    onNavigate('/');
+  });
+
+  btnGoogle.appendChild(iconGoogle);
+  btnGoogle.appendChild(document.createTextNode('Acceder con Google'));
+
   function authFunction(userEmail, userPassword, input) {
     const email = userEmail.value;
     const password = userPassword.value;
@@ -73,17 +82,8 @@ export const signup = (onNavigate) => {
       });
   }
 
-  closeBtn.innerHTML = '&times;';
-
-  closeBtn.addEventListener('click', () => {
-    onNavigate('/');
-  });
-
-  btnGoogle.appendChild(iconGoogle);
-  btnGoogle.appendChild(document.createTextNode('Acceder con Google'));
-
   registerBtn.addEventListener('click', () => {
-    authFunction(emailInput, passwordInput, userInput);
+    authFunction(emailInput, passwordInput, userInput, emailError, passwordError, onNavigate);
   });
 
   hasAccountLink.addEventListener('click', () => {
