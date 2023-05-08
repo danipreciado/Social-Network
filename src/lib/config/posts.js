@@ -1,5 +1,5 @@
 import {
-  addDoc, getDocs, serverTimestamp, deleteDoc, doc,
+  addDoc, getDocs, serverTimestamp, deleteDoc, doc, updateDoc,
 } from 'firebase/firestore';
 import { colRef, auth } from './firebaseconfig.js';
 
@@ -36,5 +36,21 @@ export function deletePost(postId) {
     })
     .catch((err) => {
       console.log(`Error deleting post ${postId}: ${err.message}`);
+    });
+}
+
+export function editPost(postId, newPostText) {
+  const postDocRef = doc(colRef, postId);
+  const newTimestamp = serverTimestamp();
+
+  return updateDoc(postDocRef, {
+    text: newPostText,
+    timestamp: newTimestamp,
+  })
+    .then(() => {
+      console.log(`Post ${postId} edited successfully`);
+    })
+    .catch((err) => {
+      console.log(`Error editing post ${postId}: ${err.message}`);
     });
 }
