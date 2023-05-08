@@ -71,10 +71,10 @@ describe('wall', () => {
     // ensure posting function is not called
     expect(posting).not.toHaveBeenCalled();
   });
-});
 
-//   it('deberia de renderizar la pantalla wall correctamente', () => {
-//     const container = document.createElement('section');
-//     container.append(wall());
-//     expect(container.innerHTML).toMatchSnapshot();
-//   });
+  it('deberia de renderizar la pantalla wall correctamente', () => {
+    const container = document.createElement('section');
+    container.append(wall());
+    expect(container.innerHTML).toMatchSnapshot();
+  });
+});
