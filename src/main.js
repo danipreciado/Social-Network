@@ -49,6 +49,7 @@ function validateUserAccess(user) {
   }
 }
 onAuthStateChanged(auth, validateUserAccess);
+
 window.addEventListener('popstate', () => {
   const path = window.location.pathname;
   onNavigate(path);

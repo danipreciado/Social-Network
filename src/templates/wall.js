@@ -39,8 +39,30 @@ export const wall = (onNavigate) => {
   const dogReactionCount1 = document.createElement('p');
   const catReaction1 = document.createElement('img');
   const catReactionCount1 = document.createElement('p');
-  const btnLogout = document.createElement('button');
 
+  const sectionMenu = document.createElement('section');
+  const btnCloseMenu = document.createElement('button');
+
+  const sectionPerfilMenu = document.createElement('section');
+  const btnPerfilMenu = document.createElement('button');
+  const imgPerfilMenu = document.createElement('img');
+
+  const sectionMuroMenu = document.createElement('section');
+  const btnMuroMenu = document.createElement('button');
+  const imgMuroMenu = document.createElement('img');
+
+  const sectionAmigxsMenu = document.createElement('section');
+  const imgAmigxsMenu = document.createElement('img');
+  const btnAmigxsMenu = document.createElement('button');
+
+  const sectionLogout = document.createElement('section');
+  const btnLogout = document.createElement('button');
+  const imgLogout = document.createElement('img');
+
+  const sectionBtnMenu = document.createElement('section');
+
+  sectionBtnMenu.classList.add('section-btn-menu');
+  sectionLogout.classList.add('section-logout');
   btnLogout.classList.add('btn-logout');
   btnLogout.textContent = 'Cerrar sesión';
   wallSection.classList.add('wall-section');
@@ -59,6 +81,59 @@ export const wall = (onNavigate) => {
   containerbutton.classList.add('containerbutton');
   button.classList.add('btnyour-post');
   postsSection.classList.add('posts-section');
+
+  sectionMenu.classList.add('section-menu');
+  btnCloseMenu.classList.add('btn-close-menu');
+  sectionPerfilMenu.classList.add('section-perfil-menu');
+  imgPerfilMenu.classList.add('img-perfil-menu');
+  imgMuroMenu.classList.add('img-muro-menu');
+  imgAmigxsMenu.classList.add('img-amigxs-menu');
+  btnPerfilMenu.classList.add('btn-menu');
+  btnMuroMenu.classList.add('btn-menu');
+  btnAmigxsMenu.classList.add('btn-menu');
+  imgLogout.classList.add('img-signout');
+
+  imgPerfilMenu.src = 'images/cat-porfile-menu.png';
+  imgMuroMenu.src = 'images/cat-muro-menu.png';
+  imgAmigxsMenu.src = 'images/amigxs-menu.png';
+  imgLogout.src = 'images/signout-dog.png';
+
+  imgPerfilMenu.width = '60';
+  imgPerfilMenu.height = '60';
+  imgMuroMenu.width = '60';
+  imgMuroMenu.height = '60';
+  imgAmigxsMenu.width = '60';
+  imgAmigxsMenu.height = '60';
+  imgLogout.width = '60';
+  imgLogout.height = '60';
+
+  btnCloseMenu.innerHTML = '&times;';
+  btnPerfilMenu.innerHTML = 'Perfil';
+  btnMuroMenu.innerHTML = 'Muro';
+  btnAmigxsMenu.innerHTML = 'Amigxs';
+
+  btnPerfilMenu.appendChild(imgPerfilMenu);
+  btnMuroMenu.appendChild(imgMuroMenu);
+  btnAmigxsMenu.appendChild(imgAmigxsMenu);
+  btnLogout.appendChild(imgLogout);
+
+  sectionPerfilMenu.append(btnPerfilMenu);
+  sectionMuroMenu.append(btnMuroMenu);
+  sectionAmigxsMenu.append(btnAmigxsMenu);
+  sectionLogout.append(btnLogout);
+
+  sectionBtnMenu.append(
+    sectionPerfilMenu,
+    sectionMuroMenu,
+    sectionAmigxsMenu,
+  );
+
+  sectionMenu.append(
+    btnCloseMenu,
+    sectionBtnMenu,
+    sectionLogout,
+  );
+
   post1.className = 'post';
   post1Header.className = 'post-header';
   userImg1.className = 'user-image';
@@ -97,7 +172,6 @@ export const wall = (onNavigate) => {
   hamburguerArticle.appendChild(hamburguerImage);
   header.appendChild(hamburguerArticle);
   wallLogoArticle.appendChild(logoImage);
-  logoContainerArticle.appendChild(btnLogout);
   logoContainerArticle.appendChild(wallLogoArticle);
   logoSpanArticle.appendChild(petaSpan);
   logoSpanArticle.appendChild(gramSpan);
@@ -187,7 +261,15 @@ export const wall = (onNavigate) => {
   post2.appendChild(post2Bottom);
   postsSection.append(post1, post2);
   main.appendChild(postsSection);
-  wallSection.append(header, main);
+  wallSection.append(sectionMenu, header, main);
+
+  hamburguerArticle.addEventListener('click', () => {
+    sectionMenu.classList.toggle('active');
+  });
+
+  btnCloseMenu.addEventListener('click', () => {
+    sectionMenu.classList.toggle('active');
+  });
 
   // create confirmation modal
   const confirmationModal = document.createElement('div');
