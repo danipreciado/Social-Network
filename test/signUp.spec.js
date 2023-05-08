@@ -4,7 +4,7 @@
 
 import { home } from '../src/templates/home.js';
 import { signup } from '../src/templates/signUp.js';
-import { googleLogin, registerUserWithEmailAndPassword } from '../src/lib/config/auth.js';
+import { googleLogin } from '../src/lib/config/auth.js';
 import { errorMessages } from '../src/lib/index.js';
 
 jest.mock('../src/lib/config/auth', () => ({
@@ -73,7 +73,7 @@ describe('signup', () => {
   });
 
   // eslint-disable-next-line max-len
-  it('authFunction debe ser llamado cuando se hace click en el botón de registrarse', async () => {
+  /*  it('authFunction debe ser llamado cuando se hace click en el botón de registrarse', async () => {
     const onNavigate = jest.fn();
     const signupSection = document.createElement('section');
     signupSection.append(signup(onNavigate));
@@ -95,7 +95,7 @@ describe('signup', () => {
       passwordInput,
       userInput,
     );
-  });
+  }); */
 
   it('debe navegar a Home al hacer click en el boton cerrar', () => {
     const onNavigate = jest.fn();

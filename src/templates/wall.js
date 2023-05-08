@@ -296,7 +296,7 @@ export const wall = (onNavigate) => {
   wallSection.appendChild(confirmationModal);
 
   const editModal = document.createElement('div');
-  editModal.className = 'confirmationModal';
+  editModal.className = 'editModal';
   editModal.style.display = 'none';
   const editInput = document.createElement('input');
   editInput.type = 'text';
@@ -366,16 +366,21 @@ export const wall = (onNavigate) => {
 
         const dotContainer = document.createElement('article');
         const moreOptionsimg = document.createElement('img');
-
         const frameOptions = document.createElement('div');
 
         frameOptions.className = 'frame-options';
         moreOptionsimg.src = 'images/dot-menu.png';
         moreOptionsimg.alt = 'more-options';
-
+        moreOptionsimg.className = 'more_options-img';
+        dotContainer.className = 'dot-container';
         dotContainer.append(moreOptionsimg, frameOptions);
 
+        moreOptionsimg.addEventListener('click', () => {
+          frameOptions.classList.toggle('active');
+        });
+
         const editBtn = document.createElement('button');
+        editBtn.className = 'option1';
         editBtn.textContent = 'Editar';
         editBtn.addEventListener('click', () => {
           // Mostrar modal de edición
@@ -397,7 +402,8 @@ export const wall = (onNavigate) => {
         });
 
         const deleteButton = document.createElement('button');
-        deleteButton.textContent = 'Delete';
+        deleteButton.textContent = 'Eliminar';
+        deleteButton.className = 'option2';
         deleteButton.addEventListener('click', () => {
           // Mostrar modal mensaje de confirmación
 
@@ -419,8 +425,8 @@ export const wall = (onNavigate) => {
         });
 
         if (pos.userid === auth.currentUser.displayName) {
-          frameOptions.appendChild(deleteButton);
           frameOptions.appendChild(editBtn);
+          frameOptions.appendChild(deleteButton);
           postHeader.appendChild(dotContainer);
         }
 
