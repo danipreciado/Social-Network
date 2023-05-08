@@ -13,11 +13,13 @@ export const signIn = (onNavigate) => {
   const spanErrorPass = document.createElement('span');
   const btnContainerSignUp = document.createElement('article');
   const btnLogin = document.createElement('button');
+  const separator = document.createElement('div');
   const btnGoogle = document.createElement('button');
   const iconGoogle = document.createElement('img');
   const containerLinkSignIn = document.createElement('article');
   const askingText = document.createElement('p');
   const linkToSignUp = document.createElement('a');
+  const spanText = document.createElement('span');
 
   articleForm.classList.add('container-form');
   signInSection.classList.add('signIn-section');
@@ -31,6 +33,7 @@ export const signIn = (onNavigate) => {
   btnGoogle.classList.add('btnGoogle');
   passwordLabel.classList.add('form');
   containerLinkSignIn.classList.add('btn-container_link');
+  separator.classList.add('separator');
 
   emailInput.setAttribute('type', 'email');
   emailInput.setAttribute('id', 'loginUserEmail');
@@ -50,6 +53,7 @@ export const signIn = (onNavigate) => {
   askingText.textContent = '¿No tienes cuenta? ';
   linkToSignUp.textContent = 'Registrate aquí';
   closeBtn.innerHTML = '&times;';
+  spanText.innerText = 'Acceder con Google';
 
   btnLogin.addEventListener('click', () => {
     login(onNavigate, emailInput, passwordInput, spanErrorEmail, spanErrorPass);
@@ -68,7 +72,7 @@ export const signIn = (onNavigate) => {
   });
 
   btnGoogle.appendChild(iconGoogle);
-  btnGoogle.appendChild(document.createTextNode('Ingresa con Google'));
+  btnGoogle.appendChild(spanText);
   signInForm.appendChild(closeBtn);
   signInForm.appendChild(emailLabel);
   signInForm.appendChild(emailInput);
@@ -77,6 +81,7 @@ export const signIn = (onNavigate) => {
   signInForm.appendChild(passwordInput);
   signInForm.appendChild(spanErrorPass);
   btnContainerSignUp.appendChild(btnLogin);
+  btnContainerSignUp.appendChild(separator);
   btnContainerSignUp.appendChild(btnGoogle);
   containerLinkSignIn.appendChild(askingText);
   containerLinkSignIn.appendChild(linkToSignUp);
