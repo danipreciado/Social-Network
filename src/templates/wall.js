@@ -1,5 +1,5 @@
 import { getDocs, query, orderBy } from 'firebase/firestore';
-import { colRef } from '../lib/config/firebaseconfig.js';
+import { colRef, auth } from '../lib/config/firebaseconfig.js';
 import { posting, deletePost } from '../lib/config/posts.js';
 import { signOutUser } from '../lib/config/auth.js';
 
@@ -299,7 +299,10 @@ export const wall = (onNavigate) => {
     e.preventDefault();
     const postText = input.value.trim();
     if (postText !== '') {
-      posting(input, form);
+      posting(input, form)
+        .then(() => {
+          window.location.reload();
+        });
     }
   });
 
@@ -363,7 +366,9 @@ export const wall = (onNavigate) => {
           });
         });
 
-        postHeader.appendChild(deleteButton);
+        if (pos.userid === auth.currentUser.displayName) {
+          postHeader.appendChild(deleteButton);
+        }
 
         const postContent = document.createElement('div');
         postContent.className = 'post-content';

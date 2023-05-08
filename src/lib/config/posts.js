@@ -17,7 +17,7 @@ getDocs(colRef)
 
 export function posting(input, form) {
   const userId = auth.currentUser.displayName;
-  addDoc(colRef, {
+  return addDoc(colRef, {
     text: input.value,
     timestamp: serverTimestamp(),
     userid: userId,
