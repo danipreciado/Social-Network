@@ -1,6 +1,6 @@
 import { getDocs, query, orderBy } from 'firebase/firestore';
 import { colRef, auth } from '../lib/config/firebaseconfig.js';
-import { posting, deletePost } from '../lib/config/posts.js';
+import { posting, deletePost, editPost } from '../lib/config/posts.js';
 import { signOutUser } from '../lib/config/auth.js';
 
 export const wall = (onNavigate) => {
@@ -295,6 +295,26 @@ export const wall = (onNavigate) => {
   confirmationModal.appendChild(cancelBtn);
   wallSection.appendChild(confirmationModal);
 
+  const editModal = document.createElement('div');
+  editModal.className = 'confirmationModal';
+  editModal.style.display = 'none';
+  const editInput = document.createElement('input');
+  editInput.type = 'text';
+  editInput.className = 'editInput';
+
+  const confirmEditBtn = document.createElement('button');
+  confirmEditBtn.className = 'confirmBtn';
+  confirmEditBtn.textContent = 'Editar';
+
+  const cancelEditBtn = document.createElement('button');
+  cancelEditBtn.className = 'cancelBtn';
+  cancelEditBtn.textContent = 'Cancelar';
+
+  editModal.appendChild(editInput);
+  editModal.appendChild(confirmEditBtn);
+  editModal.appendChild(cancelEditBtn);
+  wallSection.appendChild(editModal);
+
   form.addEventListener('submit', (e) => {
     e.preventDefault();
     const postText = input.value.trim();
@@ -344,6 +364,27 @@ export const wall = (onNavigate) => {
         userNameElem.textContent = `${pos.userid} escribió: `;
         postHeader.appendChild(userNameElem);
 
+        const editBtn = document.createElement('button');
+        editBtn.textContent = 'Editar';
+        editBtn.addEventListener('click', () => {
+          // Mostrar modal de edición
+          editInput.value = pos.text;
+          editModal.style.display = 'block';
+          confirmEditBtn.addEventListener('click', () => {
+            editPost(pos.id, editInput.value)
+              .then(() => {
+                window.location.reload();
+              });
+            // Esconder el modal de cofirmación
+            editModal.style.display = 'none';
+          });
+
+          // Esconder el modal de confirmación si el usuario da click en cancelar
+          cancelEditBtn.addEventListener('click', () => {
+            editModal.style.display = 'none';
+          });
+        });
+
         const deleteButton = document.createElement('button');
         deleteButton.textContent = 'Delete';
         deleteButton.addEventListener('click', () => {
@@ -368,6 +409,7 @@ export const wall = (onNavigate) => {
 
         if (pos.userid === auth.currentUser.displayName) {
           postHeader.appendChild(deleteButton);
+          postHeader.appendChild(editBtn);
         }
 
         const postContent = document.createElement('div');

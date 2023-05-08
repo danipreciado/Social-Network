@@ -4,12 +4,13 @@
 
 import { home } from '../src/templates/home.js';
 import { signup } from '../src/templates/signUp.js';
-import { googleLogin } from '../src/lib/config/auth.js';
+import { googleLogin, registerUserWithEmailAndPassword } from '../src/lib/config/auth.js';
 import { errorMessages } from '../src/lib/index.js';
 
 jest.mock('../src/lib/config/auth', () => ({
   googleLogin: jest.fn(),
   login: jest.fn(),
+  registerUserWithEmailAndPassword: jest.fn(),
 }));
 
 describe('home', () => {
@@ -59,6 +60,7 @@ describe('signup', () => {
     const container = document.createElement('section');
     container.append(signup());
     const btnRegister = container.querySelector('.btnRegister');
+    console.log(btnRegister);
     expect(btnRegister).not.toBe(null);
   });
 
@@ -71,29 +73,30 @@ describe('signup', () => {
   });
 
   // eslint-disable-next-line max-len
-  /*   it.skip('authFunction debe ser llamado cuando se hace click en el botón de registrarse', () => {
+  it('authFunction debe ser llamado cuando se hace click en el botón de registrarse', async () => {
     const onNavigate = jest.fn();
-    const signupSection = signup(onNavigate);
+    const signupSection = document.createElement('section');
+    signupSection.append(signup(onNavigate));
+    const authFunction = registerUserWithEmailAndPassword;
     const btnRegister = signupSection.querySelector('.btnRegister');
     const emailInput = signupSection.querySelector('#userEmail');
     const passwordInput = signupSection.querySelector('#userPassword');
-    const emailError = signupSection.querySelector('#errorEmailMessage');
-    const passwordError = signupSection.querySelector('#errorPassMessage');
     const userInput = signupSection.querySelector('#user-input');
-
+    await registerUserWithEmailAndPassword.mockImplementationOnce(() => Promise.resolve());
+    console.log(btnRegister);
     // Click the register button
+    expect(btnRegister).not.toBeNull();
     btnRegister.click();
 
     // Check that authFunction was called with the correct arguments
+
     expect(authFunction).toHaveBeenCalledWith(
       emailInput,
       passwordInput,
-      onNavigate,
-      emailError,
-      passwordError,
       userInput,
     );
-  }); */
+  });
+
   it('debe navegar a Home al hacer click en el boton cerrar', () => {
     const onNavigate = jest.fn();
     const signupSection = signup(onNavigate);
