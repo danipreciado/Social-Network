@@ -1,6 +1,8 @@
 import { getDocs, query, orderBy } from 'firebase/firestore';
 import { colRef, auth } from '../lib/config/firebaseconfig.js';
-import { posting, deletePost, editPost } from '../lib/config/posts.js';
+import {
+  posting, deletePost, editPost, like, dislike,
+} from '../lib/config/posts.js';
 import { signOutUser } from '../lib/config/auth.js';
 
 export const wall = (onNavigate) => {
@@ -447,18 +449,43 @@ export const wall = (onNavigate) => {
         dogReaction.alt = 'dog reaction';
         reactions.appendChild(dogReaction);
 
-        // const dogReactionCount = document.createElement('p');
-        // dogReactionCount.textContent = dogCount.toString();
-        // reactions.appendChild(dogReactionCount);
+        const dogReactionCount = document.createElement('div');
+        dogReactionCount.setAttribute('id', 'divlike');
+        dogReactionCount.innerHTML = `${pos.likes}`.length;
+
+        const catReactionCount = document.createElement('div');
+        catReactionCount.setAttribute('id', 'divlikecat');
+        catReactionCount.innerHTML = `${pos.likescat}`.length;
+
+        reactions.appendChild(dogReactionCount);
 
         const catReaction = document.createElement('img');
         catReaction.src = 'images/cat.png';
         catReaction.alt = 'cat reaction';
         reactions.appendChild(catReaction);
+        reactions.appendChild(catReactionCount);
 
-        // const catReactionCount = document.createElement('p');
-        // catReactionCount.textContent = catCount.toString();
-        // reactions.appendChild(catReactionCount);
+        dogReaction.addEventListener('click', () => {
+          console.log(auth.currentUser.email);
+          const user = auth.currentUser.uid;
+          const likes = pos.likes;
+          console.log(pos.likes);
+          console.log(auth.currentUser.uid);
+          // si el usuario da like los suma
+          /* if (!likes.includes(user)) {
+            like(pos.id);
+          } else {
+            // dislike resta el me gusta
+            dislike(pos.id);
+          } */
+
+          if (Array.isArray(likes) && !likes.includes(user)) {
+            like(pos.id);
+          } else {
+            // dislike removes the like
+            dislike(pos.id);
+          }
+        });
 
         const commentBtn = document.createElement('button');
         commentBtn.className = 'btnComment';
