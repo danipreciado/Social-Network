@@ -16,4 +16,3 @@ export const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 export const db = getFirestore(app);
 export const colRef = collection(db, 'posts');
-export const colRef2 = firebase.firestore().collection('posts');
