@@ -1,5 +1,13 @@
 import {
-  addDoc, getDocs, serverTimestamp, deleteDoc, doc, updateDoc, arrayRemove, arrayUnion,
+  addDoc,
+  getDocs,
+  serverTimestamp,
+  deleteDoc,
+  doc,
+  updateDoc,
+  arrayRemove,
+  arrayUnion,
+  orderBy, query, onSnapshot,
 } from 'firebase/firestore';
 import { colRef, auth } from './firebaseconfig.js';
 
@@ -28,6 +36,8 @@ export function posting(input, form) {
       form.reset();
     });
 }
+
+export const postData = (callback) => onSnapshot(query(colRef, orderBy('time', 'desc')), callback);
 
 export function deletePost(postId) {
   const postDocRef = doc(colRef, postId);
