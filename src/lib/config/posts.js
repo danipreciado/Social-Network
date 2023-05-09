@@ -1,5 +1,5 @@
 import {
-  addDoc, getDocs, serverTimestamp, deleteDoc, doc, updateDoc,
+  addDoc, getDocs, serverTimestamp, deleteDoc, doc, updateDoc, arrayRemove, arrayUnion,
 } from 'firebase/firestore';
 import { colRef, auth } from './firebaseconfig.js';
 
@@ -21,6 +21,8 @@ export function posting(input, form) {
     text: input.value,
     timestamp: serverTimestamp(),
     userid: userId,
+    likes: [],
+    likescat: [],
   })
     .then(() => {
       form.reset();
@@ -54,3 +56,23 @@ export function editPost(postId, newPostText) {
       console.log(`Error editing post ${postId}: ${err.message}`);
     });
 }
+
+export const like = (postId) => {
+  const postDocRef = doc(colRef, postId);
+  return updateDoc(postDocRef, { likes: arrayUnion(auth.currentUser.uid) });
+};
+
+export const dislike = (postId) => {
+  const postDocRef = doc(colRef, postId);
+  return updateDoc(postDocRef, { likes: arrayRemove(auth.currentUser.uid) });
+};
+
+export const likecat = (postId) => {
+  const postDocRef = doc(colRef, postId);
+  return updateDoc(postDocRef, { likescat: arrayUnion(auth.currentUser.uid) });
+};
+
+export const dislikecat = (postId) => {
+  const postDocRef = doc(colRef, postId);
+  return updateDoc(postDocRef, { likescat: arrayRemove(auth.currentUser.uid) });
+};
