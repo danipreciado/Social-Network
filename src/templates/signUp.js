@@ -70,7 +70,7 @@ export const signup = (onNavigate) => {
     emailError.textContent = '';
     passwordError.textContent = '';
 
-    registerUserWithEmailAndPassword(email, password, userInput)
+    registerUserWithEmailAndPassword(email, password, userInput.value)
       .then(() => {
       // Email verification sent successfully
         onNavigate('/verification');
