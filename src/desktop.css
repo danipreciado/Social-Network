@@ -268,4 +268,7 @@
     .dot-container{
         padding-right: 0;
       }
+    .editInput {
+        width: 20vw;
+    }
 }

@@ -6,6 +6,8 @@ import {
   editPost,
   like,
   dislike,
+  likecat,
+  dislikecat,
 } from '../lib/config/posts.js';
 import { signOutUser } from '../lib/config/auth.js';
 
@@ -391,7 +393,7 @@ export const wall = (onNavigate) => {
       editBtn.textContent = 'Editar';
       editBtn.addEventListener('click', () => {
         // Mostrar modal de edición
-        editInput.value = pos.text;
+        editInput.value = pos.data().text;
         editModal.style.display = 'block';
         confirmEditBtn.addEventListener('click', () => {
           editPost(pos.id, editInput.value)
@@ -431,7 +433,7 @@ export const wall = (onNavigate) => {
         });
       });
 
-      if (pos.data().userid === auth.currentUser.displayName) {
+      if (pos.userid === auth.currentUser.displayName) {
         frameOptions.appendChild(editBtn);
         frameOptions.appendChild(deleteButton);
         postHeader.appendChild(dotContainer);
@@ -457,11 +459,10 @@ export const wall = (onNavigate) => {
       const dogReactionCount = document.createElement('div');
       dogReactionCount.setAttribute('id', 'divlike');
       dogReactionCount.textContent = pos.data().likes.length;
-      console.log(pos.data().likes);
 
       const catReactionCount = document.createElement('div');
       catReactionCount.setAttribute('id', 'divlikecat');
-      // catReactionCount.innerHTML = `${pos.data().likescat.length}`;
+      catReactionCount.textContent = pos.data().likescat.length;
 
       reactions.appendChild(dogReactionCount);
 
@@ -474,15 +475,26 @@ export const wall = (onNavigate) => {
       dogReaction.addEventListener('click', () => {
         const user = auth.currentUser.uid;
         const likes = pos.data().likes;
-        console.log(pos.data().likes);
         // si el usuario da like los suma
         if (!likes.includes(user)) {
-          console.log('ENTRA LIKE');
           like(pos.id);
         } else {
           // dislike resta el me gusta
-          console.log('ENTRA DISLIKE');
           dislike(pos.id);
+        }
+      });
+
+      catReaction.addEventListener('click', () => {
+        const user = auth.currentUser.uid;
+        const likes = pos.data().likescat;
+        // si el usuario da like los suma
+        if (!likes.includes(user)) {
+          console.log('ENTRA LIKE');
+          likecat(pos.id);
+        } else {
+          // dislike resta el me gusta
+          console.log('ENTRA DISLIKE');
+          dislikecat(pos.id);
         }
       });
       const commentBtn = document.createElement('button');

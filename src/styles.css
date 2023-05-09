@@ -645,6 +645,7 @@ h2{
     flex-direction: row;
     /* margin-left: -25vw; */
     margin-top: 3vh;
+    margin-bottom: 1.5vh;
     align-items: center;
     gap: 1rem;
     width: 72vw;
@@ -661,17 +662,21 @@ h2{
     align-items: center;
     margin-top: 2vh;
 }
-.reactions p {
+.reactions div {
     font-size: 1.3rem;
+    margin-right: 1rem;
 }
 .post button {
     margin-top: 0;
     margin-left: 0;
 }
+.reactions {
+  gap: 0.8rem;
+}
 .reactions img{
     object-fit: cover;
     margin-top:-3vh;
-    max-width: 5vw;
+    max-width: 6vw;
     height: auto;
 }
 .container-wall{
