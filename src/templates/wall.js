@@ -1,7 +1,11 @@
-import { getDocs, query, orderBy } from 'firebase/firestore';
-import { colRef, auth } from '../lib/config/firebaseconfig.js';
+import { onSnapshot, query, orderBy } from 'firebase/firestore';
+import { auth, colRef } from '../lib/config/firebaseconfig.js';
 import {
-  posting, deletePost, editPost, like,
+  posting,
+  deletePost,
+  editPost,
+  like,
+  dislike,
 } from '../lib/config/posts.js';
 import { signOutUser } from '../lib/config/auth.js';
 
@@ -321,10 +325,10 @@ export const wall = (onNavigate) => {
     e.preventDefault();
     const postText = input.value.trim();
     if (postText !== '') {
-      posting(input, form)
-        .then(() => {
-          window.location.reload();
-        });
+      posting(input, form);
+      // .then(() => {
+      //   window.location.reload();
+      // });
     }
   });
 
@@ -340,160 +344,170 @@ export const wall = (onNavigate) => {
       });
   });
 
-  const q = query(colRef, orderBy('timestamp', 'desc'));
-  getDocs(q)
-    .then((snapshot) => {
-      const postsArr = [];
-      snapshot.docs.forEach((doc) => {
-        postsArr.push({ ...doc.data(), id: doc.id });
+  // const q = query(colRef, orderBy('timestamp', 'desc'));
+  // getDocs(q)
+  //   .then((snapshot) => {
+  // const postsArr = [];
+  // snapshot.docs.forEach((doc) => {
+  //   postsArr.push({ ...doc.data(), id: doc.id });
+  // });
+  const orderedQuery = query(colRef, orderBy('timestamp', 'desc'));
+  onSnapshot(orderedQuery, (querySnapshot) => {
+    postsSection.innerHTML = '';
+    querySnapshot.forEach((pos) => {
+      const post = document.createElement('article');
+      post.className = 'post';
+
+      const postHeader = document.createElement('div');
+      postHeader.className = 'post-header';
+
+      const userImage = document.createElement('img');
+      userImage.className = 'user-image';
+      userImage.src = 'images/user1.png';
+      userImage.alt = 'profile picture';
+      postHeader.appendChild(userImage);
+
+      const userNameElem = document.createElement('p');
+      userNameElem.textContent = `${pos.data().userid} escribió: `;
+      postHeader.appendChild(userNameElem);
+
+      const dotContainer = document.createElement('article');
+      const moreOptionsimg = document.createElement('img');
+      const frameOptions = document.createElement('div');
+
+      frameOptions.className = 'frame-options';
+      moreOptionsimg.src = 'images/dot-menu.png';
+      moreOptionsimg.alt = 'more-options';
+      moreOptionsimg.className = 'more_options-img';
+      dotContainer.className = 'dot-container';
+      dotContainer.append(moreOptionsimg, frameOptions);
+
+      moreOptionsimg.addEventListener('click', () => {
+        frameOptions.classList.toggle('active');
       });
 
-      // Create HTML elements for each post
-      postsArr.forEach((pos) => {
-        const post = document.createElement('article');
-        post.className = 'post';
-
-        const postHeader = document.createElement('div');
-        postHeader.className = 'post-header';
-
-        const userImage = document.createElement('img');
-        userImage.className = 'user-image';
-        userImage.src = 'images/user1.png';
-        userImage.alt = 'profile picture';
-        postHeader.appendChild(userImage);
-
-        const userNameElem = document.createElement('p');
-        userNameElem.textContent = `${pos.userid} escribió: `;
-        postHeader.appendChild(userNameElem);
-
-        const dotContainer = document.createElement('article');
-        const moreOptionsimg = document.createElement('img');
-        const frameOptions = document.createElement('div');
-
-        frameOptions.className = 'frame-options';
-        moreOptionsimg.src = 'images/dot-menu.png';
-        moreOptionsimg.alt = 'more-options';
-        moreOptionsimg.className = 'more_options-img';
-        dotContainer.className = 'dot-container';
-        dotContainer.append(moreOptionsimg, frameOptions);
-
-        moreOptionsimg.addEventListener('click', () => {
-          frameOptions.classList.toggle('active');
-        });
-
-        const editBtn = document.createElement('button');
-        editBtn.className = 'option1';
-        editBtn.textContent = 'Editar';
-        editBtn.addEventListener('click', () => {
-          // Mostrar modal de edición
-          editInput.value = pos.text;
-          editModal.style.display = 'block';
-          confirmEditBtn.addEventListener('click', () => {
-            editPost(pos.id, editInput.value)
-              .then(() => {
-                window.location.reload();
-              });
-            // Esconder el modal de cofirmación
-            editModal.style.display = 'none';
-          });
-
-          // Esconder el modal de confirmación si el usuario da click en cancelar
-          cancelEditBtn.addEventListener('click', () => {
-            editModal.style.display = 'none';
-          });
-        });
-
-        const deleteButton = document.createElement('button');
-        deleteButton.textContent = 'Eliminar';
-        deleteButton.className = 'option2';
-        deleteButton.addEventListener('click', () => {
-          // Mostrar modal mensaje de confirmación
-
-          confirmationModal.style.display = 'block';
-
-          confirmBtn.addEventListener('click', () => {
-            deletePost(pos.id)
-              .then(() => {
-                window.location.reload();
-              });
-            // Esconder el modal de cofirmación
-            confirmationModal.style.display = 'none';
-          });
-
-          // Esconder el modal de confirmación si el usuario da click en cancelar
-          cancelBtn.addEventListener('click', () => {
-            confirmationModal.style.display = 'none';
-          });
-        });
-
-        if (pos.userid === auth.currentUser.displayName) {
-          frameOptions.appendChild(editBtn);
-          frameOptions.appendChild(deleteButton);
-          postHeader.appendChild(dotContainer);
-        }
-
-        const postContent = document.createElement('div');
-        postContent.className = 'post-content';
-
-        const postText = document.createElement('p');
-        postContent.appendChild(postText);
-
-        const postBottom = document.createElement('div');
-        postBottom.className = 'post-bottom';
-
-        const reactions = document.createElement('div');
-        reactions.className = 'reactions';
-
-        const dogReaction = document.createElement('img');
-        dogReaction.src = 'images/dog.png';
-        dogReaction.alt = 'dog reaction';
-        reactions.appendChild(dogReaction);
-
-        const dogReactionCount = document.createElement('p');
-        dogReactionCount.textContent = pos.likesss;
-        reactions.appendChild(dogReactionCount);
-
-        dogReaction.addEventListener('click', () => {
-          const postId = pos.id;
-          const userId = auth.currentUser.uid;
-          like(postId, userId)
+      const editBtn = document.createElement('button');
+      editBtn.className = 'option1';
+      editBtn.textContent = 'Editar';
+      editBtn.addEventListener('click', () => {
+        // Mostrar modal de edición
+        editInput.value = pos.text;
+        editModal.style.display = 'block';
+        confirmEditBtn.addEventListener('click', () => {
+          editPost(pos.id, editInput.value)
             .then(() => {
-              dogReactionCount.textContent = pos.likes.length + 1;
+              // window.location.reload();
             });
+          // Esconder el modal de cofirmación
+          editModal.style.display = 'none';
         });
 
-        const catReaction = document.createElement('img');
-        catReaction.src = 'images/cat.png';
-        catReaction.alt = 'cat reaction';
-        reactions.appendChild(catReaction);
-
-        // const catReactionCount = document.createElement('p');
-        // catReactionCount.textContent = catCount.toString();
-        // reactions.appendChild(catReactionCount);
-
-        const commentBtn = document.createElement('button');
-        commentBtn.className = 'btnComment';
-        commentBtn.type = 'button';
-
-        const commentBtnIcon = document.createElement('img');
-        commentBtnIcon.src = 'images/post-pawn.png';
-        commentBtnIcon.alt = 'comment';
-        commentBtn.appendChild(commentBtnIcon);
-        const btnText = document.createTextNode('Comentar');
-        commentBtn.appendChild(btnText);
-        postBottom.appendChild(reactions);
-        postBottom.appendChild(commentBtn);
-
-        post.appendChild(postHeader);
-        postText.textContent = pos.text;
-        post.appendChild(postContent);
-        post.appendChild(postBottom);
-
-        postsSection.appendChild(post);
+        // Esconder el modal de confirmación si el usuario da click en cancelar
+        cancelEditBtn.addEventListener('click', () => {
+          editModal.style.display = 'none';
+        });
       });
-    })
-    .catch((err) => {
-      console.log(err.message);
+
+      const deleteButton = document.createElement('button');
+      deleteButton.textContent = 'Eliminar';
+      deleteButton.className = 'option2';
+      deleteButton.addEventListener('click', () => {
+        // Mostrar modal mensaje de confirmación
+
+        confirmationModal.style.display = 'block';
+
+        confirmBtn.addEventListener('click', () => {
+          deletePost(pos.id);
+          /*  .then(() => {
+              window.location.reload();
+            }); */
+          // Esconder el modal de cofirmación
+          confirmationModal.style.display = 'none';
+        });
+
+        // Esconder el modal de confirmación si el usuario da click en cancelar
+        cancelBtn.addEventListener('click', () => {
+          confirmationModal.style.display = 'none';
+        });
+      });
+
+      if (pos.data().userid === auth.currentUser.displayName) {
+        frameOptions.appendChild(editBtn);
+        frameOptions.appendChild(deleteButton);
+        postHeader.appendChild(dotContainer);
+      }
+
+      const postContent = document.createElement('div');
+      postContent.className = 'post-content';
+
+      const postText = document.createElement('p');
+      postContent.appendChild(postText);
+
+      const postBottom = document.createElement('div');
+      postBottom.className = 'post-bottom';
+
+      const reactions = document.createElement('div');
+      reactions.className = 'reactions';
+
+      const dogReaction = document.createElement('img');
+      dogReaction.src = 'images/dog.png';
+      dogReaction.alt = 'dog reaction';
+      reactions.appendChild(dogReaction);
+
+      const dogReactionCount = document.createElement('div');
+      dogReactionCount.setAttribute('id', 'divlike');
+      dogReactionCount.textContent = pos.data().likes.length;
+      console.log(pos.data().likes);
+
+      const catReactionCount = document.createElement('div');
+      catReactionCount.setAttribute('id', 'divlikecat');
+      // catReactionCount.innerHTML = `${pos.data().likescat.length}`;
+
+      reactions.appendChild(dogReactionCount);
+
+      const catReaction = document.createElement('img');
+      catReaction.src = 'images/cat.png';
+      catReaction.alt = 'cat reaction';
+      reactions.appendChild(catReaction);
+      reactions.appendChild(catReactionCount);
+
+      dogReaction.addEventListener('click', () => {
+        const user = auth.currentUser.uid;
+        const likes = pos.data().likes;
+        console.log(pos.data().likes);
+        // si el usuario da like los suma
+        if (!likes.includes(user)) {
+          console.log('ENTRA LIKE');
+          like(pos.id);
+        } else {
+          // dislike resta el me gusta
+          console.log('ENTRA DISLIKE');
+          dislike(pos.id);
+        }
+      });
+      const commentBtn = document.createElement('button');
+      commentBtn.className = 'btnComment';
+      commentBtn.type = 'button';
+
+      const commentBtnIcon = document.createElement('img');
+      commentBtnIcon.src = 'images/post-pawn.png';
+      commentBtnIcon.alt = 'comment';
+      commentBtn.appendChild(commentBtnIcon);
+      const btnText = document.createTextNode('Comentar');
+      commentBtn.appendChild(btnText);
+      postBottom.appendChild(reactions);
+      postBottom.appendChild(commentBtn);
+
+      post.appendChild(postHeader);
+      postText.textContent = pos.data().text;
+      post.appendChild(postContent);
+      post.appendChild(postBottom);
+
+      postsSection.appendChild(post);
     });
+  });
+  // .catch((err) => {
+  //   console.log(err.message);
+  // });
   return wallSection;
 };

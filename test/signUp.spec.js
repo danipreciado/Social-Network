@@ -12,19 +12,16 @@ jest.mock('../src/lib/config/auth', () => ({
   login: jest.fn(),
   registerUserWithEmailAndPassword: jest.fn(),
 }));
-
 describe('home', () => {
   it('home debe ser una función', () => {
     expect(typeof home).toBe('function');
   });
-
   it('existe un botón signup', () => {
     const container = document.createElement('section');
     container.append(home());
     const btnSignUp = container.querySelector('.btnSignUp');
     expect(btnSignUp).not.toBe(null);
   });
-
   test('navega a la sección signUp', () => {
     const container = document.createElement('section');
     const onNavigate = jest.fn();
@@ -33,14 +30,12 @@ describe('home', () => {
     btnSignUp.click();
     expect(onNavigate).toHaveBeenCalledWith('/signup');
   });
-
   it('existe un botón signin', () => {
     const container = document.createElement('section');
     container.append(home());
     const bottonLogin = container.querySelector('.btnSignIn');
     expect(bottonLogin).not.toBe(null);
   });
-
   test('navega a la sección signIn', () => {
     const container = document.createElement('section');
     const onNavigate = jest.fn();
@@ -50,12 +45,10 @@ describe('home', () => {
     expect(onNavigate).toHaveBeenCalledWith('/signin');
   });
 });
-
 describe('signup', () => {
   it('signup debe ser una función', () => {
     expect(typeof signup).toBe('function');
   });
-
   it('existe un botón de registrarse', () => {
     const container = document.createElement('section');
     container.append(signup());
@@ -63,7 +56,6 @@ describe('signup', () => {
     console.log(btnRegister);
     expect(btnRegister).not.toBe(null);
   });
-
   it('debe navegar a SignIn al hacer click en el boton de ingresar', () => {
     const onNavigate = jest.fn();
     const signupSection = signup(onNavigate);
@@ -71,32 +63,26 @@ describe('signup', () => {
     signInLink.click();
     expect(onNavigate).toHaveBeenCalledWith('/signin');
   });
-
   it('should call registerUserWithEmailAndPassword when register button is clicked', () => {
     const container = document.createElement('section');
     container.append(signup());
     const registerBtn = container.querySelector('.btnRegister');
     const emailInput = container.querySelector('#userEmail');
     const passwordInput = container.querySelector('#userPassword');
-
+    const input = container.querySelector('#user-input');
     registerUserWithEmailAndPassword.mockResolvedValueOnce();
-
     emailInput.value = 'test@example.com';
     passwordInput.value = 'password';
-
     registerBtn.click();
-
-    expect(registerUserWithEmailAndPassword).toHaveBeenCalledWith('test@example.com', 'password', '');
+    // eslint-disable-next-line max-len
+    expect(registerUserWithEmailAndPassword).toHaveBeenCalledWith(emailInput.value, passwordInput.value, input);
   });
-
   it('debe navegar a Home al hacer click en el boton cerrar', () => {
     const onNavigate = jest.fn();
     const signupSection = signup(onNavigate);
     const closeBtn = signupSection.querySelector('.close-signUp');
-
     // Click the close button
     closeBtn.click();
-
     // Check that onNavigate was called with the correct argument
     expect(onNavigate).toHaveBeenCalledWith('/');
   });
@@ -108,69 +94,50 @@ describe('signup', () => {
     expect(googleLogin).toHaveBeenCalledWith(onNavigate);
   });
 });
-
 describe('errorMessages', () => {
   it('displays the correct error message for auth/email-already-in-use', () => {
     const emailErrorMessage = document.createElement('span');
     const passwordErrorMessage = document.createElement('span');
-
     errorMessages('auth/email-already-in-use', emailErrorMessage, passwordErrorMessage);
-
     expect(emailErrorMessage.textContent).toBe('Este correo ya ha sido registrado');
     expect(passwordErrorMessage.textContent).toBe('');
   });
-
   it('displays the correct error message for auth/weak-password', () => {
     const emailErrorMessage = document.createElement('span');
     const passwordErrorMessage = document.createElement('span');
-
     errorMessages('auth/weak-password', emailErrorMessage, passwordErrorMessage);
-
     expect(emailErrorMessage.textContent).toBe('');
     expect(passwordErrorMessage.textContent).toBe('Escribe una contraseña más larga');
   });
-
   it('displays the correct error message for auth/invalid-email', () => {
     const emailErrorMessage = document.createElement('span');
     const passwordErrorMessage = document.createElement('span');
-
     errorMessages('auth/invalid-email', emailErrorMessage, passwordErrorMessage);
-
     expect(emailErrorMessage.textContent).toBe('Escribe un correo valido');
     expect(passwordErrorMessage.textContent).toBe('');
   });
-
   it('displays the correct error message for auth/missing-password', () => {
     const emailErrorMessage = document.createElement('span');
     const passwordErrorMessage = document.createElement('span');
-
     errorMessages('auth/missing-password', emailErrorMessage, passwordErrorMessage);
-
     expect(emailErrorMessage.textContent).toBe('');
     expect(passwordErrorMessage.textContent).toBe('Escribe una contraseña valida');
   });
-
   it('displays the correct error message for auth/user-not-found', () => {
     const emailErrorMessage = document.createElement('span');
     const passwordErrorMessage = document.createElement('span');
-
     errorMessages('auth/user-not-found', emailErrorMessage, passwordErrorMessage);
-
     expect(emailErrorMessage.textContent).toBe('Email no registrado');
     expect(passwordErrorMessage.textContent).toBe('');
   });
-
   it('displays the correct error message for auth/wrong-password', () => {
     const emailErrorMessage = document.createElement('span');
     const passwordErrorMessage = document.createElement('span');
-
     errorMessages('auth/wrong-password', emailErrorMessage, passwordErrorMessage);
-
     expect(emailErrorMessage.textContent).toBe('');
     expect(passwordErrorMessage.textContent).toBe('Contraseña incorrecta');
   });
 });
-
 it('googleLogin debe ser llamado cuando se hace click en el botón de Google', () => {
   const onNavigate = jest.fn();
   const signupSection = signup(onNavigate);

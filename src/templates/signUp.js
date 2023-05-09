@@ -64,13 +64,13 @@ export const signup = (onNavigate) => {
   btnGoogle.appendChild(iconGoogle);
   btnGoogle.appendChild(document.createTextNode('Acceder con Google'));
 
-  function authFunction(userEmail, userPassword, input) {
-    const email = userEmail.value;
-    const password = userPassword.value;
+  registerBtn.addEventListener('click', () => {
+    const email = emailInput.value;
+    const password = passwordInput.value;
     emailError.textContent = '';
     passwordError.textContent = '';
 
-    registerUserWithEmailAndPassword(email, password, input.value)
+    registerUserWithEmailAndPassword(email, password, userInput.value)
       .then(() => {
       // Email verification sent successfully
         onNavigate('/verification');
@@ -80,10 +80,6 @@ export const signup = (onNavigate) => {
         console.log(errorCode);
         errorMessages(errorCode, emailError, passwordError);
       });
-  }
-
-  registerBtn.addEventListener('click', () => {
-    authFunction(emailInput, passwordInput, userInput, emailError, passwordError, onNavigate);
   });
 
   hasAccountLink.addEventListener('click', () => {
