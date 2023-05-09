@@ -1,5 +1,5 @@
 import {
-  addDoc, getDocs, serverTimestamp, deleteDoc, doc, updateDoc,
+  addDoc, getDocs, serverTimestamp, deleteDoc, doc, updateDoc, arrayUnion,
 } from 'firebase/firestore';
 import { colRef, auth } from './firebaseconfig.js';
 
@@ -21,6 +21,7 @@ export function posting(input, form) {
     text: input.value,
     timestamp: serverTimestamp(),
     userid: userId,
+    likesss: 0,
   })
     .then(() => {
       form.reset();
@@ -53,4 +54,9 @@ export function editPost(postId, newPostText) {
     .catch((err) => {
       console.log(`Error editing post ${postId}: ${err.message}`);
     });
+}
+
+export function like(postId, userId) {
+  const docRef = doc(colRef, postId);
+  return updateDoc(docRef, { likes: arrayUnion(userId) });
 }

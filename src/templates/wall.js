@@ -1,6 +1,8 @@
 import { getDocs, query, orderBy } from 'firebase/firestore';
 import { colRef, auth } from '../lib/config/firebaseconfig.js';
-import { posting, deletePost, editPost } from '../lib/config/posts.js';
+import {
+  posting, deletePost, editPost, like,
+} from '../lib/config/posts.js';
 import { signOutUser } from '../lib/config/auth.js';
 
 export const wall = (onNavigate) => {
@@ -447,9 +449,18 @@ export const wall = (onNavigate) => {
         dogReaction.alt = 'dog reaction';
         reactions.appendChild(dogReaction);
 
-        // const dogReactionCount = document.createElement('p');
-        // dogReactionCount.textContent = dogCount.toString();
-        // reactions.appendChild(dogReactionCount);
+        const dogReactionCount = document.createElement('p');
+        dogReactionCount.textContent = pos.likesss;
+        reactions.appendChild(dogReactionCount);
+
+        dogReaction.addEventListener('click', () => {
+          const postId = pos.id;
+          const userId = auth.currentUser.uid;
+          like(postId, userId)
+            .then(() => {
+              dogReactionCount.textContent = pos.likes.length + 1;
+            });
+        });
 
         const catReaction = document.createElement('img');
         catReaction.src = 'images/cat.png';
