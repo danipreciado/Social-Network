@@ -602,10 +602,13 @@ h2{
     font-size: 1.5rem;
     margin-left: 2vw;
  }
- .post-content{
-    border-radius: 10px;
-    background-color: #F8FFE5; 
+ .post-content {
+  border-radius: 10px;
+  background-color: #F8FFE5;
+  overflow-wrap: break-word;
+  overflow-y: scroll;
  }
+ 
  .your-post label{
     color:#6A4C93 ;
     font-size: 1.5rem;
@@ -638,7 +641,7 @@ h2{
     flex-direction: row;
     margin-top:2vh;
     align-items: center;
-    gap:0.3vw;
+    gap: 0.8rem;
  }
  .post-header{
     display: flex;
@@ -670,9 +673,7 @@ h2{
     margin-top: 0;
     margin-left: 0;
 }
-.reactions {
-  gap: 0.8rem;
-}
+
 .reactions img{
     object-fit: cover;
     margin-top:-3vh;
@@ -875,7 +876,7 @@ h2{
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  z-index: 2;
+  z-index: 1;
   width: 32rem;
   height: 12rem;
   border-radius: 20px;
@@ -907,4 +908,11 @@ h2{
   margin-top: 2rem;
  
 
+}
+::-webkit-scrollbar{
+  width: 10px;
+}
+ ::-webkit-scrollbar-thumb{
+  background-color:#1B9AAA;
+  border-radius:15px;
 }

@@ -271,4 +271,7 @@
     .editInput {
         width: 20vw;
     }
+    .btnGoogle{
+        margin-left: 3.5rem;
+    }
 }
