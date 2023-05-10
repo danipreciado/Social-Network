@@ -29,10 +29,10 @@ describe('wall', () => {
   });
 
   it('deberia de existir un boton de publicar', () => {
-    const container = document.createElement('section');
-    container.append(wall());
-    const btnPublish = container.querySelector('.post-bottom');
-    expect(btnPublish).not.toBe(null);
+    /*  const container = document.createElement('section');
+    container.append(wall()); */
+    const btnPublish = wallSection.querySelector('.btnyour-post');
+    expect(btnPublish).toBeTruthy();
   });
 
   it('deberia de existir un boton de cerrar sesión', () => {

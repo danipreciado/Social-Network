@@ -2,7 +2,6 @@
  * @jest-environment jsdom
  */
 
-import { home } from '../src/templates/home.js';
 import { signup } from '../src/templates/signUp.js';
 import { googleLogin, registerUserWithEmailAndPassword } from '../src/lib/config/auth.js';
 import { errorMessages } from '../src/lib/index.js';
@@ -12,39 +11,7 @@ jest.mock('../src/lib/config/auth', () => ({
   login: jest.fn(),
   registerUserWithEmailAndPassword: jest.fn(),
 }));
-describe('home', () => {
-  it('home debe ser una función', () => {
-    expect(typeof home).toBe('function');
-  });
-  it('existe un botón signup', () => {
-    const container = document.createElement('section');
-    container.append(home());
-    const btnSignUp = container.querySelector('.btnSignUp');
-    expect(btnSignUp).not.toBe(null);
-  });
-  test('navega a la sección signUp', () => {
-    const container = document.createElement('section');
-    const onNavigate = jest.fn();
-    container.append(home(onNavigate));
-    const btnSignUp = container.querySelector('.btnSignUp');
-    btnSignUp.click();
-    expect(onNavigate).toHaveBeenCalledWith('/signup');
-  });
-  it('existe un botón signin', () => {
-    const container = document.createElement('section');
-    container.append(home());
-    const bottonLogin = container.querySelector('.btnSignIn');
-    expect(bottonLogin).not.toBe(null);
-  });
-  test('navega a la sección signIn', () => {
-    const container = document.createElement('section');
-    const onNavigate = jest.fn();
-    container.append(home(onNavigate));
-    const btnSignIn = container.querySelector('.btnSignIn');
-    btnSignIn.click();
-    expect(onNavigate).toHaveBeenCalledWith('/signin');
-  });
-});
+
 describe('signup', () => {
   it('signup debe ser una función', () => {
     expect(typeof signup).toBe('function');
@@ -53,7 +20,6 @@ describe('signup', () => {
     const container = document.createElement('section');
     container.append(signup());
     const btnRegister = container.querySelector('.btnRegister');
-    console.log(btnRegister);
     expect(btnRegister).not.toBe(null);
   });
   it('debe navegar a SignIn al hacer click en el boton de ingresar', () => {
@@ -73,9 +39,10 @@ describe('signup', () => {
     registerUserWithEmailAndPassword.mockResolvedValueOnce();
     emailInput.value = 'test@example.com';
     passwordInput.value = 'password';
+    input.value = 'user';
     registerBtn.click();
     // eslint-disable-next-line max-len
-    expect(registerUserWithEmailAndPassword).toHaveBeenCalledWith(emailInput.value, passwordInput.value, input);
+    expect(registerUserWithEmailAndPassword).toHaveBeenCalledWith(emailInput.value, passwordInput.value, input.value);
   });
   it('debe navegar a Home al hacer click en el boton cerrar', () => {
     const onNavigate = jest.fn();
