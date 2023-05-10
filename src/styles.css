@@ -605,7 +605,19 @@ h2{
  .post-content{
     border-radius: 10px;
     background-color: #F8FFE5; 
+    overflow-wrap: break-word;
+    overflow-y: scroll;
+
  }
+
+ ::-webkit-scrollbar{
+  width: 10px;
+}
+ ::-webkit-scrollbar-thumb{
+  background-color:#1B9AAA;
+  border-radius:15px;
+}
+
  .your-post label{
     color:#6A4C93 ;
     font-size: 1.5rem;
