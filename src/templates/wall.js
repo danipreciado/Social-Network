@@ -392,16 +392,19 @@ export const wall = (onNavigate) => {
       editBtn.className = 'option1';
       editBtn.textContent = 'Editar';
       editBtn.addEventListener('click', () => {
+        console.log(`pos id after click${pos.id}`);
         // Mostrar modal de edición
         editInput.value = pos.data().text;
         editModal.style.display = 'block';
         confirmEditBtn.addEventListener('click', () => {
-          editPost(pos.id, editInput.value)
-            .then(() => {
-              // window.location.reload();
-            });
+          console.log(`confirmEditBtn clicked for post ${pos.id}`);
+          editPost(pos.id, editInput.value);
           // Esconder el modal de cofirmación
           editModal.style.display = 'none';
+          // Remover el event listener para que no se llame editPost() de nuevo
+        }, {
+          // This will invoke the event once and de-register it afterward
+          once: true,
         });
 
         // Esconder el modal de confirmación si el usuario da click en cancelar
@@ -433,7 +436,7 @@ export const wall = (onNavigate) => {
         });
       });
 
-      if (pos.userid === auth.currentUser.displayName) {
+      if (pos.data().userid === auth.currentUser.displayName) {
         frameOptions.appendChild(editBtn);
         frameOptions.appendChild(deleteButton);
         postHeader.appendChild(dotContainer);
