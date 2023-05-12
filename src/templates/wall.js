@@ -1,5 +1,4 @@
-import { onSnapshot, query, orderBy } from 'firebase/firestore';
-import { auth, colRef } from '../lib/config/firebaseconfig.js';
+import { auth } from '../lib/config/firebaseconfig.js';
 import {
   posting,
   deletePost,
@@ -8,6 +7,7 @@ import {
   dislike,
   likecat,
   dislikecat,
+  postData,
 } from '../lib/config/posts.js';
 import { signOutUser } from '../lib/config/auth.js';
 
@@ -238,13 +238,11 @@ export const wall = (onNavigate) => {
     e.preventDefault();
     signOutUser()
       .then(() => {
-        // Email verification sent successfully
         onNavigate('/');
       });
   });
 
-  const orderedQuery = query(colRef, orderBy('timestamp', 'desc'));
-  onSnapshot(orderedQuery, (querySnapshot) => {
+  postData((querySnapshot) => {
     postsSection.innerHTML = '';
     querySnapshot.forEach((pos) => {
       const post = document.createElement('article');
