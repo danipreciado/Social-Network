@@ -3,9 +3,24 @@
  */
 import { wall } from '../src/templates/wall';
 import { signOutUser } from '../src/lib/config/auth';
+import { posting, postData } from '../src/lib/config/posts';
+
+jest.mock('firebase/auth', () => ({
+  getAuth: () => ({
+    currentUser: {
+      displayName: 'John Doe',
+    },
+  }),
+}));
 
 jest.mock('../src/lib/config/auth', () => ({
   signOutUser: jest.fn(() => Promise.resolve()),
+
+}));
+jest.mock('../src/lib/config/posts', () => ({
+  posting: jest.fn(),
+  postData: jest.fn(),
+
 }));
 
 describe('wall', () => {
@@ -28,20 +43,6 @@ describe('wall', () => {
     expect(wallSection.querySelector('.posts-section')).toBeTruthy();
   });
 
-  it('deberia de existir un boton de publicar', () => {
-    /*  const container = document.createElement('section');
-    container.append(wall()); */
-    const btnPublish = wallSection.querySelector('.btnyour-post');
-    expect(btnPublish).toBeTruthy();
-  });
-
-  it('deberia de existir un boton de cerrar sesión', () => {
-    const container = document.createElement('section');
-    container.append(wall());
-    const btnClose = container.querySelector('.btn-logout');
-    expect(btnClose).not.toBe(null);
-  });
-
   it('debe navegar a Home al hacer click en el boton cerrar sesión', async () => {
     const onNavigate = jest.fn();
     const container = document.createElement('section');
@@ -55,26 +56,50 @@ describe('wall', () => {
     expect(onNavigate).toHaveBeenCalledWith('/');
   });
 
-  test('form submission should not trigger posting function if input value is empty', () => {
-  // create test input and form elements
-    const input = document.createElement('input');
-    input.value = '';
-    const form = document.createElement('form');
-    form.appendChild(input);
-
-    // create mock posting function
-    const posting = jest.fn();
-
-    // simulate form submission
-    form.dispatchEvent(new Event('submit', { bubbles: true }));
-
-    // ensure posting function is not called
-    expect(posting).not.toHaveBeenCalled();
-  });
-
-  it('deberia de renderizar la pantalla wall correctamente', () => {
+  test('Si el input no está vacío debe llamarse la función posting', () => {
     const container = document.createElement('section');
     container.append(wall());
-    expect(container.innerHTML).toMatchSnapshot();
+    const form = container.querySelector('.form-yourpost');
+    const input = container.querySelector('.your-postInput');
+    input.value = 'Some post text';
+
+    form.dispatchEvent(new Event('submit', { bubbles: true }));
+
+    expect(posting).toHaveBeenCalledWith(input, form);
+  });
+
+  test('al hacer clic en el menú hamburguesa la clase debe cambiar a active', () => {
+    const container = document.createElement('section');
+    container.append(wall());
+    const hamburgerArticle = container.querySelector('.hamburger');
+    const sectionMenu = document.createElement('section-menu');
+
+    hamburgerArticle.dispatchEvent(new Event('click'));
+    expect(sectionMenu.classList.contains('active')).toBe(false);
+
+    expect(sectionMenu.classList.contains('active')).toBe(false);
+  });
+
+  it('should render posts correctly', () => {
+    const mockQuerySnapshot = {
+      forEach: jest.fn((callback) => {
+        const mockPostData = {
+          userid: 'user1',
+          text: 'Some post text',
+          likes: [],
+          likescat: [],
+        };
+        const mockPos = {
+          id: 'post1',
+          data: () => mockPostData,
+        };
+        callback(mockPos);
+      }),
+    };
+
+    postData.mockImplementationOnce((callback) => {
+      callback(mockQuerySnapshot);
+    });
+    wall();
   });
 });

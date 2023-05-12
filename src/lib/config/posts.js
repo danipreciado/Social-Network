@@ -37,7 +37,8 @@ export function posting(input, form) {
     });
 }
 
-export const postData = (callback) => onSnapshot(query(colRef, orderBy('time', 'desc')), callback);
+const orderedQuery = query(colRef, orderBy('timestamp', 'desc'));
+export const postData = (callback) => onSnapshot(orderedQuery, callback);
 
 export function deletePost(postId) {
   const postDocRef = doc(colRef, postId);
