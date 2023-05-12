@@ -68,7 +68,7 @@ describe('wall', () => {
 
     expect(posting).toHaveBeenCalledWith(input, form);
   });
-  test('Si el input está vacío np debe llamarse la función posting', () => {
+  test('Si el input está vacío no debe llamarse la función posting', () => {
     const container = document.createElement('section');
     container.append(wall());
     const form = container.querySelector('.form-yourpost');
