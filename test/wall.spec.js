@@ -108,7 +108,7 @@ describe('wall', () => {
     expect(sectionMenu.classList.contains('active')).toBe(false);
   });
 
-  it('should render posts correctly', () => {
+  it('renderiza los posts', () => {
     const mockQuerySnapshot = {
       forEach: jest.fn((callback) => {
         const mockPostData = {
