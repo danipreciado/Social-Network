@@ -19,10 +19,9 @@
     }
 
     .btn-container button{
-        width: 19rem;
-        height: 5rem;
-        border-radius: 4rem;
-        font-size: 2.3rem;
+    
+        border-radius: 1rem;
+        font-size: 3rem;
         font-weight: 700;
     }
     .verification-message {
