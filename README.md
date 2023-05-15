@@ -42,10 +42,13 @@ Los paleta de colores que se uso fue la siguiente:
 ## 4. Test Unitarios.
 Componente home: 
 ![9813D11F-AC46-4A5E-8EBB-734B4BB7FE2E](https://github.com/danipreciado/Social-Network/assets/72713821/2a6ca5e5-1d8c-4a92-bdd0-229d01dcccf1)
+
 Componente signIn:
 ![1B2856C7-19D0-4890-B8E0-BE8511B5BDA0](https://github.com/danipreciado/Social-Network/assets/72713821/28376505-eab7-464a-972b-1e4dbddc7b03)
+
 Componente signUp:
 ![CA165EEE-E785-4BB8-B891-A661C024F134](https://github.com/danipreciado/Social-Network/assets/72713821/a64c5d31-5afc-4fa6-9368-688ae7a5dfe8)
+
 Componente wall:
 ![4FC96411-7A0F-46D5-A8A4-A49EE0DF9782](https://github.com/danipreciado/Social-Network/assets/72713821/b4727c46-125f-470a-a6f9-ee3af20defbe)
 
