@@ -37,13 +37,7 @@
         overflow: hidden;
     }
     
-    .signUp-form {
-        width: 40vw;
-    }
-
-    .signIn-form{
-        width: 40vw;
-    }
+   
 
     .item-e{
         
@@ -266,6 +260,7 @@
     }
     .dot-container{
         padding-right: 0;
+        width: 60%;
       }
     .editInput {
         width: 20vw;
@@ -332,13 +327,4 @@
         height: 4rem;
         width: 14vw;
     }
-
-    .dot-container{
-        width: 60%;
-    }
-
-
- 
-
-    
 }

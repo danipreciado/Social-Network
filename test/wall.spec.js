@@ -1,6 +1,7 @@
 /**
  * @jest-environment jsdom
  */
+import { getAuth } from 'firebase/auth';
 import { wall } from '../src/templates/wall';
 import { signOutUser } from '../src/lib/config/auth';
 import {
@@ -10,7 +11,7 @@ import {
 jest.mock('firebase/auth', () => ({
   getAuth: () => ({
     currentUser: {
-      displayName: 'John Doe',
+      displayName: 'user1',
       uid: 'user1',
     },
   }),
@@ -23,6 +24,7 @@ jest.mock('../src/lib/config/auth', () => ({
 jest.mock('../src/lib/config/posts', () => ({
   posting: jest.fn(),
   postData: jest.fn(),
+  deletePost: jest.fn(),
   like: jest.fn(),
   dislike: jest.fn(),
   likecat: jest.fn(),
@@ -73,6 +75,17 @@ describe('wall', () => {
 
     expect(posting).toHaveBeenCalledWith(input, form);
   });
+  test('Si el input está vacío no debe llamarse la función posting', () => {
+    const container = document.createElement('section');
+    container.append(wall());
+    const form = container.querySelector('.form-yourpost');
+    const input = container.querySelector('.your-postInput');
+    input.value = '';
+
+    form.dispatchEvent(new Event('submit', { bubbles: true }));
+
+    expect(posting).not.toHaveBeenCalledWith(input, form);
+  });
 
   test('al hacer clic en el menú hamburguesa la clase debe cambiar a active', () => {
     const container = document.createElement('section');
@@ -111,13 +124,53 @@ describe('wall', () => {
         callback(mockPos);
       }),
     };
-
+    postData.mockImplementationOnce((callback) => {
+      callback(mockQuerySnapshot);
+    });
+    const container = wall();
+    const auth = getAuth();
+    mockQuerySnapshot.forEach((mockPos) => {
+      const deleteButton = container.querySelector('.option2');
+      const confirmationModal = container.querySelector('.confirmationModal');
+      const confirmBtn = container.querySelector('.confirmBtn');
+      const cancelBtn = container.querySelector('.cancelBtn');
+      deleteButton.click();
+      expect(confirmationModal.style.display).toBe('block');
+      confirmBtn.click();
+      expect(deletePost).toHaveBeenCalledWith(mockPos.id);
+      expect(confirmationModal.style.display).toBe('none');
+      // 318
+      cancelBtn.click();
+      expect(confirmationModal.style.display).toBe('none');
+      expect(mockPos.data().userid).toEqual(auth.currentUser.displayName);
+    });
+  });
+  it('username del currentuser no es igual al del post', () => {
+    const mockQuerySnapshot = {
+      forEach: jest.fn((callback) => {
+        const mockPostData = {
+          userid: 'user2',
+          text: 'Some post text',
+          likes: [],
+          likescat: [],
+        };
+        const mockPos = {
+          id: 'post1',
+          data: () => mockPostData,
+        };
+        callback(mockPos);
+      }),
+    };
     postData.mockImplementationOnce((callback) => {
       callback(mockQuerySnapshot);
     });
     // Mock para addEventListener
     document.body.addEventListener = jest.fn();
     wall();
+    const auth = getAuth();
+    mockQuerySnapshot.forEach((mockPos) => {
+      expect(mockPos.data().userid).not.toEqual(auth.currentUser.displayName);
+    });
     // Simular el click en moreOptionsimg después de renderizar los posts
     const moreOptionsimg = wallSection.querySelector('.frame-options');
     moreOptionsimg.click();

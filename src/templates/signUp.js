@@ -20,6 +20,7 @@ export const signup = (onNavigate) => {
   const separator = document.createElement('div');
   const btnGoogle = document.createElement('button');
   const iconGoogle = document.createElement('img');
+  const modaltitle = document.createElement('p');
 
   signupSection.classList.add('signUp-section');
   signupForm.classList.add('signUp-form');
@@ -33,6 +34,7 @@ export const signup = (onNavigate) => {
   returnArticle.classList.add('return-home');
   btnGoogle.classList.add('btnGoogle');
   separator.classList.add('separator');
+  modaltitle.classList.add('modaltitle');
 
   userInput.setAttribute('type', 'text');
   emailInput.setAttribute('type', 'email');
@@ -54,6 +56,7 @@ export const signup = (onNavigate) => {
   registerBtn.textContent = 'Registrarse';
   hasAccount.textContent = '¿Ya tienes cuenta?';
   hasAccountLink.textContent = 'Ingresa aquí';
+  modaltitle.textContent = 'Registro';
 
   closeBtn.innerHTML = '&times;';
 
@@ -92,6 +95,7 @@ export const signup = (onNavigate) => {
 
   returnArticle.appendChild(hasAccount);
   returnArticle.appendChild(hasAccountLink);
+  signupForm.appendChild(modaltitle);
   signupForm.appendChild(closeBtn);
   signupForm.appendChild(userLabel);
   signupForm.appendChild(userInput);

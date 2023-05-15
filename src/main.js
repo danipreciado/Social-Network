@@ -50,6 +50,7 @@ function validateUserAccess(user) {
     onNavigate('/wall');
   }
 }
+
 onAuthStateChanged(auth, validateUserAccess);
 
 window.addEventListener('popstate', () => {

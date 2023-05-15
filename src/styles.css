@@ -12,11 +12,11 @@ body{
 }
 
 p{
-    font-size: 1.8rem;
+    font-size: 1.5rem;
 }
 
 a{
-    font-size: 1.8rem;
+    font-size: 1.5rem;
     color:#FFCA3A;
 }
 
@@ -121,7 +121,8 @@ h2{
     color: #F8FFE5;
     padding: 0.7rem;
     border-radius: 1rem;
-    width: 12rem;
+    width: 60vw;
+    height: 3.5rem;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     font-size: 1.5rem;
     margin-top: 1rem;
@@ -136,6 +137,13 @@ h2{
     
 }
 
+
+.btn-container_link{
+    margin-top: 3vh;
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+
 .btn-container button{
  
   text-decoration: none;
@@ -147,7 +155,6 @@ h2{
   font-size: 2rem;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   color: #F8FFE5;
-    
 }
 
 .btn-container_link{
@@ -167,11 +174,14 @@ h2{
   background-color: #6A4C93;
  
 }
-
+.modaltitle {
+  position: absolute;
+  font-size: 2.5rem;
+  color:#F8FFE5;
+}
 .btnSignIn{
     
   background-color: #1B9AAA;
-   
 }
 .pets-images{
     background: rgba(6, 214, 160, 0.14);
@@ -260,10 +270,10 @@ h2{
   
   background-color: #1B9AAA;
   margin: 15% auto; /* 15% from the top and centered */
-  padding: 20px;
+  padding: 28px;
   border: 1px solid #888;
   width: 70vw; /* Could be more or less, depending on screen size */
-  height: 50%;
+  height: 55%;
   border-radius: 3rem;
   margin-top: 15rem;
   display: flex;
@@ -278,21 +288,25 @@ h2{
   display: flex;
   align-items: flex-start;
   font-size: 1.8rem;
+  margin-top: 0.5vh;
+  margin-bottom: 0.5vh;
 }
 
 .signUp-form input{
-    width: 68vw;
-    height: 3.5rem;
+    width: 60vw;
+    height: 3rem;
     display: flex;
     border-radius: 20px;
     border: none;
+}
+.signUp-form div{
+  width: 85%
 }
 
 .separator {
     height: 1px;
     background-color: #CCCCCC;
     margin: 1rem 0;
-    width: 20rem;
   }
   
 .btnGoogle {
@@ -305,7 +319,8 @@ h2{
     color: #757575;
     padding: 0.7rem 1rem; /* 8dp padding on left and right */
     border-radius: 1rem;
-    width: 20rem;
+    width: 60vw;
+    height: 3.5rem;
     box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.3);
     font-weight: 500;
     font-size: 1.5rem;
@@ -331,7 +346,7 @@ h2{
     vertical-align: middle;
   }
 .return-home{
-    margin-top: 1rem;
+    margin-top: 3vh;
     font-size: 1.5rem;
     display: flex;
     flex-direction: row;
@@ -361,11 +376,13 @@ h2{
     display: flex;
     align-items: flex-start;
     font-size: 1.8rem;
+    margin-top: 0.5vh;
+    margin-bottom: 0.5vh;
   }
   
   .signIn-form input{
-      width: 68vw;
-      height: 3.8rem;
+      width: 60vw;
+      height: 3rem;
       display: flex;
       border-radius: 20px;
       border: none;
@@ -374,7 +391,7 @@ h2{
   .close-signIn {
     color: #6A4C93;
     position: relative;
-    left: 40%;
+    left: 50%;
     font-size: 28px;
     font-weight: bold;
     background-color: #FFCA3A;
@@ -387,7 +404,7 @@ h2{
   .close-signUp {
     color: #1B9AAA;
     position: relative;
-    left: 40%;
+    left: 50%;
     font-size: 28px;
     font-weight: bold;
     background-color: #FFCA3A;
@@ -395,6 +412,8 @@ h2{
     width: 3.5rem;
     height: 3.5rem;
     border-radius: 50%;
+    margin-bottom: 2vh;
+    margin-top: -1vh
   }
   .btnLogin{
       
@@ -403,14 +422,12 @@ h2{
     background-color: #1B9AAA;
     color: #F8FFE5;
     padding: 0.7rem;
-    margin-top: -2rem;
     border-radius: 1rem;
-    height: 4vh;
-    width: 12rem;
+    width: 60vw;
+    height: 3.5rem;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     font-weight: 600;
     font-size: 1.5rem;
-    margin-left: 3.5rem;
     
 }
 
