@@ -28,7 +28,7 @@ En resumen, PetaGram se ha creado como un espacio inclusivo donde los amantes de
 
 Los paleta de colores que se uso fue la siguiente:
 
-![7E2CC82B-1C36-42E3-906E-31674EC6941F](https://github.com/danipreciado/Social-Network/assets/72713821/b62a7192-6e4f-4900-b8ee-44ace47ff261 | width=400)
+![7E2CC82B-1C36-42E3-906E-31674EC6941F](https://github.com/danipreciado/Social-Network/assets/72713821/b62a7192-6e4f-4900-b8ee-44ace47ff261) {:height="36px" width="36px"}.
 
 
 ## 3. Historias de usuarix.
