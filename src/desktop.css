@@ -14,13 +14,16 @@
         padding: 1%;
     }
     
+    .btn-container button{
+        width: 30vw;
+    }
     .verification-section{
         display: flex;
         flex-direction: row;
         background: linear-gradient(to right, rgba(6, 214, 160, 0.14) 50%, #F8FFE5 50%);
-       
         align-items: center;
         width: 100vw;
+        max-height: 100vh;
     }
     .pets-images{
         
@@ -31,6 +34,7 @@
     }
     .pets-images img{
         width: 12vw;
+        overflow: hidden;
     }
     
     .signUp-form {
@@ -43,13 +47,16 @@
 
     .item-e{
         
-        margin-top: -50px;
+        margin-top: -25px;
     }
     .item-f{
-        margin-top: -30px;
+        margin-top: -20px;
     }
     .item-j{
         margin-top: -10px;
+    }
+    .item-d{
+        margin-top: 40px;
     }
   
     .verification-container{
@@ -97,6 +104,7 @@
         height: 10vw;
         position:absolute;
         margin-top: 80vh;
+        overflow: hidden;
         
     }
 
