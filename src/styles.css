@@ -41,7 +41,7 @@ button:hover{
 .logo img, .verification-logo img{
     position:absolute;
     width: 16vh;
-    margin-top: 10rem;
+    margin-top: 5rem;
     background-color: #F8FFE5;
     border-radius: 50rem;
     z-index: 1;
@@ -138,6 +138,7 @@ h2{
     flex-direction: column;
     margin-top: 2rem;
     gap: 2rem;
+    text-align: center;
     
 }
 
@@ -243,12 +244,16 @@ h2{
 }
 .signIn-link{
     margin-top:15px;
-    font-size:1.3rem;
+    font-size:1.5rem;
 }
 .signIn{
     color:#6A4C93;
+    font-weight: bold;
+    font-size: 2rem;
 }
-
+.signIn:hover{
+  cursor: pointer;
+}
 /* Creacion del modal */
 .signUp-section, .signIn-section{
     display: flex;
@@ -501,7 +506,8 @@ h2{
     min-width: 10vw;
     max-width: 30vw;
   }
-  .header{
+
+  header{
     display:flex;
     flex-direction: row;
     padding:0;
@@ -536,11 +542,11 @@ h2{
   .hamburger img{
     object-fit: cover;
     max-width: 10vw;
-    max-height: 5vh;
+    max-height: 4vh;
   }
   .hamburger {
     display: flex;
-    margin-top:3vh;
+    margin-top:2vh;
     margin-left: 2rem;
   }
   .user-image{
@@ -740,13 +746,13 @@ h2{
     width: 48vw;
     max-width: 50vw;
     height: 100vh;
+    display: none;
 } 
 
 .section-menu.active { 
     left: 0; 
-    display: none;
+    display: block; 
 } 
-
 
 .btn-close-menu{
     color: #1B9AAA;

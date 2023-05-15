@@ -29,7 +29,7 @@ describe('signup', () => {
     signInLink.click();
     expect(onNavigate).toHaveBeenCalledWith('/signin');
   });
-  it('should call registerUserWithEmailAndPassword when register button is clicked', () => {
+  it('se llama la funcion registerUserWithEmailAndPassword al hacer clic en boton registrarse', () => {
     const container = document.createElement('section');
     container.append(signup());
     const registerBtn = container.querySelector('.btnRegister');
@@ -62,42 +62,42 @@ describe('signup', () => {
   });
 });
 describe('errorMessages', () => {
-  it('displays the correct error message for auth/email-already-in-use', () => {
+  it('muestra un mensaje para el error auth/email-already-in-use', () => {
     const emailErrorMessage = document.createElement('span');
     const passwordErrorMessage = document.createElement('span');
     errorMessages('auth/email-already-in-use', emailErrorMessage, passwordErrorMessage);
     expect(emailErrorMessage.textContent).toBe('Este correo ya ha sido registrado');
     expect(passwordErrorMessage.textContent).toBe('');
   });
-  it('displays the correct error message for auth/weak-password', () => {
+  it('muestra un mensaje para el error auth/weak-password', () => {
     const emailErrorMessage = document.createElement('span');
     const passwordErrorMessage = document.createElement('span');
     errorMessages('auth/weak-password', emailErrorMessage, passwordErrorMessage);
     expect(emailErrorMessage.textContent).toBe('');
     expect(passwordErrorMessage.textContent).toBe('Escribe una contraseña más larga');
   });
-  it('displays the correct error message for auth/invalid-email', () => {
+  it('muestra un mensaje para el error auth/invalid-email', () => {
     const emailErrorMessage = document.createElement('span');
     const passwordErrorMessage = document.createElement('span');
     errorMessages('auth/invalid-email', emailErrorMessage, passwordErrorMessage);
     expect(emailErrorMessage.textContent).toBe('Escribe un correo valido');
     expect(passwordErrorMessage.textContent).toBe('');
   });
-  it('displays the correct error message for auth/missing-password', () => {
+  it('muestra un mensaje para el error auth/missing-password', () => {
     const emailErrorMessage = document.createElement('span');
     const passwordErrorMessage = document.createElement('span');
     errorMessages('auth/missing-password', emailErrorMessage, passwordErrorMessage);
     expect(emailErrorMessage.textContent).toBe('');
     expect(passwordErrorMessage.textContent).toBe('Escribe una contraseña valida');
   });
-  it('displays the correct error message for auth/user-not-found', () => {
+  it('muestra un mensaje para el error auth/user-not-found', () => {
     const emailErrorMessage = document.createElement('span');
     const passwordErrorMessage = document.createElement('span');
     errorMessages('auth/user-not-found', emailErrorMessage, passwordErrorMessage);
     expect(emailErrorMessage.textContent).toBe('Email no registrado');
     expect(passwordErrorMessage.textContent).toBe('');
   });
-  it('displays the correct error message for auth/wrong-password', () => {
+  it('muestra un mensaje para el error auth/wrong-password', () => {
     const emailErrorMessage = document.createElement('span');
     const passwordErrorMessage = document.createElement('span');
     errorMessages('auth/wrong-password', emailErrorMessage, passwordErrorMessage);

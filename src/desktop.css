@@ -92,6 +92,9 @@
     .signIn-link{
         font-size: 2rem;
     }
+    .signIn{
+        font-size: 3rem;
+    }
     .verification-logo img{
        width: 10vw;
        margin-top: 60vh;
@@ -108,8 +111,8 @@
     }
 
     header{
-        padding-right: 2vw;
-        padding-left: 2vw;
+        max-width: 95%;
+        max-height: 10%;
     }
     .hamburger {
         display:none;
@@ -126,15 +129,15 @@
         font-size: 4rem;
     }
     .wall-logo img{
-        object-fit: cover;
+        
         margin-top: -3vh;
-        min-width: 14vw;
-        min-height: 23vh;
+        min-width: 15rem;
+        min-height: 15rem;
+        margin-left: 5rem;
     }
     .profilePic img{
-        object-fit: cover;
-        max-width: 7vw;
-        height: 10vh;
+        width: 9rem;
+        height: 9rem;
         margin-top: 2rem;
         margin-right: 1.5rem;
     }
@@ -262,6 +265,7 @@
         margin-top: 10vh;
         gap:4vh;
         width: 18vw;
+        margin-left: 1rem;
     }
     .btn-menu{
         gap:1vw;
@@ -269,6 +273,7 @@
     .section-logout{
         width: 18vw;
         margin-top: 10vh;
+        margin-left: 1rem;
     }
     .dot-container{
         padding-right: 0;

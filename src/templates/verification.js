@@ -74,7 +74,7 @@ const verification = (onNavigate) => {
   spanThanks.innerHTML = '¡Gracias por unirte a <span class="peta">Peta</span><span class="gram">gram</span>, la red social para mascotas!';
   spanVerify.textContent = 'Necesitamos que verifiques tu correo electronico para completar tu registro';
   spanSignInAsk.textContent = '¿Ya verificaste tu cuenta?';
-  spanSignInLink.textContent = 'Ingresa aquí';
+  spanSignInLink.textContent = ' Ingresa aquí';
 
   spanSignInLink.addEventListener('click', () => {
     onNavigate('/signin');
