@@ -23,22 +23,31 @@ tienen lxs usuarixs, que son las siguientes:
 
 En resumen, PetaGram se ha creado como un espacio inclusivo donde los amantes de las mascotas pueden conectarse, compartir y encontrar inspiración en un ambiente seguro y amigable.
 
+
 ## 2. Maquetacion y Prototipos de LO-FI/HI FI. 
 
-Los paleta de colores que se uso fue:
+Los paleta de colores que se uso fue la siguiente:
 
+![7E2CC82B-1C36-42E3-906E-31674EC6941F](https://github.com/danipreciado/Social-Network/assets/72713821/b62a7192-6e4f-4900-b8ee-44ace47ff261)
 
 
 ## 3. Historias de usuarix.
 
--[ ] HU 1 - Yo como nuevo usuario quiero poder registrarme para tener una cuenta en la red social.
--[ ] HU 2 - Yo como usuaria registrada quiero acceder a mi cuenta para hacer uso de la red social.
--[ ] HU 3 - Yo como persona que ama las mascotas quiero crear posts para compartir datos útiles que ayuden a otras personas con mascotas.
--[ ] HU 4 - Yo como usuaria arrepentida quiero poder editar y/o eliminar un post para cambiar lo que ya no me gusta de mis publicaciones.
--[ ] HU 5 - Yo como parte de la comunidad de la app quiero reaccionar a las publicaciones para emitir mi opinión.
+- [ ] HU 1 - Yo como nuevo usuario quiero poder registrarme para tener una cuenta en la red social.
+- [ ] HU 2 - Yo como usuaria registrada quiero acceder a mi cuenta para hacer uso de la red social.
+- [ ] HU 3 - Yo como persona que ama las mascotas quiero crear posts para compartir datos útiles que ayuden a otras personas con mascotas.
+- [ ] HU 4 - Yo como usuaria arrepentida quiero poder editar y/o eliminar un post para cambiar lo que ya no me gusta de mis publicaciones.
+- [ ] HU 5 - Yo como parte de la comunidad de la app quiero reaccionar a las publicaciones para emitir mi opinión.
 
 ## 4. Test Unitarios.
-
+Componente home: 
+![9813D11F-AC46-4A5E-8EBB-734B4BB7FE2E](https://github.com/danipreciado/Social-Network/assets/72713821/2a6ca5e5-1d8c-4a92-bdd0-229d01dcccf1)
+Componente signIn:
+![1B2856C7-19D0-4890-B8E0-BE8511B5BDA0](https://github.com/danipreciado/Social-Network/assets/72713821/28376505-eab7-464a-972b-1e4dbddc7b03)
+Componente signUp:
+![CA165EEE-E785-4BB8-B891-A661C024F134](https://github.com/danipreciado/Social-Network/assets/72713821/a64c5d31-5afc-4fa6-9368-688ae7a5dfe8)
+Componente wall:
+![4FC96411-7A0F-46D5-A8A4-A49EE0DF9782](https://github.com/danipreciado/Social-Network/assets/72713821/b4727c46-125f-470a-a6f9-ee3af20defbe)
 
 
 ## 5. Criterios Cumplidos.
