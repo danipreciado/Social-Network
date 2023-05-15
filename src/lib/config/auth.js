@@ -10,22 +10,19 @@ import {
 } from 'firebase/auth';
 import { auth } from './firebaseconfig.js';
 
-export const login = (onNavigate, userEmail, userPassword, emailError, passwordError) => {
-  const email = userEmail.value;
-  const password = userPassword.value;
-  emailError.textContent = '';
-  passwordError.textContent = '';
-  signInWithEmailAndPassword(auth, email, password)
+export function login(email, password) {
+  return signInWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
     // Signed in
       const user = userCredential.user;
-      onNavigate('/wall');
-    // ...
+      return user;
     })
     .catch((error) => {
       const errorCode = error.code;
+      console.log(errorCode);
+      throw error;
     });
-};
+}
 
 export function registerUserWithEmailAndPassword(email, password, username) {
   return createUserWithEmailAndPassword(auth, email, password)
