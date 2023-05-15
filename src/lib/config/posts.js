@@ -1,6 +1,5 @@
 import {
   addDoc,
-  getDocs,
   serverTimestamp,
   deleteDoc,
   doc,
@@ -10,18 +9,6 @@ import {
   orderBy, query, onSnapshot,
 } from 'firebase/firestore';
 import { colRef, auth } from './firebaseconfig.js';
-
-getDocs(colRef)
-  .then((snapshot) => {
-    const posts = [];
-    snapshot.docs.forEach((docu) => {
-      posts.push({ ...docu.data(), id: docu.id });
-    });
-    console.log(posts);
-  })
-  .catch((err) => {
-    console.log(err.message);
-  });
 
 export function posting(input, form) {
   const userId = auth.currentUser.displayName;
@@ -45,10 +32,6 @@ export function deletePost(postId) {
 
   return deleteDoc(postDocRef)
     .then(() => {
-      console.log(`Post ${postId} deleted successfully`);
-    })
-    .catch((err) => {
-      console.log(`Error deleting post ${postId}: ${err.message}`);
     });
 }
 
@@ -61,10 +44,6 @@ export function editPost(postId, newPostText) {
     timestamp: newTimestamp,
   })
     .then(() => {
-      console.log(`Post ${postId} edited successfully`);
-    })
-    .catch((err) => {
-      console.log(`Error editing post ${postId}: ${err.message}`);
     });
 }
 

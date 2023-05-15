@@ -80,7 +80,6 @@ export const signup = (onNavigate) => {
       })
       .catch((error) => {
         const errorCode = error.code;
-        console.log(errorCode);
         errorMessages(errorCode, emailError, passwordError);
       });
   });

@@ -15,7 +15,6 @@
     }
     p {
         font-size: 1.5rem;
-        text-align: end;
     }
 
     .home-description{
@@ -220,6 +219,7 @@
     }
     .post-header p{
         font-size: 1.6rem;
+        width: 32rem;
      }
     .post-header {
         display: flex;
@@ -277,7 +277,7 @@
     }
     .dot-container{
         padding-right: 0;
-        width: 60%;
+        width: 40%;
       }
     .editInput {
         width: 45vw;
