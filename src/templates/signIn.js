@@ -1,4 +1,5 @@
 import { googleLogin, login } from '../lib/config/auth.js';
+import { errorMessages } from '../lib/index.js';
 
 export const signIn = (onNavigate) => {
   const signInSection = document.createElement('section');
@@ -59,7 +60,19 @@ export const signIn = (onNavigate) => {
   modaltitle.innerHTML = 'Ingreso';
 
   btnLogin.addEventListener('click', () => {
-    login(onNavigate, emailInput, passwordInput, spanErrorEmail, spanErrorPass);
+    const email = emailInput.value;
+    const password = passwordInput.value;
+    spanErrorEmail.textContent = '';
+    spanErrorPass.textContent = '';
+
+    login(email, password)
+      .then(() => {
+        onNavigate('/wall');
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        errorMessages(errorCode, spanErrorEmail, spanErrorPass);
+      });
   });
 
   btnGoogle.addEventListener('click', () => {

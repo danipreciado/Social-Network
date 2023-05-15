@@ -32,23 +32,20 @@ describe('signIn', () => {
   });
 
   it('login debe ser llamado cuando se hace click en el botón de Ingresar', () => {
-    const onNavigate = jest.fn();
-    const signInSection = signIn(onNavigate);
-    const btnLogin = signInSection.querySelector('.btnLogin');
-    const emailInput = signInSection.querySelector('#loginUserEmail');
-    const passwordInput = signInSection.querySelector('#loginUserPassword');
-    const spanErrorEmail = signInSection.querySelector('#errorEmailMessage');
-    const spanErrorPass = signInSection.querySelector('#errorPassMessage');
-
+    const container = document.createElement('section');
+    container.append(signIn());
+    const btnLogin = container.querySelector('.btnLogin');
+    const emailInput = container.querySelector('#loginUserEmail');
+    const passwordInput = container.querySelector('#loginUserPassword');
+    login.mockResolvedValueOnce();
+    emailInput.value = 'test@example.com';
+    passwordInput.value = 'password';
     // Click the register button
     btnLogin.click();
     // Check that authFunction was called with the correct arguments
     expect(login).toHaveBeenCalledWith(
-      onNavigate,
-      emailInput,
-      passwordInput,
-      spanErrorEmail,
-      spanErrorPass,
+      emailInput.value,
+      passwordInput.value,
     );
   });
   it('debe navegar a Home al hacer click en el boton cerrar', () => {
