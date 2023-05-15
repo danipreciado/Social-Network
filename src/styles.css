@@ -501,7 +501,8 @@ h2{
     min-width: 10vw;
     max-width: 30vw;
   }
-  .header{
+
+  header{
     display:flex;
     flex-direction: row;
     padding:0;
@@ -536,11 +537,11 @@ h2{
   .hamburger img{
     object-fit: cover;
     max-width: 10vw;
-    max-height: 5vh;
+    max-height: 4vh;
   }
   .hamburger {
     display: flex;
-    margin-top:3vh;
+    margin-top:2vh;
     margin-left: 2rem;
   }
   .user-image{
@@ -740,13 +741,13 @@ h2{
     width: 48vw;
     max-width: 50vw;
     height: 100vh;
+    display: none;
 } 
 
 .section-menu.active { 
     left: 0; 
-    display: none;
+    display: block; 
 } 
-
 
 .btn-close-menu{
     color: #1B9AAA;

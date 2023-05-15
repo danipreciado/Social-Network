@@ -72,7 +72,7 @@ describe('signIn', () => {
 });
 
 describe('errorMessages', () => {
-  it('muestra mensaje de error para auth/email-already-in-use', () => {
+  it('Muestra el mensaje de error correcto para auth/email-already-in-use.', () => {
     const emailErrorMessage = document.createElement('span');
     const passwordErrorMessage = document.createElement('span');
 
@@ -82,7 +82,7 @@ describe('errorMessages', () => {
     expect(passwordErrorMessage.textContent).toBe('');
   });
 
-  it('muestra mensaje de error para auth/weak-password', () => {
+  it('Muestra el mensaje de error correcto para auth/weak-password.', () => {
     const emailErrorMessage = document.createElement('span');
     const passwordErrorMessage = document.createElement('span');
 

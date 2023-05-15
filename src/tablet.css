@@ -203,12 +203,11 @@
         margin-left: 6rem;
     }
 
+    .profilePic img{
+        max-width: 10vw;
+        height: 7vh;
+        margin-top:0;
+        margin-right: 1.5rem;
 
-
-
-
-
-
-
-   
+    }   
 }
