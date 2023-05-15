@@ -60,7 +60,7 @@ export const wall = (onNavigate) => {
   sectionBtnMenu.classList.add('section-btn-menu');
   sectionLogout.classList.add('section-logout');
   btnLogout.classList.add('btn-logout');
-  btnLogout.textContent = 'Cerrar sesión';
+  btnLogout.textContent = 'Salir';
   wallSection.classList.add('wall-section');
   hamburguerArticle.classList.add('hamburger');
   logoContainerArticle.classList.add('logo-container');
