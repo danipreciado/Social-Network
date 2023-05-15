@@ -1,5 +1,9 @@
 # PetaGram
 
+<p align="center">
+  <img src="https://github.com/danipreciado/Social-Network/assets/127158155/0e8e53d0-a6d4-4c3c-98eb-77ae6389c901" alt="Logo" width="200" />
+</p>
+
 ## Índice
 
 * [1. Introduccion del proyecto](#1-Introduccion-del-proyecto)
@@ -7,6 +11,7 @@
 * [3. Historias de usuarix](#3-Historias-de-usuarix)
 * [4. Test Unitarios](#4-Test-Unitarios)
 * [5. Criterios Cumplidos](#5-Criterios-Cumplidos)
+* [6. Autoras](#6-Autoras)
 
 ## 1. Introducción del proyecto.
 
@@ -86,3 +91,11 @@ Componente wall:
 - [x] Se realizaron pruebas de usabilidad, incorporando el feedback mediante iteraciones
 - [x] Diseñado para ser responsive usando medias para tablet y laptop.
 - [x] Se etiquetaron las versiones que se desplegaron.
+
+## 6. Autoras.
+
+- [@Angy-rin](https://github.com/angy-Rin)
+- [@BCAndreaC](https://github.com/BCAndreaC)
+- [@danipreciado](https://github.com/danipreciado)
+
+
