@@ -20,6 +20,7 @@ export const signIn = (onNavigate) => {
   const askingText = document.createElement('p');
   const linkToSignUp = document.createElement('a');
   const spanText = document.createElement('span');
+  const modaltitle = document.createElement('p');
 
   articleForm.classList.add('container-form');
   signInSection.classList.add('signIn-section');
@@ -34,6 +35,7 @@ export const signIn = (onNavigate) => {
   passwordLabel.classList.add('form');
   containerLinkSignIn.classList.add('btn-container_link');
   separator.classList.add('separator');
+  modaltitle.classList.add('modaltitle');
 
   emailInput.setAttribute('type', 'email');
   emailInput.setAttribute('id', 'loginUserEmail');
@@ -54,6 +56,7 @@ export const signIn = (onNavigate) => {
   linkToSignUp.textContent = 'Registrate aquí';
   closeBtn.innerHTML = '&times;';
   spanText.innerText = 'Acceder con Google';
+  modaltitle.innerHTML = 'Ingreso';
 
   btnLogin.addEventListener('click', () => {
     login(onNavigate, emailInput, passwordInput, spanErrorEmail, spanErrorPass);
@@ -73,6 +76,7 @@ export const signIn = (onNavigate) => {
 
   btnGoogle.appendChild(iconGoogle);
   btnGoogle.appendChild(spanText);
+  signInForm.appendChild(modaltitle);
   signInForm.appendChild(closeBtn);
   signInForm.appendChild(emailLabel);
   signInForm.appendChild(emailInput);

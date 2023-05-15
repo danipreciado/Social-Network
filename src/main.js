@@ -48,6 +48,7 @@ function validateUserAccess(user) {
     onNavigate('/signin');
   }
 }
+
 onAuthStateChanged(auth, validateUserAccess);
 
 window.addEventListener('popstate', () => {

@@ -4,7 +4,9 @@
 import { getAuth } from 'firebase/auth';
 import { wall } from '../src/templates/wall';
 import { signOutUser } from '../src/lib/config/auth';
-import { posting, postData, deletePost } from '../src/lib/config/posts';
+import {
+  posting, postData, deletePost,
+} from '../src/lib/config/posts';
 
 jest.mock('firebase/auth', () => ({
   getAuth: () => ({
@@ -89,6 +91,15 @@ describe('wall', () => {
     hamburgerArticle.dispatchEvent(new Event('click'));
     expect(sectionMenu.classList.contains('active')).toBe(false);
 
+    expect(sectionMenu.classList.contains('active')).toBe(false);
+  });
+
+  test('El evento de clic en btnCloseMenu debe agregar o eliminar la clase "active" en sectionMenu', () => {
+    const btnCloseMenu = wallSection.querySelector('.btn-close-menu');
+    const sectionMenu = wallSection.querySelector('.section-menu');
+    btnCloseMenu.click();
+    expect(sectionMenu.classList.contains('active')).toBe(true);
+    btnCloseMenu.click();
     expect(sectionMenu.classList.contains('active')).toBe(false);
   });
 

@@ -32,23 +32,32 @@
     .verify-message{
         font-size: 3rem;
 }
+    .signUp-form {
+        width: 30vw;
+    }
+    .signUp-form input{
+        width: 26vw;
+        height: 3.5rem;
+    }
+    .btnRegister{
+        width: 26vw;
+        height: 3.5rem;
+    }
 
+    .signIn-form{
+        width: 30vw;
+    }
     .signUp-form label{
         font-size: 2rem;
     }
 
-    .signUp-form input{
-        width: 44rem;
-        height: 3.5rem;
-        border-radius: 20px;
-    }
 
     .signIn-form label{
         font-size: 2rem;
     }
 
     .signIn-form input{
-        width: 44rem;
+        width: 26vw;
         height: 3.5rem;
         border-radius: 20px;
     }
@@ -59,30 +68,14 @@
 
    
     .btnGoogle{
-        width: 15rem;
+         width: 26vw;
+        height: 3.5rem;
     }
 
     .btnLogin{
-        width: 15rem;
+        width: 26vw;
+        height: 3.5rem;
     }
-
-    p{
-        font-size: 1.8rem;
-    }
-
-    a{
-        font-size: 1.8rem;
-        color: #FFCA3A;
-    }
-
-    .signUp-form{
-        width: 60vw;
-    }
-
-    .signIn-form{
-        width: 60vw;
-    }
-
     .description-pageNotFound h1{
         margin: 4vh 11vw;
         text-align: center;
