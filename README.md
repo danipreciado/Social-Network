@@ -24,13 +24,23 @@ tienen lxs usuarixs, que son las siguientes:
 En resumen, PetaGram se ha creado como un espacio inclusivo donde los amantes de las mascotas pueden conectarse, compartir y encontrar inspiración en un ambiente seguro y amigable.
 
 
-## 2. Maquetacion y Prototipos de LO-FI/HI FI. 
+## 2. Maquetación y Prototipos de LO-FI/HI FI. 
 
 Los paleta de colores que se uso fue la siguiente:
 
 ![7CC68141-03BC-43D9-B507-D1493DCC4B90](https://github.com/danipreciado/Social-Network/assets/72713821/41d0cea6-a3b1-4949-9f5a-0c6e6605da66)
 
+Maquetación Lo-Fi:
+![LO FI](https://github.com/danipreciado/Social-Network/assets/126895867/fe5f5ac8-8433-4fed-a9fd-7b81f93c4660)
 
+Maquetacion Hi-Fi:
+![Desktop Hi fi](https://github.com/danipreciado/Social-Network/assets/126895867/ff3d121d-3429-4279-bdb7-4b25d670847b)
+![movil HI fi](https://github.com/danipreciado/Social-Network/assets/126895867/d33a7a92-5e9e-46d1-b4d7-697a1a73fa00)
+
+Pantalla home responsive:
+![responsive-movil](https://github.com/danipreciado/Social-Network/assets/126895867/883f7337-dd73-4710-81ab-663018aba93d)
+![responsive-tablet](https://github.com/danipreciado/Social-Network/assets/126895867/2f764590-b68e-40cd-a857-1c78e733dac1)
+![responsive-laptop](https://github.com/danipreciado/Social-Network/assets/126895867/3c868cc4-1572-47f2-9d8f-e4f6d9d9ea22)
 
 ## 3. Historias de usuarix.
 
