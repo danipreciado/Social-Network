@@ -46,6 +46,8 @@ function validateUserAccess(user) {
   const isAuthenticated = Boolean(user);
   if (isProtectedRoute && !isAuthenticated) {
     onNavigate('/signin');
+  } if (isAuthenticated) {
+    onNavigate('/wall');
   }
 }
 

@@ -60,7 +60,7 @@ export const wall = (onNavigate) => {
   sectionBtnMenu.classList.add('section-btn-menu');
   sectionLogout.classList.add('section-logout');
   btnLogout.classList.add('btn-logout');
-  btnLogout.textContent = 'Cerrar sesión';
+  btnLogout.textContent = 'Salir';
   wallSection.classList.add('wall-section');
   hamburguerArticle.classList.add('hamburger');
   logoContainerArticle.classList.add('logo-container');
@@ -340,6 +340,7 @@ export const wall = (onNavigate) => {
       const dogReaction = document.createElement('img');
       dogReaction.src = 'images/dog.png';
       dogReaction.alt = 'dog reaction';
+      dogReaction.className = 'dog-reaction';
       reactions.appendChild(dogReaction);
 
       const dogReactionCount = document.createElement('div');
@@ -355,6 +356,7 @@ export const wall = (onNavigate) => {
       const catReaction = document.createElement('img');
       catReaction.src = 'images/cat.png';
       catReaction.alt = 'cat reaction';
+      catReaction.className = 'cat-reaction';
       reactions.appendChild(catReaction);
       reactions.appendChild(catReactionCount);
 

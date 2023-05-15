@@ -5,13 +5,14 @@ import { getAuth } from 'firebase/auth';
 import { wall } from '../src/templates/wall';
 import { signOutUser } from '../src/lib/config/auth';
 import {
-  posting, postData, deletePost,
+  posting, postData, like, dislike, likecat, dislikecat,
 } from '../src/lib/config/posts';
 
 jest.mock('firebase/auth', () => ({
   getAuth: () => ({
     currentUser: {
       displayName: 'user1',
+      uid: 'user1',
     },
   }),
 }));
@@ -24,6 +25,10 @@ jest.mock('../src/lib/config/posts', () => ({
   posting: jest.fn(),
   postData: jest.fn(),
   deletePost: jest.fn(),
+  like: jest.fn(),
+  dislike: jest.fn(),
+  likecat: jest.fn(),
+  dislikecat: jest.fn(),
 }));
 
 describe('wall', () => {
@@ -159,10 +164,171 @@ describe('wall', () => {
     postData.mockImplementationOnce((callback) => {
       callback(mockQuerySnapshot);
     });
+    // Mock para addEventListener
+    document.body.addEventListener = jest.fn();
     wall();
     const auth = getAuth();
     mockQuerySnapshot.forEach((mockPos) => {
       expect(mockPos.data().userid).not.toEqual(auth.currentUser.displayName);
     });
+    // Simular el click en moreOptionsimg después de renderizar los posts
+    const moreOptionsimg = wallSection.querySelector('.frame-options');
+    moreOptionsimg.click();
+    expect(moreOptionsimg.classList.contains('active')).toBe(true);
+
+    const btnCloseMenu = wallSection.querySelector('.btn-close-menu');
+    const sectionMenu = wallSection.querySelector('.section-menu');
+    btnCloseMenu.click();
+    expect(sectionMenu.classList.contains('active')).toBe(true);
+    btnCloseMenu.click();
+    expect(sectionMenu.classList.contains('active')).toBe(false);
+  });
+
+  it('reaccion con like al hacer click en el icono de perro', () => {
+    // Create a mock querySnapshot and postData
+    const mockQuerySnapshot = {
+      forEach: jest.fn((callback) => {
+        const mockPostData = {
+          userid: 'user1',
+          text: 'Some post text',
+          likes: [],
+          likescat: [],
+        };
+        const mockPos = {
+          id: 'post1',
+          data: () => mockPostData,
+        };
+        callback(mockPos);
+      }),
+    };
+
+    postData.mockImplementationOnce((callback) => {
+      callback(mockQuerySnapshot);
+    });
+
+    const wallContainer = wall();
+
+    const dogReaction = wallContainer.querySelector('.dog-reaction');
+
+    dogReaction.click();
+    expect(likes).toHaveBeenCalledWith('post1');
+  });
+  it('reaccion con like al hacer click en el icono de perro', () => {
+    // Create a mock querySnapshot and postData
+    const mockQuerySnapshot = {
+      forEach: jest.fn((callback) => {
+        const mockPostData = {
+          userid: 'user1',
+          text: 'Some post text',
+          likes: [],
+          likescat: [],
+        };
+        const mockPos = {
+          id: 'post1',
+          data: () => mockPostData,
+        };
+        callback(mockPos);
+      }),
+    };
+
+    postData.mockImplementationOnce((callback) => {
+      callback(mockQuerySnapshot);
+    });
+
+    const wallContainer = wall();
+
+    const dogReaction = wallContainer.querySelector('.dog-reaction');
+
+    dogReaction.click();
+    expect(like).toHaveBeenCalledWith('post1');
+  });
+
+  it('dislike al reaccionar a un post que ya tenia reaccion', () => {
+    // Create a mock querySnapshot and postData
+    const mockQuerySnapshot = {
+      forEach: jest.fn((callback) => {
+        const mockPostData = {
+          userid: 'user1',
+          text: 'Some post text',
+          likes: ['user1'],
+          likescat: [],
+        };
+        const mockPos = {
+          id: 'post1',
+          data: () => mockPostData,
+        };
+        callback(mockPos);
+      }),
+    };
+
+    postData.mockImplementationOnce((callback) => {
+      callback(mockQuerySnapshot);
+    });
+
+    const wallContainer = wall();
+
+    const dogReaction = wallContainer.querySelector('.dog-reaction');
+
+    dogReaction.click();
+    expect(dislike).toHaveBeenCalledWith('post1');
+  });
+  it('reaccion con like al hacer click en el icono de gato', () => {
+    // Create a mock querySnapshot and postData
+    const mockQuerySnapshot = {
+      forEach: jest.fn((callback) => {
+        const mockPostData = {
+          userid: 'user1',
+          text: 'Some post text',
+          likes: [],
+          likescat: [],
+        };
+        const mockPos = {
+          id: 'post1',
+          data: () => mockPostData,
+        };
+        callback(mockPos);
+      }),
+    };
+
+    postData.mockImplementationOnce((callback) => {
+      callback(mockQuerySnapshot);
+    });
+
+    const wallContainer = wall();
+
+    const catReaction = wallContainer.querySelector('.cat-reaction');
+
+    catReaction.click();
+    expect(likecat).toHaveBeenCalledWith('post1');
+  });
+
+  it('dislike al reaccionar a un post que ya tenia reaccion de gato', () => {
+    // Create a mock querySnapshot and postData
+    const mockQuerySnapshot = {
+      forEach: jest.fn((callback) => {
+        const mockPostData = {
+          userid: 'user1',
+          text: 'Some post text',
+          likes: [],
+          likescat: ['user1'],
+        };
+        const mockPos = {
+          id: 'post1',
+          data: () => mockPostData,
+        };
+        callback(mockPos);
+      }),
+    };
+
+    postData.mockImplementationOnce((callback) => {
+      callback(mockQuerySnapshot);
+    });
+
+    const wallContainer = wall();
+
+    const catReaction = wallContainer.querySelector('.cat-reaction');
+
+    catReaction.click();
+    expect(dislikecat).toHaveBeenCalledWith('post1');
   });
 });
