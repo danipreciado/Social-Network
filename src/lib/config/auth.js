@@ -44,15 +44,13 @@ export function registerUserWithEmailAndPassword(email, password, username) {
 export function signOutUser() {
   return signOut(auth)
     .then(() => {
-      console.log('El usuario salió');
     }).catch((error) => {
-      console.log(error.message);
+      const errorSignOut = error.message;
     });
 }
 
 const provider = new GoogleAuthProvider();
 export const googleLogin = (onNavigate) => {
-  console.log('ENTRO');
   signInWithPopup(auth, provider)
     .then((result) => {
     // This gives you a Google Access Token. You can use it to access the Google API.

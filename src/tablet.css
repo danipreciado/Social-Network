@@ -9,7 +9,7 @@
         height: 45vh;
         
     }
-    p{
+    .btn-container_link p, .return-home p{
         width: 18vw;
     }
     .btn-container_link{
