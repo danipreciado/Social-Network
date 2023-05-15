@@ -107,8 +107,8 @@ describe('wall', () => {
     btnCloseMenu.click();
     expect(sectionMenu.classList.contains('active')).toBe(false);
   });
-
   it('renderiza los posts', () => {
+
     const mockQuerySnapshot = {
       forEach: jest.fn((callback) => {
         const mockPostData = {

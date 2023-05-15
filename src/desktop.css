@@ -9,6 +9,14 @@
         height: 44vh;
         
     }
+    a {
+        font-size: 1.5rem;
+        text-align: start;
+    }
+    p {
+        font-size: 1.5rem;
+        text-align: end;
+    }
 
     .home-description{
         padding: 1%;
@@ -36,9 +44,6 @@
         width: 12vw;
         overflow: hidden;
     }
-    
-   
-
     .item-e{
         
         margin-top: -25px;
@@ -276,9 +281,6 @@
       }
     .editInput {
         width: 45vw;
-    }
-    .btnGoogle{
-        margin-left: 3.5rem;
     }
 
     .btn-logout{
