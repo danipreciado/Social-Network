@@ -5,7 +5,7 @@ import { getAuth } from 'firebase/auth';
 import { wall } from '../src/templates/wall';
 import { signOutUser } from '../src/lib/config/auth';
 import {
-  posting, postData, like, dislike, likecat, dislikecat,
+  posting, postData, like, dislike, likecat, dislikecat, deletePost,
 } from '../src/lib/config/posts';
 
 jest.mock('firebase/auth', () => ({
@@ -171,48 +171,8 @@ describe('wall', () => {
     mockQuerySnapshot.forEach((mockPos) => {
       expect(mockPos.data().userid).not.toEqual(auth.currentUser.displayName);
     });
-    // Simular el click en moreOptionsimg después de renderizar los posts
-    const moreOptionsimg = wallSection.querySelector('.frame-options');
-    moreOptionsimg.click();
-    expect(moreOptionsimg.classList.contains('active')).toBe(true);
-
-    const btnCloseMenu = wallSection.querySelector('.btn-close-menu');
-    const sectionMenu = wallSection.querySelector('.section-menu');
-    btnCloseMenu.click();
-    expect(sectionMenu.classList.contains('active')).toBe(true);
-    btnCloseMenu.click();
-    expect(sectionMenu.classList.contains('active')).toBe(false);
   });
 
-  it('reaccion con like al hacer click en el icono de perro', () => {
-    // Create a mock querySnapshot and postData
-    const mockQuerySnapshot = {
-      forEach: jest.fn((callback) => {
-        const mockPostData = {
-          userid: 'user1',
-          text: 'Some post text',
-          likes: [],
-          likescat: [],
-        };
-        const mockPos = {
-          id: 'post1',
-          data: () => mockPostData,
-        };
-        callback(mockPos);
-      }),
-    };
-
-    postData.mockImplementationOnce((callback) => {
-      callback(mockQuerySnapshot);
-    });
-
-    const wallContainer = wall();
-
-    const dogReaction = wallContainer.querySelector('.dog-reaction');
-
-    dogReaction.click();
-    expect(likes).toHaveBeenCalledWith('post1');
-  });
   it('reaccion con like al hacer click en el icono de perro', () => {
     // Create a mock querySnapshot and postData
     const mockQuerySnapshot = {

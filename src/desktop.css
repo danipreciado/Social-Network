@@ -115,6 +115,7 @@
         margin-top:4rem;
         width: 100%;
         justify-content: center;
+        gap: 2rem;
     }
     .logo-container span{
         font-size: 4rem;
@@ -127,9 +128,12 @@
     }
     .profilePic img{
         object-fit: cover;
-        max-width: 5vw;
-        height: auto;
+        max-width: 7vw;
+        height: 10vh;
+        margin-top: 2rem;
+        margin-right: 1.5rem;
     }
+
     .container-wall{
         display: flex;
         align-items: center;
@@ -142,9 +146,11 @@
     }
     .post{
         margin-left: 0;
-        width: 50vw;
         height: 35vh;
         padding: 1vw 0 0 0;
+        width: 52vw;
+        min-height: 28vh;
+        max-height: auto;
     }
 
     .your-post input, .post-content p{
@@ -178,10 +184,10 @@
         justify-content: center;
         align-items: center;
         width: 14vw;
-        height: 7vh;
         margin-left: 69%;
         font-size: 2rem;
         gap:0.5vw;
+        height: 6vh;
     }
     .btnComment {
         display: flex;
@@ -228,6 +234,7 @@
     .post button {
         margin-top: 0;
         margin-left: 0;
+        height: 6vh;
     }
     .reactions img{
         object-fit: cover;
@@ -263,7 +270,7 @@
         width: 60%;
       }
     .editInput {
-        width: 20vw;
+        width: 45vw;
     }
     .btnGoogle{
         margin-left: 3.5rem;
@@ -288,38 +295,9 @@
         font-size: 2rem;
     }
 
-    .profilePic img{
-        max-width: 7vw;
-        height: 10vh;
-        margin-top: 2rem;
-        margin-right: 1.5rem;
-    }
-
-    .logo-container{
-        gap: 2rem;
-    }
-
-    .your-post button{
-        height: 6vh;
-    }
-
-    .post button{
-        height: 6vh;
-    }
-
-    .post{
-        width: 52vw;
-        min-height: 28vh;
-        max-height: auto;
-    }
-
     .editModal{
        max-width: 60vw; 
         height: 20vh;
-    }
-
-    .editInput{
-        width: 45vw;
     }
 
     .editModal button{
