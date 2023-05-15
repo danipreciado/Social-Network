@@ -123,12 +123,12 @@
         justify-content: center;
     }
     .logo-container span{
-        font-size: 3rem;
+        font-size: 4rem;
     }
     .wall-logo img{
         object-fit: cover;
-        margin-top: -5vw;
-        min-width: 10vw;
+        margin-top: -3vh;
+        min-width: 14vw;
         min-height: 23vh;
     }
     .profilePic img{
@@ -156,12 +156,8 @@
     .your-post input, .post-content p{
         width: 44vw;
         height: 10;
-        font-size: 1.7rem;
+        font-size: 1.6rem;
     }
-
-    /* .post-content p{
-        margin-left:1vw;
-    } */
 
     .post-content{
         border-radius: 10px;
@@ -255,11 +251,6 @@
     .btn-close-menu{
         display: none;
     }
-
-    .section-menu{
-        left: 0;
-        width: 20vw;
-    } 
     
     .section-btn-menu{
         margin-top: 10vh;
@@ -282,4 +273,72 @@
     .btnGoogle{
         margin-left: 3.5rem;
     }
+
+    .btn-logout{
+        gap: 1vw;
+    }
+
+    .section-menu{
+        display: block;
+        width: 20vw;
+    } 
+
+    .section-menu.active { 
+        left: 0; 
+        display: block;
+    } 
+
+    .logo-span{
+        margin-top: 0;
+        font-size: 2rem;
+    }
+
+    .profilePic img{
+        max-width: 7vw;
+        height: 10vh;
+        margin-top: 2rem;
+        margin-right: 1.5rem;
+    }
+
+    .logo-container{
+        gap: 2rem;
+    }
+
+    .your-post button{
+        height: 6vh;
+    }
+
+    .post button{
+        height: 6vh;
+    }
+
+    .post{
+        width: 52vw;
+        min-height: 28vh;
+        max-height: auto;
+    }
+
+    .editModal{
+       max-width: 60vw; 
+        height: 20vh;
+    }
+
+    .editInput{
+        width: 45vw;
+    }
+
+    .editModal button{
+        margin-left: 7vw;
+        height: 4rem;
+        width: 14vw;
+    }
+
+    .dot-container{
+        width: 60%;
+    }
+
+
+ 
+
+    
 }

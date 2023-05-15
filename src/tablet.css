@@ -145,6 +145,73 @@
         font-size: 2.8rem;
     }
 
+    .btn-logout{
+        gap: 4vw;
+    }
+
+    .section-menu{
+        width: 30vw;
+    } 
+
+    .btn-close-menu{
+        margin-left: 21vw;
+    }
+
+    .btnyour-post{
+        width: 15rem;
+        font-size: 1.6rem;
+    }
+
+    .your-post label{
+        font-size: 1.8rem;
+    }
+
+    .your-postInput {
+        font-size: 1.5rem;
+        
+    }
+    .post-header p {
+        font-size: 1.8rem;
+    }
+
+    .post-content p {
+        font-size: 1.6rem;
+   
+    }
+    .btnComment {
+        font-size: 1.5rem;
+        width: 15rem;
+    }
+    .reactions img {
+        object-fit: cover;
+        margin-top: -3vh;
+        max-width: 3.5rem;
+        height: 3.5rem;
+    }
+
+    .post{
+        min-height: 37vh;
+        max-height: auto;
+    }
+
+    .dot-container{
+        width: 50%;
+    }
+
+    .editModal{
+        width: 50vw;
+    }
+
+    .editInput{
+        width: 43vw;
+    }
+
+    .editModal button{
+        margin-left: 6rem;
+    }
+
+
+
 
 
 
