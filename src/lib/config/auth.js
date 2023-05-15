@@ -34,7 +34,10 @@ export function registerUserWithEmailAndPassword(email, password, username) {
       sendEmailVerification(user);
       return updateProfile(auth.currentUser, {
         displayName: username,
-      });
+      })
+        .catch((error) => {
+          const errorCode = error.code;
+        });
     });
 }
 
