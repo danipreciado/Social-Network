@@ -19,9 +19,6 @@
     }
 
     .btn-container button{
-    
-        border-radius: 1rem;
-        font-size: 3rem;
         font-weight: 700;
     }
     .verification-message {
@@ -136,6 +133,9 @@
     }
     .signIn-link{
         font-size: 2.8rem;
+    }
+    .signIn {
+        font-size: 3.5rem;
     }
 
     .btn-logout{

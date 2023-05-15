@@ -87,6 +87,9 @@
     .signIn-link{
         font-size: 2rem;
     }
+    .signIn{
+        font-size: 3rem;
+    }
     .verification-logo img{
        width: 10vw;
        margin-top: 60vh;
