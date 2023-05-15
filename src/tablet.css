@@ -9,7 +9,16 @@
         height: 45vh;
         
     }
-
+    p{
+        width: 18vw;
+    }
+    .btn-container_link{
+        justify-content: center;
+        gap:0.4vw;
+    }
+    a{
+        width: 15vw;
+    }
     h2{
         font-size: 2.3rem;
     }
@@ -19,9 +28,6 @@
     }
 
     .btn-container button{
-    
-        border-radius: 1rem;
-        font-size: 3rem;
         font-weight: 700;
     }
     .verification-message {
