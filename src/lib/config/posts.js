@@ -21,6 +21,7 @@ export function posting(input, form) {
   })
     .then(() => {
       form.reset();
+      return true;
     });
 }
 
@@ -30,9 +31,7 @@ export const postData = (callback) => onSnapshot(orderedQuery, callback);
 export function deletePost(postId) {
   const postDocRef = doc(colRef, postId);
 
-  return deleteDoc(postDocRef)
-    .then(() => {
-    });
+  return deleteDoc(postDocRef);
 }
 
 export function editPost(postId, newPostText) {
@@ -42,9 +41,7 @@ export function editPost(postId, newPostText) {
   return updateDoc(postDocRef, {
     text: newPostText,
     timestamp: newTimestamp,
-  })
-    .then(() => {
-    });
+  });
 }
 
 export const like = (postId) => {

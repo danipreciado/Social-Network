@@ -73,11 +73,11 @@ export const signup = (onNavigate) => {
     emailError.textContent = '';
     passwordError.textContent = '';
 
-    registerUserWithEmailAndPassword(email, password, userInput.value)
-      .then(() => {
+    const promesa = registerUserWithEmailAndPassword(email, password, userInput.value);
+    promesa.then(() => {
       // Email verification sent successfully
-        onNavigate('/verification');
-      })
+      onNavigate('/verification');
+    })
       .catch((error) => {
         const errorCode = error.code;
         errorMessages(errorCode, emailError, passwordError);

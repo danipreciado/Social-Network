@@ -71,7 +71,7 @@ describe('wall', () => {
     const input = container.querySelector('.your-postInput');
     input.value = 'Some post text';
 
-    form.dispatchEvent(new Event('submit', { bubbles: true }));
+    form.dispatchEvent(new Event('submit'));
 
     expect(posting).toHaveBeenCalledWith(input, form);
   });
@@ -82,7 +82,7 @@ describe('wall', () => {
     const input = container.querySelector('.your-postInput');
     input.value = '';
 
-    form.dispatchEvent(new Event('submit', { bubbles: true }));
+    form.dispatchEvent(new Event('submit'));
 
     expect(posting).not.toHaveBeenCalledWith(input, form);
   });
